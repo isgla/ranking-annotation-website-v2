@@ -1,0 +1,134 @@
+[
+  {
+    "paperId": "aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperLink": "https://www.semanticscholar.org/paper/aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperTitle": "Garden Path Traversal in GPT-2",
+    "chunk": "1",
+    "candidates": [
+      {
+        "rank": "1",
+        "paperId": "51b0c571d89bd2d39a194f60f91f0a03d74574b5",
+        "title": "All Bark and No Bite: Rogue Dimensions in Transformer Language Models Obscure Representational Quality",
+        "reason": "Core methodological influence: motivates recentering vectors for cosine similarity, highlights rogue dimensions, and frames why LM-head-based measures can be misleading; repeatedly cited to justify the paper’s hidden-state analysis choices."
+      },
+      {
+        "rank": "2",
+        "paperId": "88fc7fc6ed73db6251967cfe40507a92008e5949",
+        "title": "On the Surprising Behavior of Distance Metrics in High Dimensional Spaces",
+        "reason": "Foundational rationale for choosing Manhattan over Euclidean distance and for expectations about variance/stability in high-dimensional spaces; directly underpins the paper’s metric design."
+      },
+      {
+        "rank": "3",
+        "paperId": "61f35e2b4de59c74963c53b7379b306d6b24b2ba",
+        "title": "IsoScore: Measuring the Uniformity of Vector Space Utilization",
+        "reason": "Supports claims about under-utilization of latent space and the need to re-center vectors before cosine similarity; directly informs the paper’s cosine-similarity methodology."
+      },
+      {
+        "rank": "4",
+        "paperId": "847a0a93ad97c8a31ef70d379517d8d72d4d9a46",
+        "title": "Neural language models as psycholinguistic subjects: Representations of syntactic state",
+        "reason": "Influences experimental design and garden-path sentence paradigms; the paper’s tests and dataset construction are inspired by this line of work (and closely related Futrell-style setups)."
+      },
+      {
+        "rank": "5",
+        "paperId": "59b05bf0ebc2eb233be01d78477a572678326928",
+        "title": "Neural network surprisal predicts the existence but not the magnitude of human syntactic disambiguation difficulty",
+        "reason": "Central comparative baseline: frames limitations of surprisal with garden paths that the present work claims hidden-state analyses can overcome."
+      },
+      {
+        "rank": "6",
+        "paperId": "a6c95ca565188a8af290edf940414a0cc3234b2a",
+        "title": "Against Repair-Based Reanalysis in Sentence Comprehension",
+        "reason": "Source for key sentence materials/types used in compiling the garden-path dataset; informs dataset content and psycholinguistic grounding."
+      },
+      {
+        "rank": "7",
+        "paperId": "cea1595e56e1e0ccf6e3c980ddf94eb2ab597fca",
+        "title": "Structural change and reanalysis difficulty in language comprehension",
+        "reason": "Provides psycholinguistic benchmarks for the magnitude of garden path effects (reading time increases), helping interpret model effects across sentence types."
+      },
+      {
+        "rank": "8",
+        "paperId": "afd110eace912c2b273e64851c6b4df2658622eb",
+        "title": "Visualizing and Measuring the Geometry of BERT",
+        "reason": "Methodological precedent for geometric analysis of hidden states across layers; informs the paper’s visualization/comparison of cosine, Manhattan, and surprisal trends."
+      }
+    ]
+  },
+  {
+    "paperId": "aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperLink": "https://www.semanticscholar.org/paper/aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperTitle": "Garden Path Traversal in GPT-2",
+    "chunk": "2",
+    "candidates": [
+      {
+        "rank": "9",
+        "paperId": "7621b86f7be6ae5a6ef4a8a5069d57f9e6fa2d08",
+        "title": "The Language Model Understood the Prompt was Ambiguous: Probing Syntactic Uncertainty Through Generation",
+        "reason": "Closely related alternative methodology (beam search over LM head) used as a contrast to the paper’s hidden-state approach; relevant to positioning the contribution."
+      },
+      {
+        "rank": "10",
+        "paperId": "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "title": "Linguistic Knowledge and Transferability of Contextual Representations",
+        "reason": "Background on probing contextual representations; supports the motivation to analyze internal states beyond the LM head."
+      },
+      {
+        "rank": "11",
+        "paperId": "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "title": "What do you learn from context? Probing for sentence structure in contextualized word representations",
+        "reason": "Background probing work (including limited decoder coverage) that frames the gap this paper fills by focusing on GPT-2 hidden states."
+      },
+      {
+        "rank": "12",
+        "paperId": "97906df07855b029b7aae7c2a1c6c5e8df1d531c",
+        "title": "BERT Rediscovers the Classical NLP Pipeline",
+        "reason": "Background evidence of structured linguistic information in internal representations; tangential but supports the case for probing hidden states."
+      },
+      {
+        "rank": "13",
+        "paperId": "d78aed1dac6656affa4a04cbf225ced11a83d103",
+        "title": "Revealing the Dark Secrets of BERT",
+        "reason": "Additional background on interpreting transformer internals; relevant for context but not directly used in methods or data."
+      },
+      {
+        "rank": "14",
+        "paperId": "bd20069f5cac3e63083ecf6479abc1799db33ce0",
+        "title": "A Primer in BERTology: What We Know About How BERT Works",
+        "reason": "Survey that situates the landscape of internal-representation analysis; general background for the paper’s focus."
+      },
+      {
+        "rank": "15",
+        "paperId": "4f46eb81bec369d3ecfb27c847a0239d7af6b83a",
+        "title": "Modeling garden path effects without explicit hierarchical syntax",
+        "reason": "Thematically related to garden path modeling; not directly used for datasets or methods here, but relevant context for alternative modeling approaches."
+      },
+      {
+        "rank": "16",
+        "paperId": "00bd0ca06b5897ebb78e61a88c904aca4bb8fe52",
+        "title": "The Earth Is Flat and the Sun Is Not a Star: The Susceptibility of GPT-2 to Universal Adversarial Triggers",
+        "reason": "Cited to note prior GPT-2 work focused on LM-generated text rather than internal states; peripheral to this paper’s core contributions."
+      }
+    ]
+  },
+  {
+    "paperId": "aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperLink": "https://www.semanticscholar.org/paper/aaef50dfd54bbe89912e1e6144c07eac33bc0f92",
+    "paperTitle": "Garden Path Traversal in GPT-2",
+    "chunk": "3",
+    "candidates": [
+      {
+        "rank": "17",
+        "paperId": "3caf34532597683c980134579b156cd0d7db2f40",
+        "title": "Universal Adversarial Triggers for Attacking and Analyzing NLP",
+        "reason": "Background citation in a general discussion of LMs’ implications; not methodologically or empirically central here."
+      },
+      {
+        "rank": "18",
+        "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+        "title": "Language Models are Few-Shot Learners",
+        "reason": "General background about large LMs and their societal impact; unrelated to the paper’s specific methods, analyses, or dataset."
+      }
+    ]
+  }
+]

@@ -1,0 +1,183 @@
+[
+  {
+    "paperId": "19f59c14b3d79e3203c696128a135d33eb35e468",
+    "paperLink": "https://www.semanticscholar.org/paper/19f59c14b3d79e3203c696128a135d33eb35e468",
+    "paperTitle": "Pragmatic Inference with a CLIP Listener for Contrastive Captioning",
+    "candidates": [
+      {
+        "rank": "1",
+        "paperId": "025f852b227766c3a5dc914ded6f6c0ae137c617",
+        "title": "Pragmatically Informative Image Captioning with Character-Level Inference",
+        "reason": "Core prior on pragmatic contrastive captioning; P adopts the same speaker–listener RSA framing, implements its baselines (Bayesian and incremental RSA), and directly compares to it."
+      },
+      {
+        "rank": "2",
+        "paperId": "e782437503f2a24fd1a836a434da395bf15c88c2",
+        "title": "Context-Aware Captions from Context-Agnostic Supervision",
+        "reason": "Seminal pragmatic captioning method establishing inference-time speaker–listener reasoning for discriminative captions; foundational to P’s approach."
+      },
+      {
+        "rank": "3",
+        "paperId": "92dbc1509b5641946cc8b524610cb6803d6ee5f6",
+        "title": "Reasoning about Pragmatics with Neural Listeners and Speakers",
+        "reason": "Formalizes neural RSA (Bayesian/incremental listeners) that P uses as the backbone for its pragmatic inference and baselines."
+      },
+      {
+        "rank": "4",
+        "paperId": "38b0567e83386ddc294d6c81b541deacbd8e3c2a",
+        "title": "CLIPScore: A Reference-free Evaluation Metric for Image Captioning",
+        "reason": "Establishes that CLIP’s vision–language alignment correlates with human judgments and can assess discriminativeness; directly motivates using CLIP as P’s listener."
+      },
+      {
+        "rank": "5",
+        "paperId": "945e97dcab001986d233a61a233fc524543182ad",
+        "title": "Pragmatic Language Interpretation as Probabilistic Inference",
+        "reason": "Foundational Rational Speech Acts theory modeling speaker–listener interaction; conceptual basis for P’s pragmatic inference."
+      },
+      {
+        "rank": "6",
+        "paperId": "448ef5b388464de0b75ba4c4ed03c845758d3c1f",
+        "title": "Less Descriptive yet Discriminative: Quantifying the Properties of Multimodal Referring Utterances via CLIP",
+        "reason": "Shows CLIP effectively quantifies informativeness/discriminativeness of referring expressions; supports P’s choice of a CLIP listener."
+      },
+      {
+        "rank": "7",
+        "paperId": "b82c5f9efdb2ae56baa084ca41aeddd8a665c1d1",
+        "title": "Align before Fuse: Vision and Language Representation Learning with Momentum Distillation",
+        "reason": "Provides ALBEF, the separate vision–language architecture P uses as the evaluating listener for automatic informativeness tests."
+      },
+      {
+        "rank": "8",
+        "paperId": "ed5483d0669ae3f7146d432119f6540e461914e8",
+        "title": "Image Retrieval from Contextual Descriptions",
+        "reason": "Introduces ImageCoDe dataset and retrieval setup; P finetunes ALBEF on it and evaluates PICL on ImageCoDe."
+      },
+      {
+        "rank": "9",
+        "paperId": "88c86523d500d636f453647385ddaa04085b5f1b",
+        "title": "Pragmatic Issue-Sensitive Image Captioning",
+        "reason": "Contemporary pragmatic contrastive captioning approach; key methodological comparator within the same family P builds upon."
+      },
+      {
+        "rank": "10",
+        "paperId": "673c1512aeb604c9070605ef097d6dfd5e4cd0ba",
+        "title": "Communication-based Evaluation for Natural Language Generation",
+        "reason": "Provides the evaluating-listener protocol for measuring informativeness that P adopts for automatic listener tests."
+      },
+      {
+        "rank": "11",
+        "paperId": "c279ae3ae94803f1cdbaa68bbede7c4c709f48d0",
+        "title": "Communication breakdown: On the low mutual intelligibility between human and neural captioning",
+        "reason": "Documents model–human mismatch on ImageCoDe; motivates P’s emphasis on robustness to the rationality hyperparameter and human-aligned informativeness."
+      },
+      {
+        "rank": "12",
+        "paperId": "58641a3a4b4653b5d63e57dc6dfe3935b866d78f",
+        "title": "CoDraw: Collaborative Drawing as a Testbed for Grounded Goal-driven Communication",
+        "reason": "Introduces “codebooking”/language drift and the need for dissimilar evaluative listeners; informs P’s evaluation design."
+      },
+      {
+        "rank": "13",
+        "paperId": "5931c8ac145baf17cec9effc25c051049b7dfd4c",
+        "title": "Reference-Centric Models for Grounded Collaborative Dialogue",
+        "reason": "Prior use of separate architectures/data for evaluative listeners; supports P’s choice of ALBEF as a distinct evaluator."
+      },
+      {
+        "rank": "14",
+        "paperId": "b6473852e19ebb31161b2f62d53912b431231fa5",
+        "title": "Compare and Reweight: Distinctive Image Captioning Using Similar Images Sets",
+        "reason": "Strong recent discriminative captioning baseline (uses CLIP similarity); a primary comparison point for P’s improvements."
+      },
+      {
+        "rank": "15",
+        "paperId": "5204247ea32e1901a01c6ac16aa92cd2659ea9b0",
+        "title": "Rethinking the Reference-based Distinctive Image Captioning",
+        "reason": "Prior distinctive captioning using similar/unique objects; helps define the task and baselines P contrasts with."
+      },
+      {
+        "rank": "16",
+        "paperId": "a63699905b26fe35f4f5b9b5e2872450a6187f98",
+        "title": "Group-based Distinctive Image Captioning with Memory Attention",
+        "reason": "Another distinctive captioning approach; part of the baseline landscape P positions against."
+      },
+      {
+        "rank": "17",
+        "paperId": "7c1802d8d43dfe783650a03f03d41609fa5ae91e",
+        "title": "Discriminability Objective for Training Descriptive Captions",
+        "reason": "Trains captioners with discriminability objectives; represents the training-time alternative P contrasts with inference-time pragmatics."
+      },
+      {
+        "rank": "18",
+        "paperId": "caab1c1d53718315f54bc4df42eb9a727fa18483",
+        "title": "Show",
+        "reason": "Tell and Discriminate: Image Captioning by Self-retrieval with Partially Labeled Data, Retrieval-based discriminative training; alternative paradigm compared to P’s pragmatic inference."
+      },
+      {
+        "rank": "19",
+        "paperId": "5c43607c7f10284003e0072b8632ef7427d3df06",
+        "title": "Switching to Discriminative Image Captioning by Relieving a Bottleneck of Reinforcement Learning",
+        "reason": "RL-based discriminative captioning; provides contrasting approach and baseline context."
+      },
+      {
+        "rank": "20",
+        "paperId": "9b45e9a40313096abf530df3b98a1dfa1553f17b",
+        "title": "Comprehension-Guided Referring Expressions",
+        "reason": "Example of using a separate discriminative model for caption selection; cited in P’s method taxonomy."
+      },
+      {
+        "rank": "21",
+        "paperId": "b81fcb25cc5c4b0a850411fc6181eb96dd78b2b9",
+        "title": "Colors in Context: A Pragmatic Neural Model for Grounded Language Understanding",
+        "reason": "Early pragmatic modeling in grounded reference games; conceptual background for P’s speaker–listener setup."
+      },
+      {
+        "rank": "22",
+        "paperId": "baf47cd0b471a9bb7b2230fec0b680fc9b3c4783",
+        "title": "Unified Pragmatic Models for Generating and Following Instructions",
+        "reason": "Demonstrates benefits of pragmatic generation beyond captioning; supports the general framework P leverages."
+      },
+      {
+        "rank": "23",
+        "paperId": "743d1aae44a12fb37b743ec947fad41cba9831b8",
+        "title": "Pragmatically Informative Text Generation",
+        "reason": "General pragmatic generation framework; background supporting P’s approach."
+      },
+      {
+        "rank": "24",
+        "paperId": "ed7c3eececad3915c865b7b11d88c338b0e0cbe1",
+        "title": "Lost in Machine Translation: A Method to Reduce Meaning Loss",
+        "reason": "Application of pragmatic reasoning to MT; cited as broader evidence, not directly shaping P’s method."
+      },
+      {
+        "rank": "25",
+        "paperId": "2a26153354119ba1e21c3c42050cb1546f886410",
+        "title": "Predicting Pragmatic Reasoning in Language Games",
+        "reason": "RSA/pragmatic reasoning in language games; theoretical background with indirect influence on P."
+      },
+      {
+        "rank": "26",
+        "paperId": "ecce44df1956db4ec486539c6543345344809958",
+        "title": "Unifying Architectures",
+        "reason": "Tasks, and Modalities Through a Simple Sequence-to-Sequence Learning Framework, Provides OFA, the base captioner P fine-tunes; important for implementation but not conceptually central."
+      },
+      {
+        "rank": "27",
+        "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+        "title": "Microsoft COCO Captions: Data Collection and Evaluation Server",
+        "reason": "Dataset used to train the base captioner; peripheral to P’s core contribution."
+      },
+      {
+        "rank": "28",
+        "paperId": "9405cc0d6169988371b2755e573cc28650d14dfe",
+        "title": "Language Models are Unsupervised Multitask Learners",
+        "reason": "GPT-2 used to score fluency via perplexity; evaluation utility, minimal methodological impact."
+      },
+      {
+        "rank": "29",
+        "paperId": "92e02bd58b99ac17b475081611f091f4b0776482",
+        "title": "Video Storytelling: Textual Summaries for Events",
+        "reason": "Tangential citation regarding evaluator separation; least direct influence on P’s method or evaluation."
+      }
+    ]
+  }
+]

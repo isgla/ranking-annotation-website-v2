@@ -1,0 +1,232 @@
+[
+  {
+    "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+    "paperLink": "https://arxiv.org/abs/2212.10560",
+    "paperTitle": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+    "chunk": "1",
+    "candidates": [
+      {
+        "rank": "1",
+        "paperId": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+        "title": "Finetuned Language Models Are Zero-Shot Learners",
+        "reason": "Established instruction tuning as a simple, powerful way to elicit zero-shot generalization—Self-Instruct directly builds on this paradigm by replacing human-written instructions with self-generated ones."
+      },
+      {
+        "rank": "2",
+        "paperId": "cdbd4f9b6ab2e2fd1ddf5400d5ed2c18960635d1",
+        "title": "Scaling Instruction-Finetuned Language Models",
+        "reason": "Showed that scale and diversity of instruction data drive generalization, motivating Self-Instruct’s focus on generating large, diverse synthetic instructions."
+      },
+      {
+        "rank": "3",
+        "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+        "title": "Language Models are Few-Shot Learners",
+        "reason": "Provided GPT-3, the base LM used for both instruction generation and subsequent finetuning in Self-Instruct, and the few-shot prompting paradigm leveraged in data synthesis."
+      },
+      {
+        "rank": "4",
+        "paperId": "9b1f4492a663c7f56f2b43ae1ed167d3857aacca",
+        "title": "PromptSource: An Integrated Development Environment and Repository for Natural Language Prompts",
+        "reason": "Supplies key public instruction datasets and baselines (e.g., for T0) that Self-Instruct compares against to demonstrate gains over human-authored instruction sources."
+      },
+      {
+        "rank": "5",
+        "paperId": "fb985e51608b7fa464ffa38eb3657b6c9f3d21bf",
+        "title": "Self-Training: A Survey",
+        "reason": "Conceptual foundation for Self-Instruct’s bootstrapping pipeline—using model-generated data to improve the model itself."
+      },
+      {
+        "rank": "6",
+        "paperId": "b769b629c8de35b16735214251d6b4e99cb55762",
+        "title": "Generating Datasets with Pretrained Language Models",
+        "reason": "Prior work on leveraging LMs to synthesize labeled datasets, closely aligned with Self-Instruct’s synthetic instruction and instance generation."
+      },
+      {
+        "rank": "7",
+        "paperId": "7f3bc301ae0e2bbb78a0d42f074865e87d908f9a",
+        "title": "Tuning Language Models as Training Data Generators for Augmentation-Enhanced Few-Shot Learning",
+        "reason": "Demonstrates using LMs to produce task data for training/augmentation, informing Self-Instruct’s data-generation-for-training approach."
+      },
+      {
+        "rank": "8",
+        "paperId": "c2a79e2a65b721d4de5f6d4806323174b9f8f393",
+        "title": "Towards Zero-Label Language Learning",
+        "reason": "Pursues learning with minimal/no human labels using LMs, reinforcing Self-Instruct’s annotation-light alignment objective."
+      }
+    ]
+  },
+  {
+    "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+    "paperLink": "https://arxiv.org/abs/2212.10560",
+    "paperTitle": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+    "chunk": "2",
+    "candidates": [
+      {
+        "rank": "9",
+        "paperId": "016ca039d9f5220c96b26f15d90d82064c361bfa",
+        "title": "Learning from Task Descriptions",
+        "reason": "Early evidence that models can learn from natural language task descriptions, a precursor to instruction-following and Self-Instruct’s task framing."
+      },
+      {
+        "rank": "10",
+        "paperId": "5e8d3c2dc0fc53949794fc00600e25558c4a2441",
+        "title": "WANLI: Worker and AI Collaboration for Natural Language Inference Dataset Creation",
+        "reason": "Shows LM-assisted data creation with human oversight, conceptually similar to Self-Instruct’s generate-and-filter pipeline."
+      },
+      {
+        "rank": "11",
+        "paperId": "6c4b76232bb72897685d19b3d264c6ee3005bc2b",
+        "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+        "reason": "Provides the T5 backbone used to form LM baselines and contextualizes instruction-tuned variants compared by Self-Instruct."
+      },
+      {
+        "rank": "12",
+        "paperId": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+        "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+        "reason": "Supplies the T5-LM setup used as a “vanilla LM” baseline in Self-Instruct’s evaluations."
+      },
+      {
+        "rank": "13",
+        "paperId": "63d8426ba1f51a8525dd19fd8ec92934ec71aea5",
+        "title": "A Survey of Data Augmentation Approaches for NLP",
+        "reason": "Background supporting the broader idea that synthetic/augmented data can improve model performance, which Self-Instruct applies at instruction level."
+      },
+      {
+        "rank": "14",
+        "paperId": "4972b88f8f324a4fa18e921f62a9857af2b5fc7b",
+        "title": "Crosslingual Generalization through Multitask Finetuning",
+        "reason": "Evidence that multitask/instruction-style finetuning enhances generalization, reinforcing Self-Instruct’s multi-task instruction perspective."
+      },
+      {
+        "rank": "15",
+        "paperId": "526cae4863eb15b5bc39112449c2d5fdf1db85b2",
+        "title": "Multilingual Constituency Parsing with Self-Attention and Pre-Training",
+        "reason": "Cited for the Berkeley Neural Parser used to parse instructions (verb/object extraction) in Self-Instruct’s filtering/diversity steps."
+      },
+      {
+        "rank": "16",
+        "paperId": "928f9dccb806a3278d20d82cc53781c5f44e2bb1",
+        "title": "Constituency Parsing with a Self-Attentive Encoder",
+        "reason": "Companion citation for the Berkeley Neural Parser underpinning Self-Instruct’s instruction analysis and deduplication."
+      }
+    ]
+  },
+  {
+    "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+    "paperLink": "https://arxiv.org/abs/2212.10560",
+    "paperTitle": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+    "chunk": "3",
+    "candidates": [
+      {
+        "rank": "17",
+        "paperId": "31e396eab8edb44f79e3158eeefc3280afb404f4",
+        "title": "How Many Data Samples is an Additional Instruction Worth?",
+        "reason": "Quantifies value of instructions versus examples, thematically related to Self-Instruct’s emphasis on generating many diverse instructions."
+      },
+      {
+        "rank": "18",
+        "paperId": "6f4cc536f9ed83d0dbf7e919dc609be12aa0848a",
+        "title": "Unnatural Instructions: Tuning Language Models with (Almost) No Human Labor",
+        "reason": "A parallel effort that independently explores synthetic instruction generation with GPT-3; relevant but not an antecedent influence on Self-Instruct’s design."
+      },
+      {
+        "rank": "19",
+        "paperId": "eac7022fe02f867140514018806a3cae1da6864f",
+        "title": "Unsupervised Cross-Task Generalization via Retrieval Augmentation",
+        "reason": "Background on improving cross-task generalization without labels; tangentially related to Self-Instruct’s goal."
+      },
+      {
+        "rank": "20",
+        "paperId": "d304d0bdfa81fd10b187aa0e4f41d410eb19d6e3",
+        "title": "Fine-tuned Language Models are Continual Learners",
+        "reason": "Contextualizes behavior of finetuned LMs across tasks over time; peripheral to Self-Instruct’s main contribution."
+      },
+      {
+        "rank": "21",
+        "paperId": "6cf8a4d05e66266233380f989edaf647eba7e1a5",
+        "title": "BioTABQA: Instruction Learning for Biomedical Table Question Answering",
+        "reason": "Application evidence that instruction tuning helps specialized domains; supportive but not central."
+      },
+      {
+        "rank": "22",
+        "paperId": "8f926c0c3f1557a9241b7e75609082a1f207a75e",
+        "title": "InstructDial: Improving Zero and Few-shot Generalization in Dialogue through Instruction Tuning",
+        "reason": "Another application confirming instruction tuning’s utility; peripheral to Self-Instruct."
+      },
+      {
+        "rank": "23",
+        "paperId": "77a94f6c91ee1590dd2c6fd80b4a6d8bffdb91ac",
+        "title": "Help me write a Poem - Instruction Tuning as a Vehicle for Collaborative Poetry Writing",
+        "reason": "Domain-specific instruction tuning evidence cited as background; minimal impact on methodology."
+      },
+      {
+        "rank": "24",
+        "paperId": "0c8908707b4609bc53ea7a7c1d855088b7294dcf",
+        "title": "ConTinTin: Continual Learning from Task Instructions",
+        "reason": "Instruction-oriented continual learning; background rather than a driver of Self-Instruct’s approach."
+      }
+    ]
+  },
+  {
+    "paperId": "e65b346d442e9962a4276dc1c1af2956d9d5f1eb",
+    "paperLink": "https://arxiv.org/abs/2212.10560",
+    "paperTitle": "Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+    "chunk": "4",
+    "candidates": [
+      {
+        "rank": "25",
+        "paperId": "d9f6ada77448664b71128bb19df15765336974a6",
+        "title": "SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems",
+        "reason": "Mentioned via prior LM-generated data work on SuperGLUE; not directly used by Self-Instruct."
+      },
+      {
+        "rank": "26",
+        "paperId": "521ccc898395a2818fced22b4cf371b0e5121f94",
+        "title": "Symbolic Knowledge Distillation: from General Language Models to Commonsense Models",
+        "reason": "Distillation background; tangential since Self-Instruct is not a distillation method."
+      },
+      {
+        "rank": "27",
+        "paperId": "a54b56af24bb4873ed0163b77df63b92bd018ddc",
+        "title": "DistilBERT",
+        "reason": "a distilled version of BERT: smaller, faster, cheaper and lighter, General distillation reference; minimal relevance to Self-Instruct’s pipeline."
+      },
+      {
+        "rank": "28",
+        "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+        "title": "Distilling the Knowledge in a Neural Network",
+        "reason": "Classic distillation background; not directly influential here."
+      },
+      {
+        "rank": "29",
+        "paperId": "f4cf4246f3882aa6337e9c05d5675a3b8463a32e",
+        "title": "ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks",
+        "reason": "Multi-modal instruction following cited as broad context; not impactful on Self-Instruct’s method."
+      },
+      {
+        "rank": "30",
+        "paperId": "893186c6bc08a17cb3f9f94fa3f14e9ad20b0525",
+        "title": "Speaker-Follower Models for Vision-and-Language Navigation",
+        "reason": "Another multi-modal instruction-following reference serving only as background."
+      },
+      {
+        "rank": "31",
+        "paperId": "538288d24bdad73d831dfed44b706958287ed318",
+        "title": "Generating Sequences by Learning to Self-Correct",
+        "reason": "Focuses on iterative correction rather than data synthesis for finetuning; largely unrelated to Self-Instruct’s core idea."
+      },
+      {
+        "rank": "32",
+        "paperId": "2eddb4bffb5dda2a53a2a05da5914800c3dfa0db",
+        "title": "GraDA: Graph Generative Data Augmentation for Commonsense Reasoning",
+        "reason": "Data augmentation in a different modality/task setting; minimal connection to Self-Instruct."
+      },
+      {
+        "rank": "33",
+        "paperId": "e01515c6138bc525f7aec30fc85f2adf028d4156",
+        "title": "Principle-Driven Self-Alignment of Language Models from Scratch with Minimal Human Supervision",
+        "reason": "A follow-up line of work building on Self-Instruct-like ideas; temporally unable to influence Self-Instruct."
+      }
+    ]
+  }
+]

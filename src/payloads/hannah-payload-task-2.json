@@ -1,0 +1,81 @@
+[
+  {
+    "paperId": "7b489c47ebca2c1df0e611e76b9649f69e4fce29",
+    "paperLink": "https://www.semanticscholar.org/paper/7b489c47ebca2c1df0e611e76b9649f69e4fce29",
+    "paperTitle": "Automatically Generated Summaries of Video Lectures May Enhance Students’ Learning Experience",
+    "candidates": [
+      {
+        "rank": "1",
+        "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
+        "title": "Language Models are Few-Shot Learners",
+        "reason": "Core to P: the paper directly uses GPT-3 (text-davinci-002) and evaluates zero-shot, few-shot prompting, and fine-tuning paradigms derived from Brown et al.; even discusses GPT-3 token limits and prompting sensitivity."
+      },
+      {
+        "rank": "2",
+        "paperId": "1bcd56b140a869fa8489cc6ed7e9088d13b2ffdd",
+        "title": "Automatic Summarization of Lecture Slides for Enhanced Student Preview–Technical Report and User Study–",
+        "reason": "Direct prior evidence that summaries improve quiz performance and study efficiency; strongly informs P’s hypothesis and user-study design comparing video-only, summary-only, and combined conditions."
+      },
+      {
+        "rank": "3",
+        "paperId": "83851f1a32d41975582ca62355858ab5e34738f7",
+        "title": "News Summarization and Evaluation in the Era of GPT-3",
+        "reason": "Motivates using GPT-3 for summarization by showing human preference for GPT-3 news summaries; supports P’s choice of model and feasibility of LLM-based summarization."
+      },
+      {
+        "rank": "4",
+        "paperId": "3db14551d878d66d1b17c77ee717e2a71ebd387c",
+        "title": "Video digests: a browsable",
+        "reason": "skimmable format for informational lecture videos, Closest prior on lecture video textual summaries (manual/crowdsourced); P positions its automatic LLM approach against this earlier human-authored paradigm."
+      },
+      {
+        "rank": "5",
+        "paperId": "640e362093fa57cce35f8f71e8f5d83c43ba138f",
+        "title": "Self-regulated learning support in flipped learning videos enhances learning outcomes",
+        "reason": "Supports the educational premise that augmenting video lectures improves learning outcomes, aligning with P’s findings that summaries enhance the studying experience."
+      },
+      {
+        "rank": "6",
+        "paperId": "20d874c0f7859e3278ef7b94f8645929e9795593",
+        "title": "Data-driven interaction techniques for improving navigation of educational videos",
+        "reason": "Background on HCI methods (interactive transcripts, highlights) that improve video learning; P contributes an additional augmentation (automatic summaries) in this lineage."
+      },
+      {
+        "rank": "7",
+        "paperId": "ea81690fe44b6689afe3bc13729a2e74a50cece5",
+        "title": "CatchLive: Real-time Summarization of Live Streams with Stream Content and Interaction Data",
+        "reason": "Related work on video summarization (live streams) that contextualizes P within broader video summarization efforts, though P focuses on offline lecture transcripts."
+      },
+      {
+        "rank": "8",
+        "paperId": "17dd3555fd1ccf1141cf984347fa1b3fd6b009ca",
+        "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+        "reason": "Cited to substantiate zero/few-shot prompting capabilities of LLMs that P empirically explores; conceptual support rather than direct method."
+      },
+      {
+        "rank": "9",
+        "paperId": "ff0b2681d7b05e16c46dfb71d980cc2f605907cd",
+        "title": "Finetuned Language Models Are Zero-Shot Learners",
+        "reason": "Supports the idea that instruction/fine-tuned LMs generalize without task-specific training; background for P’s fine-tuning vs prompting comparison."
+      },
+      {
+        "rank": "10",
+        "paperId": "cbdb45fc16b0885905b91d84281c310e6cb49e9c",
+        "title": "Cross-Task Generalization via Natural Language Crowdsourcing Instructions",
+        "reason": "Further evidence for instruction-driven generalization cited by P; ancillary to P’s core GPT-3 setup."
+      },
+      {
+        "rank": "11",
+        "paperId": "1e077413b25c4d34945cc2707e17e46ed4fe784a",
+        "title": "Universal Language Model Fine-tuning for Text Classification",
+        "reason": "General fine-tuning precedent; tangential since P fine-tunes GPT-3 within its own API rather than adopting ULMFiT-style methodology."
+      },
+      {
+        "rank": "12",
+        "paperId": "9b1f4492a663c7f56f2b43ae1ed167d3857aacca",
+        "title": "PromptSource: An Integrated Development Environment and Repository for Natural Language Prompts",
+        "reason": "Broad prompting infrastructure reference; not directly used in P’s experiments and thus least influential."
+      }
+    ]
+  }
+]
