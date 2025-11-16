@@ -61,13 +61,13 @@ function SelectionForm({ data, onNext }) {
     <>
       <EmphCard
         sx={{
-          minHeight: "600px",       // taller blue box
+          minHeight: "600px", // taller blue box
           display: "flex",
           flexDirection: "column",
           padding: "16px",
         }}
       >
-        <Typography variant="body1" sx={{ mb: 2 }}>
+        <Typography variant="body2" sx={{ mb: 2 }}>
           Sort the papers for{" "}
           <Link
             href={paperLink}
@@ -86,12 +86,12 @@ function SelectionForm({ data, onNext }) {
         {/* Inner scrollable container */}
         <Box
           sx={{
-            flex: 1,                 // takes remaining height of blue box
-            width: "97%",            // nearly full width
-            overflowY: "auto",       // vertical scroll
-            backgroundColor: "#ceebffff",
+            flex: 1, // fill remaining height
+            width: "97%",
+            overflowY: "auto",
+            // backgroundColor: "#ceebffff",
             borderRadius: "8px",
-            padding: "12px",
+            padding: "8px", // reduce padding
           }}
         >
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
@@ -104,14 +104,22 @@ function SelectionForm({ data, onNext }) {
                       key={id}
                       id={id}
                       content={
-                        <Box>
-                          <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+                        <Box sx={{ py: 0.5, px: 1 }}> {/* smaller padding */}
+                          <Typography
+                            variant="subtitle2"
+                            sx={{ fontWeight: "bold", fontSize: "0.9rem", lineHeight: 1.2 }}
+                          >
                             {paper.title}
                           </Typography>
-                          <Typography variant="body2">{paper.reason}</Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{ fontSize: "0.8rem", color: "text.secondary", lineHeight: 1.2 }}
+                          >
+                            {paper.reason}
+                          </Typography>
                         </Box>
                       }
-                      sx={{ width: "97%", marginBottom: "8px" }}
+                      sx={{ width: "97%", marginBottom: "6px" }} // less margin between cards
                     />
                   );
                 })}
@@ -124,9 +132,6 @@ function SelectionForm({ data, onNext }) {
       <Box sx={{ textAlign: "center", width: "100%", mt: 2 }}>
         <Button variant="contained" onClick={handleSubmit} sx={{ m: 1 }}>
           Submit Order
-        </Button>
-        <Button variant="text" color="error" onClick={handleCantRank} sx={{ m: 1 }}>
-          Can't Rank
         </Button>
       </Box>
 
