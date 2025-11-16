@@ -1,64 +1,53 @@
+import React from "react";
+import { useDraggable } from "@dnd-kit/core";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { NormalCard } from "./Cards";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
-import { useDraggable } from '@dnd-kit/core';
-import { NormalCard } from './Cards';
-import Box from '@mui/material/Box';
-import { CSS } from '@dnd-kit/utilities';
-import { useSortable } from '@dnd-kit/sortable';
-
-
+// Generic draggable card (optional)
 function Draggable(props) {
-    const {attributes, listeners, setNodeRef, transform } = useDraggable({
-        id: 'draggable',
-    });
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: "draggable",
+  });
 
-    const style = transform ? {
+  const style = transform
+    ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    } : undefined;
+      }
+    : undefined;
 
-    return (
-        <Box sx={{ maxWidth: 500 }}>
-            <div ref={setNodeRef}>
-                <NormalCard style={style} {...listeners} {...attributes}>
-                    Draggable Card
-                </NormalCard>
-            </div>
-        </Box>
-    );
+  return (
+    <Box sx={{ maxWidth: 500 }}>
+      <div ref={setNodeRef}>
+        <NormalCard style={style} {...listeners} {...attributes}>
+          Draggable Card
+        </NormalCard>
+      </div>
+    </Box>
+  );
 }
 
+// Sortable item for ranking papers
 
-function SortableItem(props) {
+function SortableItem({ id, content, sx }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
 
-    // Important: the id here is the sortable id that can be used
-    // so  it is the modified id from the original id
-    const { id, content } = props;
+  const style = {
+    transform: transform ? `translate3d(0px, ${transform.y}px, 0)` : undefined,
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+    ...sx,
+  };
 
-    const {
-        attributes,
-        isDragging,
-        isSorting,
-        listeners,
-        over,
-        overIndex,
-        setNodeRef,
-        transition,
-        transform
-    } = useSortable({ id: id });
-
-    const style = {
-        transform: transform ? `translate3d(0px, ${transform.y}px, 0)` : undefined,
-        transition,
-        opacity: isDragging ? 0.5 : undefined,
-    };
-
-    return (
-        <Box sx={{ maxWidth: 500, paddingBottom: "2px", margin: "0px" }} ref={setNodeRef}>
-            <NormalCard style={style} {...listeners} {...attributes} sx={{marginLeft: "15px", marginRight: "15px"}}>
-                {content}
-            </NormalCard>
-        </Box>
-    )
+  return (
+    <Box ref={setNodeRef}>
+      <NormalCard style={style} {...listeners} {...attributes} sx={{ width: "100%" }}>
+        {content} {/* Can be JSX */}
+      </NormalCard>
+    </Box>
+  );
 }
-
 
 export { Draggable, SortableItem };
