@@ -50,86 +50,93 @@ function SelectionForm({ data, onNext }) {
       setAlertOpen(true);
       return;
     }
-    const papersOnly = items.filter((id) => !id.startsWith("separator-"));
-    onNext({ chunk: data.chunk, answer: papersOnly });
+
+    // Save responses including category
+    let currentCategory = null;
+    const paperWithCategory = [];
+    items.forEach((id) => {
+      if (id === "separator-most") currentCategory = "most-impactful";
+      else if (id === "separator-medium") currentCategory = "medium-impactful";
+      else if (id === "separator-low") currentCategory = "lowest-impactful";
+      else paperWithCategory.push([id, currentCategory]);
+    });
+
+    onNext({ chunk: data.chunk, answer: paperWithCategory });
   };
 
   const handleCantRank = () => {
     onNext({ chunk: data.chunk, answer: "CANT_RANK" });
   };
 
-  // Background colors for categories
-  const categoryColors = {
-    "separator-most": "#e5fae0ff",
-    "separator-medium": "#e0f7fa",
-    "separator-low": "#f3e5f5",
-  };
+  const getPaperColor = (paperId) => {
+    const index = items.indexOf(paperId);
+    if (index === -1) return "#ffffff";
 
-  // Font colors for separators matching paper background
-  const categoryFontColors = {
-    "separator-most": "#267900ff", // Green
-    "separator-medium": "#2b59ffff", // Blue
-    "separator-low": "#6a1b9a", // dark purple
-  };
-
-  // Determine the current category for each paper
-  const getCategory = (index) => {
-    for (let i = index; i >= 0; i--) {
+    let category = null;
+    for (let i = index - 1; i >= 0; i--) {
       const id = items[i];
-      if (id.startsWith("separator-")) return id;
+      if (id === "separator-most") { category = "most-impactful"; break; }
+      if (id === "separator-medium") { category = "medium-impactful"; break; }
+      if (id === "separator-low") { category = "lowest-impactful"; break; }
     }
-    return null;
+
+    if (category === "most-impactful") return "#e5fae0ff"; 
+    if (category === "medium-impactful") return "#e0f7fa";
+    if (category === "lowest-impactful") return "#f3e5f5";
+    return "#ffffff";
   };
 
-  // Render content for separators or papers
-  const renderContent = (id) => {
-    if (id.startsWith("separator-")) {
-      let title, description;
-      if (id === "separator-most") {
-        title = "Most Impact";
-        description = `Papers without which it would not have been possible to write ${paperTitle}.`;
-      } else if (id === "separator-medium") {
-        title = "Medium Impact";
-        description = `Papers that helped write ${paperTitle}, but were not fundamental. Alternatives could have been used.`;
-      } else if (id === "separator-low") {
-        title = "Lowest Impact";
-        description = `Papers that provided background information or helped define concepts in ${paperTitle}.`;
-      }
+  const getFontColor = (categoryId) => {
+    if (categoryId === "separator-most") return "#267900ff"; 
+    if (categoryId === "separator-medium") return "#2b59ffff"; 
+    if (categoryId === "separator-low") return "#4b0082"; 
+    return "#000000";
+  };
 
+  const renderContent = (id) => {
+    if (id === "separator-most")
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              fontSize: "0.75rem",
-              lineHeight: 1.1,
-              color: categoryFontColors[id],
-            }}
-          >
-            {title}
+          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
+            Most Impact
           </Typography>
-          <Typography
-            sx={{ fontSize: "0.7rem", lineHeight: 1.1, color: categoryFontColors[id] }}
-          >
-            {description}
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
+            Papers without which it would not have been possible for you to write {paperTitle}.
           </Typography>
         </Box>
       );
-    }
+
+    if (id === "separator-medium")
+      return (
+        <Box sx={{ py: 0.25, px: 1 }}>
+          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
+            Medium Impact
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
+            Papers that helped you write {paperTitle}, but were not fundamental. You could have used an alternative paper.
+          </Typography>
+        </Box>
+      );
+
+    if (id === "separator-low")
+      return (
+        <Box sx={{ py: 0.25, px: 1 }}>
+          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
+            Lowest Impact
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
+            These papers provided background information or helped you define concepts in {paperTitle}.
+          </Typography>
+        </Box>
+      );
 
     const paper = paperMap.get(id);
     return (
       <Box sx={{ py: 0.5, px: 1 }}>
-        <Typography
-          variant="subtitle2"
-          sx={{ fontWeight: "bold", fontSize: "0.9rem", lineHeight: 1.2 }}
-        >
+        <Typography variant="subtitle2" sx={{ fontWeight: "bold", fontSize: "0.9rem", lineHeight: 1.2 }}>
           {paper.title}
         </Typography>
-        <Typography
-          variant="body2"
-          sx={{ fontSize: "0.8rem", color: "text.secondary", lineHeight: 1.2 }}
-        >
+        <Typography variant="body2" sx={{ fontSize: "0.8rem", color: "text.secondary", lineHeight: 1.2 }}>
           {paper.reason}
         </Typography>
       </Box>
@@ -144,36 +151,31 @@ function SelectionForm({ data, onNext }) {
           <Link href={paperLink} target="_blank" rel="noopener noreferrer" underline="hover" sx={{ fontWeight: "bold" }}>
             {paperTitle}
           </Link>
-          . Drag to reorder and place papers under the appropriate impact category.
+          . Drag to reorder, then submit. You also have three categories for impact. Place papers under each category:
         </Typography>
 
         <Divider variant="middle" sx={{ mb: 2 }} />
 
-        {/* Scrollable container */}
         <Box sx={{ flex: 1, width: "97%", overflowY: "auto", borderRadius: "8px", padding: "8px" }}>
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <SortableContext items={items}>
               <Droppable id="single-sortable-list">
-                {items.map((id, index) => {
-                  const category = getCategory(index);
-                  const bgColor = id.startsWith("separator-") ? "#d0d0d0" : categoryColors[category] || "#ffffff";
-                  return (
-                    <SortableItem
-                      key={id}
-                      id={id}
-                      content={renderContent(id)}
-                      sx={{
-                        width: "97%",
-                        marginBottom: "6px",
-                        backgroundColor: bgColor,
-                        borderRadius: "4px",
-                        py: 0.5,
-                        px: 1,
-                        cursor: id.startsWith("separator-") ? "grab" : "pointer",
-                      }}
-                    />
-                  );
-                })}
+                {items.map((id) => (
+                  <SortableItem
+                    key={id}
+                    id={id}
+                    content={renderContent(id)}
+                    sx={{
+                      width: "97%",
+                      marginBottom: "6px",
+                      backgroundColor: id.startsWith("separator-") ? "#d0d0d0" : getPaperColor(id),
+                      borderRadius: "4px",
+                      py: 0.5,
+                      px: 1,
+                      cursor: id.startsWith("separator-") ? "grab" : "pointer",
+                    }}
+                  />
+                ))}
               </Droppable>
             </SortableContext>
           </DndContext>
@@ -183,6 +185,9 @@ function SelectionForm({ data, onNext }) {
       <Box sx={{ textAlign: "center", width: "100%", mt: 2 }}>
         <Button variant="contained" onClick={handleSubmit} sx={{ m: 1 }}>
           Submit Order
+        </Button>
+        <Button variant="text" color="error" onClick={handleCantRank} sx={{ m: 1 }}>
+          Can't Rank
         </Button>
       </Box>
 
