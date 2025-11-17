@@ -195,7 +195,16 @@ function App() {
           </Typography>
           <Box sx={{ mt: 2 }} />
           <Typography variant="body1">
-            • Sort the papers for P. Drag to reorder, then submit.
+            • Sort the papers (r₁, r₂, r₃, …) based on the impact they had for P. Drag to reorder the papers and place them under the appropriate impact category (Most, Medium, or Lowest Impact).
+          </Typography>
+          <Typography variant="body1">
+            • Most Impact: Papers without which it would not have been possible to write P.
+          </Typography>
+          <Typography variant="body1">
+            • Medium Impact: Papers that helped write P, but were not fundamental. Alternatives could have been used.
+          </Typography>
+          <Typography variant="body1">
+            • Lowest Impact: Papers that provided background information or helped define concepts in P.
           </Typography>
         </CustomTabPanel>
 
