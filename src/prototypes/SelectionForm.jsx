@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, Divider, Alert } from "@mui/material";
 import { EmphCard } from "../components/Cards";
 import Link from "@mui/material/Link";
+
 import { DndContext, PointerSensor, useSensor, useSensors, KeyboardSensor } from "@dnd-kit/core";
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
@@ -19,7 +20,6 @@ function SelectionForm({ data, onNext }) {
 
   useEffect(() => {
     if (data?.candidates) {
-      // Insert separators as special items at the top
       const separators = ["separator-most", "separator-medium", "separator-low"];
       const paperIds = data.candidates.map((c) => c.paperId);
       setItems([...separators, ...paperIds]);
@@ -31,7 +31,6 @@ function SelectionForm({ data, onNext }) {
 
   const paperLink = data.paperLink;
   const paperTitle = data.paperTitle;
-
   const paperMap = new Map(data.candidates.map((c) => [c.paperId, c]));
 
   const handleDragEnd = (event) => {
@@ -59,43 +58,64 @@ function SelectionForm({ data, onNext }) {
     onNext({ chunk: data.chunk, answer: "CANT_RANK" });
   };
 
+  // Background colors for categories
+  const categoryColors = {
+    "separator-most": "#e5fae0ff",
+    "separator-medium": "#e0f7fa",
+    "separator-low": "#f3e5f5",
+  };
+
+  // Font colors for separators matching paper background
+  const categoryFontColors = {
+    "separator-most": "#267900ff", // Green
+    "separator-medium": "#2b59ffff", // Blue
+    "separator-low": "#6a1b9a", // dark purple
+  };
+
+  // Determine the current category for each paper
+  const getCategory = (index) => {
+    for (let i = index; i >= 0; i--) {
+      const id = items[i];
+      if (id.startsWith("separator-")) return id;
+    }
+    return null;
+  };
+
   // Render content for separators or papers
   const renderContent = (id) => {
-    if (id === "separator-most")
-      return (
-        <Box sx={{ py: 0.25, px: 1 }}>
-          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1 }}>
-            Most Impact
-          </Typography>
-          <Typography sx={{ fontSize: "0.7rem", lineHeight: 1.1, color: "text.secondary" }}>
-            Papers without which it would not have been possible to write {paperTitle}.
-          </Typography>
-        </Box>
-      );
+    if (id.startsWith("separator-")) {
+      let title, description;
+      if (id === "separator-most") {
+        title = "Most Impact";
+        description = `Papers without which it would not have been possible to write ${paperTitle}.`;
+      } else if (id === "separator-medium") {
+        title = "Medium Impact";
+        description = `Papers that helped write ${paperTitle}, but were not fundamental. Alternatives could have been used.`;
+      } else if (id === "separator-low") {
+        title = "Lowest Impact";
+        description = `Papers that provided background information or helped define concepts in ${paperTitle}.`;
+      }
 
-    if (id === "separator-medium")
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
-          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1 }}>
-            Medium Impact
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: "0.75rem",
+              lineHeight: 1.1,
+              color: categoryFontColors[id],
+            }}
+          >
+            {title}
           </Typography>
-          <Typography sx={{ fontSize: "0.7rem", lineHeight: 1.1, color: "text.secondary" }}>
-            Papers that helped write {paperTitle}, but were not fundamental. Alternatives could have been used.
+          <Typography
+            sx={{ fontSize: "0.7rem", lineHeight: 1.1, color: categoryFontColors[id] }}
+          >
+            {description}
           </Typography>
         </Box>
       );
-
-    if (id === "separator-low")
-      return (
-        <Box sx={{ py: 0.25, px: 1 }}>
-          <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1 }}>
-            Lowest Impact
-          </Typography>
-          <Typography sx={{ fontSize: "0.7rem", lineHeight: 1.1, color: "text.secondary" }}>
-            Papers that provided background information or helped define concepts in {paperTitle}.
-          </Typography>
-        </Box>
-      );
+    }
 
     const paper = paperMap.get(id);
     return (
@@ -124,31 +144,36 @@ function SelectionForm({ data, onNext }) {
           <Link href={paperLink} target="_blank" rel="noopener noreferrer" underline="hover" sx={{ fontWeight: "bold" }}>
             {paperTitle}
           </Link>
-           based on the impact they had on it. Drag to reorder the papers and place them under the appropriate impact category (Most, Medium, or Lowest Impact).
+          . Drag to reorder and place papers under the appropriate impact category.
         </Typography>
 
         <Divider variant="middle" sx={{ mb: 2 }} />
 
+        {/* Scrollable container */}
         <Box sx={{ flex: 1, width: "97%", overflowY: "auto", borderRadius: "8px", padding: "8px" }}>
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <SortableContext items={items}>
               <Droppable id="single-sortable-list">
-                {items.map((id) => (
-                  <SortableItem
-                    key={id}
-                    id={id}
-                    content={renderContent(id)}
-                    sx={{
-                      width: "97%",
-                      marginBottom: "6px",
-                      backgroundColor: id.startsWith("separator-") ? "#d0d0d0" : "#ffffff",
-                      borderRadius: "4px",
-                      py: id.startsWith("separator-") ? 0.5 : 0.5,
-                      px: 1,
-                      cursor: id.startsWith("separator-") ? "grab" : "pointer",
-                    }}
-                  />
-                ))}
+                {items.map((id, index) => {
+                  const category = getCategory(index);
+                  const bgColor = id.startsWith("separator-") ? "#d0d0d0" : categoryColors[category] || "#ffffff";
+                  return (
+                    <SortableItem
+                      key={id}
+                      id={id}
+                      content={renderContent(id)}
+                      sx={{
+                        width: "97%",
+                        marginBottom: "6px",
+                        backgroundColor: bgColor,
+                        borderRadius: "4px",
+                        py: 0.5,
+                        px: 1,
+                        cursor: id.startsWith("separator-") ? "grab" : "pointer",
+                      }}
+                    />
+                  );
+                })}
               </Droppable>
             </SortableContext>
           </DndContext>
