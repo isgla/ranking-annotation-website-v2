@@ -186,9 +186,6 @@ function SelectionForm({ data, onNext }) {
         <Button variant="contained" onClick={handleSubmit} sx={{ m: 1 }}>
           Submit Order
         </Button>
-        <Button variant="text" color="error" onClick={handleCantRank} sx={{ m: 1 }}>
-          Can't Rank
-        </Button>
       </Box>
 
       {alertOpen && (
