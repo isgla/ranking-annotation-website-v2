@@ -1,3 +1,6 @@
+// Updated App.jsx — minimal changes required
+// No logic changes needed for phased behavior in SelectionForm
+
 import "./App.css";
 import { useState, useEffect, useMemo } from "react";
 import Box from "@mui/material/Box";
@@ -69,7 +72,7 @@ function App() {
   const [answersT2, setAnswersT2] = useState([]);
   const [user, setUser] = useState(() => {
     try {
-      const seg = window.location.pathname.replace(/^\/+/, "").split("/")[0];
+      const seg = window.location.pathname.replace(/^\/+/g, "").split("/")[0];
       return seg ? seg.toLowerCase() : null;
     } catch {
       return null;
@@ -94,30 +97,6 @@ function App() {
       ? getPayloadsTask2()[currentIndex]
       : null;
 
-  const [items, setItems] = useState(() => {
-    const initial = payload2;
-    if (!initial) return {};
-    const paperId = initial.paperId;
-    return {
-      [`${paperId}-bank`]: initial.candidates.map(
-        (candidate) => `${paperId}-${candidate["paperId"]}`
-      ),
-      [`${paperId}-sorted`]: [],
-    };
-  });
-
-  useEffect(() => {
-    if (payload2) {
-      const paperId = payload2.paperId;
-      setItems({
-        [`${paperId}-bank`]: payload2.candidates.map(
-          (candidate) => `${paperId}-${candidate["paperId"]}`
-        ),
-        [`${paperId}-sorted`]: [],
-      });
-    }
-  }, [payload2]);
-
   const handleNextPayload = async (paperId, answer) => {
     const entry = { paperId, chunk: null, answer };
     const newAnswers = [...answersT2, entry];
@@ -126,18 +105,10 @@ function App() {
     const payloads = getPayloadsTask2();
     if (currentIndex + 1 < payloads.length) {
       const nextIndex = currentIndex + 1;
-      const nextPayload = payloads[nextIndex];
       setCurrentIndex(nextIndex);
-      setItems({
-        [`${nextPayload.paperId}-bank`]: nextPayload.candidates.map(
-          (candidate) => `${nextPayload.paperId}-${candidate["paperId"]}`
-        ),
-        [`${nextPayload.paperId}-sorted`]: [],
-      });
     } else {
-      setCurrentIndex(-1); // all done
+      setCurrentIndex(-1);
 
-      // POST Task2 answers to server
       try {
         const response = await fetch("http://localhost:4000/api/saveResponses", {
           method: "POST",
@@ -160,8 +131,7 @@ function App() {
             ✅ All tasks completed!
           </Typography>
           <Typography variant="body1" sx={{ mb: 3 }}>
-            Thank you for completing all ranking tasks. The answers have been
-            saved on the server.
+            Thank you for completing all ranking tasks. The answers have been saved.
           </Typography>
         </Box>
       </ThemeProvider>
@@ -171,7 +141,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <Tabs value={value} onChange={(e, v) => setValue(v)}>
             <Tab label="Instructions" {...allyProps(0)} />
             <Tab label="TASK" {...allyProps(1)} />
@@ -179,7 +157,7 @@ function App() {
           <Box sx={{ pr: 2 }}>
             <Typography variant="body2" sx={{ fontStyle: "italic" }}>
               User: <strong>{user ?? "(none)"}</strong>
-              {user && !payloadMap[user] ? " — no payloads found for this user" : ""}
+              {user && !payloadMap[user] ? " — no payloads found" : ""}
             </Typography>
           </Box>
         </Box>
@@ -189,22 +167,33 @@ function App() {
             Instructions
           </Typography>
           <Typography variant="body1">
-            You'll receive a list of papers (r₁, r₂, r₃, …) that you cited in a
-            paper P which you co-authored. Your task is to rank these papers by
-            how impactful they were on your paper P.
+            You will receive a list of papers (r₁, r₂, r₃, …) that you cited in a paper P you co-authored. 
+            First, you will <strong>rank</strong> the papers based on their impact on P. 
+            Once you have finished sorting, you will <strong>place the impact category separators</strong> (high, medium, low impact) in the list. 
+            Papers positioned under a separator belong to that category, and their colors will reflect the category they are placed under.
+            Here is the definition of each category:
           </Typography>
           <Box sx={{ mt: 2 }} />
           <Typography variant="body1">
-            • Sort the papers (r₁, r₂, r₃, …) based on the impact they had for P. Drag to reorder the papers and place them under the appropriate impact category (Most, Medium, or Lowest Impact).
+            <strong>High-impact citations:</strong> These are the papers <strong>without which your own work would not have been possible.</strong> They supply essential conceptual, methodological, or operational ingredients.<br/>
+            Useful criteria:<br/>
+            • Conceptual or operational indispensability: The reference provides a <strong>unique</strong> conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.<br/>
+            • Organic necessity: The reference is uniquely and genuinely required for a reader to understand how your paper works or how its core logic unfolds. Without this citation, the intellectual lineage of your method would be opaque or incomplete.<br/>
+            • Typical quantity: 1–5 papers (or even 1).
           </Typography>
           <Typography variant="body1">
-            • Most Impact: Papers without which it would not have been possible to write P.
+            <strong>Medium-impact citations:</strong> These are papers that helped you write your paper, but <strong>were not fundamentally irreplaceable.</strong> You could have used an alternative prior work or formulation, but you chose this one because it was particularly useful, clear, or canonical.<br/>
+            Useful criteria:<br/>
+            • Conceptual or operational contribution (non-unique): The reference conveys an idea, dataset, or model family that meaningfully helped your setup, but other comparable alternatives exist. Examples: selecting LLaMA‑1 vs LLaMA‑2; choosing one evaluation protocol among several similar ones; relying on one of several formulations of a known concept.<br/>
+            • Organic helpfulness: The reference is genuinely helpful for understanding your paper, but not uniquely necessary. It situates your work clearly, but your contribution does not hinge on this specific citation.<br/>
+            • Typical quantity: roughly 5–15 papers.
           </Typography>
           <Typography variant="body1">
-            • Medium Impact: Papers that helped write P, but were not fundamental. Alternatives could have been used.
-          </Typography>
-          <Typography variant="body1">
-            • Lowest Impact: Papers that provided background information or helped define concepts in P.
+            <strong>Low-impact citations:</strong> These citations provide <strong>background, context, or perfunctory acknowledgement</strong>, but the core contribution of your paper is not dependent on them in any strong way.<br/>
+            Useful criteria:<br/>
+            • Background or definitional citations: References used to define a task, introduce a general problem area, or acknowledge standard terminology. The same role could have been fulfilled by many other papers.<br/>
+            • Perfunctory or field‑signaling citations: The reference mainly signals that prior work exists in the broad area. The citing paper does not substantively depend on the specific ideas of the cited work.<br/>
+            • Typical quantity: the majority of citations.
           </Typography>
         </CustomTabPanel>
 

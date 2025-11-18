@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Box, Button, Typography, Divider, Alert } from "@mui/material";
-import { EmphCard } from "../components/Cards";
-import Link from "@mui/material/Link";
+// Updated SelectionForm.jsx
+// PHASED VERSION: Phase 1 = sort papers, Phase 2 = insert separators
 
-import { DndContext, PointerSensor, useSensor, useSensors, KeyboardSensor } from "@dnd-kit/core";
-import { SortableContext, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import React, { useState, useEffect } from "react";
+import { Box, Button, Typography, Divider, Alert, Link } from "@mui/material";
+import { EmphCard } from "../components/Cards";
+
+import {
+  DndContext,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  KeyboardSensor,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  sortableKeyboardCoordinates,
+} from "@dnd-kit/sortable";
 
 import { Droppable } from "../components/Droppable";
 import { SortableItem } from "../components/Draggable";
 
+import { useRef } from "react";
+
 function SelectionForm({ data, onNext }) {
+  const latestSortedRef = useRef([]);
   const [items, setItems] = useState([]);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [phase, setPhase] = useState("sorting"); // NEW
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -20,12 +36,27 @@ function SelectionForm({ data, onNext }) {
 
   useEffect(() => {
     if (data?.candidates) {
-      const separators = ["separator-most", "separator-medium", "separator-low"];
       const paperIds = data.candidates.map((c) => c.paperId);
-      setItems([...separators, ...paperIds]);
+
+      if (phase === "sorting") {
+        // initialize sorting list from payload
+        setItems(paperIds); // ONLY papers in phase 1
+        // also update latestSortedRef so we have a fallback
+        latestSortedRef.current = paperIds.slice();
+      } else if (phase === "categorizing") {
+        const separators = [
+          "separator-most",
+          "separator-medium",
+          "separator-low",
+        ];
+        // use the user's sorted order if available, otherwise default to payload order
+        const base = (latestSortedRef.current && latestSortedRef.current.length) ? latestSortedRef.current : paperIds;
+        setItems([...separators, ...base]);
+      }
+
       setAlertOpen(false);
     }
-  }, [data]);
+  }, [data, phase]);
 
   if (!data) return null;
 
@@ -53,6 +84,7 @@ function SelectionForm({ data, onNext }) {
 
     let currentCategory = null;
     const paperWithCategory = [];
+
     items.forEach((id) => {
       if (id === "separator-most") currentCategory = "most-impactful";
       else if (id === "separator-medium") currentCategory = "medium-impactful";
@@ -68,15 +100,26 @@ function SelectionForm({ data, onNext }) {
   };
 
   const getPaperColor = (paperId) => {
+    if (phase === "sorting") return "#ffffff";
+
     const index = items.indexOf(paperId);
     if (index === -1) return "#ffffff";
 
     let category = null;
     for (let i = index - 1; i >= 0; i--) {
       const id = items[i];
-      if (id === "separator-most") { category = "most-impactful"; break; }
-      if (id === "separator-medium") { category = "medium-impactful"; break; }
-      if (id === "separator-low") { category = "lowest-impactful"; break; }
+      if (id === "separator-most") {
+        category = "most-impactful";
+        break;
+      }
+      if (id === "separator-medium") {
+        category = "medium-impactful";
+        break;
+      }
+      if (id === "separator-low") {
+        category = "lowest-impactful";
+        break;
+      }
     }
 
     if (category === "most-impactful") return "#e5fae0ff";
@@ -93,6 +136,8 @@ function SelectionForm({ data, onNext }) {
   };
 
   const renderContent = (id) => {
+    if (phase === "sorting" && id.startsWith("separator-")) return null;
+
     if (id === "separator-most")
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
@@ -100,9 +145,9 @@ function SelectionForm({ data, onNext }) {
             High-impact citations
           </Typography>
           <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
-            High-impact citations: These are the papers without which your own work would not have been possible. They supply essential conceptual, methodological, or operational ingredients.<br/>
+            <strong>High-impact citations:</strong> These are the papers <strong>without which your own work would not have been possible.</strong> They supply essential conceptual, methodological, or operational ingredients.<br/>
             Useful criteria:<br/>
-            • Conceptual or operational indispensability: The reference provides a unique conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.<br/>
+            • Conceptual or operational indispensability: The reference provides a <strong>unique</strong> conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.<br/>
             • Organic necessity: The reference is uniquely and genuinely required for a reader to understand how your paper works or how its core logic unfolds. Without this citation, the intellectual lineage of your method would be opaque or incomplete.<br/>
             • Typical quantity: 1–5 papers (or even 1).
           </Typography>
@@ -116,7 +161,7 @@ function SelectionForm({ data, onNext }) {
             Medium-impact citations
           </Typography>
           <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
-            Medium-impact citations: These are papers that helped you write your paper, but were not fundamentally irreplaceable. You could have used an alternative prior work or formulation, but you chose this one because it was particularly useful, clear, or canonical.<br/>
+            <strong>Medium-impact citations:</strong> These are papers that helped you write your paper, but <strong>were not fundamentally irreplaceable.</strong> You could have used an alternative prior work or formulation, but you chose this one because it was particularly useful, clear, or canonical.<br/>
             Useful criteria:<br/>
             • Conceptual or operational contribution (non-unique): The reference conveys an idea, dataset, or model family that meaningfully helped your setup, but other comparable alternatives exist. Examples: selecting LLaMA‑1 vs LLaMA‑2; choosing one evaluation protocol among several similar ones; relying on one of several formulations of a known concept.<br/>
             • Organic helpfulness: The reference is genuinely helpful for understanding your paper, but not uniquely necessary. It situates your work clearly, but your contribution does not hinge on this specific citation.<br/>
@@ -132,7 +177,7 @@ function SelectionForm({ data, onNext }) {
             Low-impact citations
           </Typography>
           <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
-            Low-impact citations: These citations provide background, context, or perfunctory acknowledgement, but the core contribution of your paper is not dependent on them in any strong way.<br/>
+            <strong>Low-impact citations:</strong> These citations provide <strong>background, context, or perfunctory acknowledgement</strong>, but the core contribution of your paper is not dependent on them in any strong way.<br/>
             Useful criteria:<br/>
             • Background or definitional citations: References used to define a task, introduce a general problem area, or acknowledge standard terminology. The same role could have been fulfilled by many other papers.<br/>
             • Perfunctory or field‑signaling citations: The reference mainly signals that prior work exists in the broad area. The citing paper does not substantively depend on the specific ideas of the cited work.<br/>
@@ -158,11 +203,13 @@ function SelectionForm({ data, onNext }) {
     <>
       <EmphCard sx={{ minHeight: "600px", display: "flex", flexDirection: "column", padding: "16px" }}>
         <Typography variant="body2" sx={{ mb: 2 }}>
-          Sort the papers for{" "}
+          Please sort the papers you cited in {" "}
           <Link href={paperLink} target="_blank" rel="noopener noreferrer" underline="hover" sx={{ fontWeight: "bold" }}>
             {paperTitle}
           </Link>
-          . Drag to reorder, then submit. Place each paper under the appropriate impact category.
+          based on their impact on your paper. Drag to reorder. High impact citations are papers without which your own work would not have been possible.
+          They supply essential conceptual, methodological, or operational ingredients. And low impact citations provide background, context, 
+          or perfunctory acknowledgement, but the core contribution of your paper is not dependent on them in any strong way.
         </Typography>
 
         <Divider variant="middle" sx={{ mb: 2 }} />
@@ -193,11 +240,21 @@ function SelectionForm({ data, onNext }) {
         </Box>
       </EmphCard>
 
-      <Box sx={{ textAlign: "center", width: "100%", mt: 2 }}>
-        <Button variant="contained" onClick={handleSubmit} sx={{ m: 1 }}>
-          Submit Order
-        </Button>
-      </Box>
+      {phase === "sorting" && (
+        <Box sx={{ textAlign: "center", width: "100%", mt: 2 }}>
+          <Button variant="contained" onClick={() => { latestSortedRef.current = items.filter(id => !id.startsWith('separator-')); setPhase("categorizing"); }} sx={{ m: 1 }}>
+            Add Impact Categories
+          </Button>
+        </Box>
+      )}
+
+      {phase === "categorizing" && (
+        <Box sx={{ textAlign: "center", width: "100%", mt: 2 }}>
+          <Button variant="contained" onClick={handleSubmit} sx={{ m: 1 }}>
+            Submit
+          </Button>
+        </Box>
+      )}
 
       {alertOpen && (
         <Alert severity="warning" onClose={() => setAlertOpen(false)} sx={{ mt: 2 }}>
