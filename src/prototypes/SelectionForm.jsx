@@ -207,7 +207,7 @@ function SelectionForm({ data, onNext }) {
           <Link href={paperLink} target="_blank" rel="noopener noreferrer" underline="hover" sx={{ fontWeight: "bold" }}>
             {paperTitle}
           </Link>
-          based on their impact on your paper. Drag to reorder. High impact citations are papers without which your own work would not have been possible.
+           based on their impact on your paper. Drag to reorder. High impact citations are papers without which your own work would not have been possible.
           They supply essential conceptual, methodological, or operational ingredients. And low impact citations provide background, context, 
           or perfunctory acknowledgement, but the core contribution of your paper is not dependent on them in any strong way.
         </Typography>
