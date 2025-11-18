@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SelectionForm from "./prototypes/SelectionForm";
 
@@ -163,38 +164,69 @@ function App() {
         </Box>
 
         <CustomTabPanel value={value} index={0}>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
             Instructions
           </Typography>
-          <Typography variant="body1">
-            You will receive a list of papers (r₁, r₂, r₃, …) that you cited in a paper P you co-authored. 
-            First, you will <strong>rank</strong> the papers based on their impact on P. 
-            Once you have finished sorting, you will <strong>place the impact category separators</strong> (high, medium, low impact) in the list. 
-            Papers positioned under a separator belong to that category, and their colors will reflect the category they are placed under.
-            Here is the definition of each category:
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            You will receive a list of papers (r₁, r₂, r₃, …) that you cited in a paper P you co-authored. First, you will <strong>rank</strong> the papers based on their impact on P. Once you have finished sorting, you will <strong>place the impact category separators</strong> (high, medium, low impact) in the list. Papers positioned under a separator belong to that category, and their colors will reflect the category they are placed under.
           </Typography>
-          <Box sx={{ mt: 2 }} />
-          <Typography variant="body1">
-            <strong>High-impact citations:</strong> These are the papers <strong>without which your own work would not have been possible.</strong> They supply essential conceptual, methodological, or operational ingredients.<br/>
-            Useful criteria:<br/>
-            • Conceptual or operational indispensability: The reference provides a <strong>unique</strong> conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.<br/>
-            • Organic necessity: The reference is uniquely and genuinely required for a reader to understand how your paper works or how its core logic unfolds. Without this citation, the intellectual lineage of your method would be opaque or incomplete.<br/>
-            • Typical quantity: 1–5 papers (or even 1).
+
+          <Typography variant="body1" sx={{ mb: 1, fontWeight: 'bold' }}>
+            Definitions of impact categories:
           </Typography>
-          <Typography variant="body1">
-            <strong>Medium-impact citations:</strong> These are papers that helped you write your paper, but <strong>were not fundamentally irreplaceable.</strong> You could have used an alternative prior work or formulation, but you chose this one because it was particularly useful, clear, or canonical.<br/>
-            Useful criteria:<br/>
-            • Conceptual or operational contribution (non-unique): The reference conveys an idea, dataset, or model family that meaningfully helped your setup, but other comparable alternatives exist. Examples: selecting LLaMA‑1 vs LLaMA‑2; choosing one evaluation protocol among several similar ones; relying on one of several formulations of a known concept.<br/>
-            • Organic helpfulness: The reference is genuinely helpful for understanding your paper, but not uniquely necessary. It situates your work clearly, but your contribution does not hinge on this specific citation.<br/>
-            • Typical quantity: roughly 5–15 papers.
-          </Typography>
-          <Typography variant="body1">
-            <strong>Low-impact citations:</strong> These citations provide <strong>background, context, or perfunctory acknowledgement</strong>, but the core contribution of your paper is not dependent on them in any strong way.<br/>
-            Useful criteria:<br/>
-            • Background or definitional citations: References used to define a task, introduce a general problem area, or acknowledge standard terminology. The same role could have been fulfilled by many other papers.<br/>
-            • Perfunctory or field‑signaling citations: The reference mainly signals that prior work exists in the broad area. The citing paper does not substantively depend on the specific ideas of the cited work.<br/>
-            • Typical quantity: the majority of citations.
-          </Typography>
+
+          <Box sx={{ mt: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#e5fae0" }}>
+              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                High-impact citations
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                These are the papers <strong>without which your own work would not have been possible.</strong> They supply essential conceptual, methodological, or operational ingredients.
+              </Typography>
+              <Typography variant="body2">
+                Useful criteria:
+                <ul>
+                  <li>Conceptual or operational indispensability: The reference provides a <strong>unique</strong> conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.</li>
+                  <li>Organic necessity: The reference is uniquely and genuinely required for a reader to understand how your paper works or how its core logic unfolds. Without this citation, the intellectual lineage of your method would be opaque or incomplete.</li>
+                  <li>Typical quantity: 1–5 papers (or even 1).</li>
+                </ul>
+              </Typography>
+            </Paper>
+
+            <Paper sx={{ p: 2, backgroundColor: "#e0f7fa" }}>
+              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                Medium-impact citations
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                Papers that helped you write your paper but <strong>were not fundamentally irreplaceable.</strong>
+              </Typography>
+              <Typography variant="body2">
+                Useful criteria:
+                <ul>
+                  <li>Conceptual or operational contribution (non-unique): The reference conveys an idea, dataset, or model family that meaningfully helped your setup, but other comparable alternatives exist. Examples: selecting LLaMA‑1 vs LLaMA‑2; choosing one evaluation protocol among several similar ones; relying on one of several formulations of a known concept.</li>
+                  <li>Organic helpfulness: The reference is genuinely helpful for understanding your paper, but not uniquely necessary. It situates your work clearly, but your contribution does not hinge on this specific citation.</li>
+                  <li>Typical quantity: roughly 5–15 papers.</li>
+                </ul>
+              </Typography>
+            </Paper>
+
+            <Paper sx={{ p: 2, backgroundColor: "#f3e5f5" }}>
+              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                Low-impact citations
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                These citations provide <strong>background, context, or perfunctory acknowledgement</strong>, but the core contribution of your paper is not dependent on them in any strong way.
+              </Typography>
+              <Typography variant="body2">
+                Useful criteria:
+                <ul>
+                  <li>Background or definitional citations: References used to define a task, introduce a general problem area, or acknowledge standard terminology. The same role could have been fulfilled by many other papers.</li>
+                  <li>Perfunctory or field‑signaling citations: The reference mainly signals that prior work exists in the broad area. The citing paper does not substantively depend on the specific ideas of the cited work.</li>
+                  <li>Typical quantity: the majority of citations.</li>
+                </ul>
+              </Typography>
+            </Paper>
+          </Box>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={1}>
