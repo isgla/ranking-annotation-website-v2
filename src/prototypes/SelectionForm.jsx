@@ -51,7 +51,6 @@ function SelectionForm({ data, onNext }) {
       return;
     }
 
-    // Save responses including category
     let currentCategory = null;
     const paperWithCategory = [];
     items.forEach((id) => {
@@ -80,16 +79,16 @@ function SelectionForm({ data, onNext }) {
       if (id === "separator-low") { category = "lowest-impactful"; break; }
     }
 
-    if (category === "most-impactful") return "#e5fae0ff"; 
+    if (category === "most-impactful") return "#e5fae0ff";
     if (category === "medium-impactful") return "#e0f7fa";
     if (category === "lowest-impactful") return "#f3e5f5";
     return "#ffffff";
   };
 
   const getFontColor = (categoryId) => {
-    if (categoryId === "separator-most") return "#267900ff"; 
-    if (categoryId === "separator-medium") return "#2b59ffff"; 
-    if (categoryId === "separator-low") return "#4b0082"; 
+    if (categoryId === "separator-most") return "#267900ff";
+    if (categoryId === "separator-medium") return "#2b59ffff";
+    if (categoryId === "separator-low") return "#4b0082";
     return "#000000";
   };
 
@@ -98,10 +97,14 @@ function SelectionForm({ data, onNext }) {
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
           <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
-            Most Impact
+            High-impact citations
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
-            Papers without which it would not have been possible for you to write {paperTitle}.
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
+            High-impact citations: These are the papers without which your own work would not have been possible. They supply essential conceptual, methodological, or operational ingredients.<br/>
+            Useful criteria:<br/>
+            • Conceptual or operational indispensability: The reference provides a unique conceptual insight, methodological innovation, dataset, or technique that is directly instrumental to your paper. Examples: a specific algorithm your method extends; a benchmark or dataset your study critically depends on; a theoretical formulation your contribution builds on.<br/>
+            • Organic necessity: The reference is uniquely and genuinely required for a reader to understand how your paper works or how its core logic unfolds. Without this citation, the intellectual lineage of your method would be opaque or incomplete.<br/>
+            • Typical quantity: 1–5 papers (or even 1).
           </Typography>
         </Box>
       );
@@ -110,10 +113,14 @@ function SelectionForm({ data, onNext }) {
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
           <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
-            Medium Impact
+            Medium-impact citations
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
-            Papers that helped you write {paperTitle}, but were not fundamental. You could have used an alternative paper.
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
+            Medium-impact citations: These are papers that helped you write your paper, but were not fundamentally irreplaceable. You could have used an alternative prior work or formulation, but you chose this one because it was particularly useful, clear, or canonical.<br/>
+            Useful criteria:<br/>
+            • Conceptual or operational contribution (non-unique): The reference conveys an idea, dataset, or model family that meaningfully helped your setup, but other comparable alternatives exist. Examples: selecting LLaMA‑1 vs LLaMA‑2; choosing one evaluation protocol among several similar ones; relying on one of several formulations of a known concept.<br/>
+            • Organic helpfulness: The reference is genuinely helpful for understanding your paper, but not uniquely necessary. It situates your work clearly, but your contribution does not hinge on this specific citation.<br/>
+            • Typical quantity: roughly 5–15 papers.
           </Typography>
         </Box>
       );
@@ -122,21 +129,25 @@ function SelectionForm({ data, onNext }) {
       return (
         <Box sx={{ py: 0.25, px: 1 }}>
           <Typography sx={{ fontWeight: "bold", fontSize: "0.75rem", lineHeight: 1.1, color: getFontColor(id) }}>
-            Lowest Impact
+            Low-impact citations
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "text.secondary", mt: 0.25 }}>
-            These papers provided background information or helped you define concepts in {paperTitle}.
+          <Typography variant="body2" sx={{ fontSize: "0.7rem", color: "black", mt: 0.25 }}>
+            Low-impact citations: These citations provide background, context, or perfunctory acknowledgement, but the core contribution of your paper is not dependent on them in any strong way.<br/>
+            Useful criteria:<br/>
+            • Background or definitional citations: References used to define a task, introduce a general problem area, or acknowledge standard terminology. The same role could have been fulfilled by many other papers.<br/>
+            • Perfunctory or field‑signaling citations: The reference mainly signals that prior work exists in the broad area. The citing paper does not substantively depend on the specific ideas of the cited work.<br/>
+            • Typical quantity: the majority of citations.
           </Typography>
         </Box>
       );
 
     const paper = paperMap.get(id);
     return (
-      <Box sx={{ py: 0.5, px: 1 }}>
-        <Typography variant="subtitle2" sx={{ fontWeight: "bold", fontSize: "0.9rem", lineHeight: 1.2 }}>
+      <Box sx={{ py: 0.25, px: 1 }}>
+        <Typography variant="subtitle2" sx={{ fontWeight: "bold", fontSize: "0.7rem", lineHeight: 1.2 }}>
           {paper.title}
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: "0.8rem", color: "text.secondary", lineHeight: 1.2 }}>
+        <Typography variant="body2" sx={{ fontSize: "0.8rem", color: "black", lineHeight: 1.2 }}>
           {paper.reason}
         </Typography>
       </Box>
@@ -151,7 +162,7 @@ function SelectionForm({ data, onNext }) {
           <Link href={paperLink} target="_blank" rel="noopener noreferrer" underline="hover" sx={{ fontWeight: "bold" }}>
             {paperTitle}
           </Link>
-          . Drag to reorder, then submit. You also have three categories for impact. Place papers under each category:
+          . Drag to reorder, then submit. Place each paper under the appropriate impact category.
         </Typography>
 
         <Divider variant="middle" sx={{ mb: 2 }} />
@@ -170,7 +181,7 @@ function SelectionForm({ data, onNext }) {
                       marginBottom: "6px",
                       backgroundColor: id.startsWith("separator-") ? "#d0d0d0" : getPaperColor(id),
                       borderRadius: "4px",
-                      py: 0.5,
+                      py: 0.25,
                       px: 1,
                       cursor: id.startsWith("separator-") ? "grab" : "pointer",
                     }}
