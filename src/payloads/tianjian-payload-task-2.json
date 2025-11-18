@@ -5,328 +5,452 @@
     "paperTitle": "Why Does Zero-Shot Cross-Lingual Generation Fail? An Explanation and a Solution",
     "candidates": [
       {
-        "rank": "1",
-        "paperId": "ffd8f81ed69ddfef6cddc3e8d0eae78f7b13435a",
-        "title": "Overcoming Catastrophic Forgetting in Zero-Shot Cross-Lingual Generation",
-        "reason": "Core baseline and problem framing: repeatedly cited for accidental translation evaluation, English-as-source setup, and the parameter-efficient regularization idea the paper compares against and seeks to improve upon."
-      },
-      {
-        "rank": "2",
-        "paperId": "fd708dc43c0ed70ed03b2818a3f50fedda6d7f6e",
-        "title": "Enhancing Cross-lingual Transfer by Manifold Mixup",
-        "reason": "Central to the paper’s thesis and analysis: provides the XLRS–performance perspective; the paper follows its procedure for correlating cross-lingual representation similarity with transfer performance and then challenges the prevailing “more invariance is better” view for generation."
-      },
-      {
-        "rank": "3",
-        "paperId": "d592007d1c106fe1217604eb35664c7a5f07cb32",
-        "title": "Multilingual Alignment of Contextual Word Representations",
-        "reason": "Foundational evidence for language-invariant representations aiding transfer; directly cited as the dominant view that the paper explains is harmful for generation and seeks to regularize against."
-      },
-      {
-        "rank": "4",
+        "rank": 1,
         "paperId": "ba4a34680e09e77984624c95f5245d91b54373f6",
         "title": "XTREME: A Massively Multilingual Multi-task Benchmark for Evaluating Cross-lingual Generalization",
-        "reason": "Key background connecting cross-lingual transfer to increased XLRS and showing prior focus on classification; the paper builds on and contrasts this behavior in generation."
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022). | Given only annotated data in one language for a task, multilingual LMs are able to perform this task in languages seen only during the pre-training stage. | However, previous studies focus on lower-level NLP tasks, which include text classification, dependency parsing, and extractive question answering (Hu et al., 2020) and rarely touch on language generation. | The cross-lingual transferability of multilingual LMs reduces the need for annotated data in low-resource languages, which is valuable for building practical multilingual NLP systems. | We show that multilingual LMs transfer supervision from one language to another by increasing Cross-Lingual Representation Similarity (XLRS). | Existing studies on cross-lingual transfer select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual transfer in generation tasks (Maurya et al., 2021; Maurya and Desarkar, 2022). | …tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual transfer in generation tasks (Maurya et al., 2021; Maurya and Desarkar, 2022). | Our work sheds light on understanding the training dynamics of cross-lingual transfer learning of multilingual LMs.",
+        "reason": "Provides the core conceptual lens (XLRS) that the paper interrogates and builds on for its explanation and model-selection method.",
+        "category": "High"
       },
       {
-        "rank": "5",
-        "paperId": "74276a37bfa50f90dfae37f767b2b67784bd402a",
-        "title": "mT5: A Massively Multilingual Pre-trained Text-to-Text Transformer",
-        "reason": "Primary model used throughout experiments; also a source citing wrong-language generation issues that motivate the paper’s solution."
-      },
-      {
-        "rank": "6",
+        "rank": 2,
         "paperId": "f00f2d4b8ddd55aa2cc202f44053e5f97a254175",
         "title": "WikiLingua: A New Benchmark Dataset for Multilingual Abstractive Summarization",
-        "reason": "Main abstractive generation benchmark in the paper’s experiments and analyses (tables and model selection comparisons)."
+        "contexts": "For abstractive generation, we use the WikiLin-gua (Ladhak et al., 2020) dataset, which contains WikiHow instructions and their summaries in 17 languages. | The amount of label overlap for a subset of five languages (En, De, Fr, Es, Zh) of the WikiLingua (Ladhak et al., 2020) dataset is d = 0 . | In contrast, in our three generation tasks, XLRS negatively correlates with cross-lingual performance 4 , Table 3: ROUGE-L results on the WikiLingua (Ladhak et al., 2020) dataset. | 7: ROUGE-L results by selecting model based on English development set ( en-dev ), similarity of representations between English and target language ( cos-sim ) and using target language development set ( tgt-dev ) on WikiLingua (Ladhak et al., 2020 (Chen et al., 2022).",
+        "reason": "Core evaluation dataset for abstractive generation; results and claims crucially depend on it.",
+        "category": "High"
       },
       {
-        "rank": "7",
+        "rank": 3,
         "paperId": "ddde271db4611bf7cd821f8b89ecf701c2e34d5b",
         "title": "MTG: A Benchmark Suite for Multilingual Text Generation",
-        "reason": "Supplies the story completion and title generation tasks central to evaluating the proposed method and the accidental translation reduction."
+        "contexts": "Table 5 and 6 show the ROUGE-L results in the title generation (TG) and story completion (SG) in the MTG (Chen et al., 2022) benchmark, respectively. | Secondly, we acknowledge that some of the datasets (Yang et al., 2019; Chen et al., 2022) used in our work is created by machine translation and human annotation. | We use the story completion ( SG ) and title generation ( TG ) task in the MTG benchmark (Chen et al., 2022), a recently introduced benchmark to evaluate multilingual text generation. | 7: ROUGE-L results by selecting model based on English development set ( en-dev ), similarity of representations between English and target language ( cos-sim ) and using target language development set ( tgt-dev ) on WikiLingua (Ladhak et al., 2020 (Chen et al., 2022). | We report the performance on the WikiLingua dataset and the story completion task in MTG benchmark at Figure 7 and 8, when selecting the model using English dev set performance ( en-dev ), selecting the model with the lowest XLRS between English and the target lan-EN guage ( cos-sim ), and selecting the model using an annotated dev set on each target language ( tgt-dev ), which serves as an upper bound for true zero-shot cross-lingual transfer.",
+        "reason": "Primary benchmark for two of the three generation tasks (title generation and story completion) used to demonstrate the method and findings.",
+        "category": "High"
       },
       {
-        "rank": "8",
-        "paperId": "5e8180e2ceddaab161e9be55bd81d8f911967302",
-        "title": "Model Selection for Cross-lingual Transfer",
-        "reason": "Prior work on cross-lingual model selection the paper positions against; informs the paper’s proposal of using XLRS-based checkpoint selection without target dev sets."
-      },
-      {
-        "rank": "9",
-        "paperId": "da6fa3c0c4145e1d3b5e98fc2494f993c237c782",
-        "title": "Zero-shot Cross-lingual Transfer is Under-specified Optimization",
-        "reason": "Supports the paper’s explanation angle: fine-tuning can land in parameter regions that work for source but not all targets; under-specification motivates regularizing training dynamics."
-      },
-      {
-        "rank": "10",
-        "paperId": "a225aab16b852dd2cc12cf72749ff9609656389b",
-        "title": "Improving Multilingual Neural Machine Translation with Auxiliary Source Languages",
-        "reason": "Direct motivation for the paper’s auxiliary-source regularization of XLRS during fine-tuning."
-      },
-      {
-        "rank": "11",
-        "paperId": "04a7021fe6be6bddcfae476493fcc7571e7c613c",
-        "title": "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification",
-        "reason": "Core classification task used to contrast with generation: plots and XLRS dynamics for tasks with high label overlap."
-      },
-      {
-        "rank": "12",
-        "paperId": "57133ef4c4de4d54a57686b8a914b06e4ff4aab5",
-        "title": "Universal Dependencies 2.1",
-        "reason": "Supplies the UDPOS tagging data used to study classification vs. generation differences in XLRS and transfer."
-      },
-      {
-        "rank": "13",
+        "rank": 4,
         "paperId": "83a820fe19944a7621238b8cfcc0b8a0cbc0f4b6",
         "title": "TyDi QA: A Benchmark for Information-Seeking Question Answering in Typologically Diverse Languages",
-        "reason": "Extractive generation task used to evaluate the proposed regularization and model selection behavior."
+        "contexts": "For extractive generation, we use the TyDiQA-GoldP (Clark et al., 2020) dataset which contains paragraphs and questions whose answers are spans extracted from the paragraphs.",
+        "reason": "Essential dataset for the extractive generation setting; one of the three core tasks underpinning the paper's empirical claims.",
+        "category": "High"
       },
       {
-        "rank": "14",
+        "rank": 5,
+        "paperId": "74276a37bfa50f90dfae37f767b2b67784bd402a",
+        "title": "mT5: A Massively Multilingual Pre-trained Text-to-Text Transformer",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | …include using back translation (Gu et al., 2019; Zhang et al., 2020), and transliteration (Sun et al., 2022) as data augmentation techniques, mixing in the pretrain objective during fine-tuning (Xue et al., 2021) and using an auxiliary source language in machine translation (Xu et al., 2021). | Cross-lingual transfer approach in generation tasks are known to produce incoherent text (Rönnqvist et al., 2021), generate in a wrong language (Xue et al., 2021), and suffer from catastrophic forgetting (Vu et al., 2022). | Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022). | In an extreme case when XLRS is 1, the model fails to identify the source language, resulting in the common problem of the model producing an incorrect language (Xue et al., 2021). | Models We select the state-of-the-art multilingual language model: mT5-base (Xue et al., 2021). | …of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective.",
+        "reason": "Operational backbone model used throughout experiments; central to reproducing the method and results.",
+        "category": "High"
+      },
+      {
+        "rank": 6,
+        "paperId": "ffd8f81ed69ddfef6cddc3e8d0eae78f7b13435a",
+        "title": "Overcoming Catastrophic Forgetting in Zero-Shot Cross-Lingual Generation",
+        "contexts": "In our work, we selected to use English as the source of cross-lingual transfer following previous work (Vu et al., 2022). | To verify that our method helps against the accidental translation problem, we follow previous work (Vu et al., 2022) and calculate the language id confidence score on the source language and target language on the title generation task. | Cross-lingual transfer approach in generation tasks are known to produce incoherent text (Rönnqvist et al., 2021), generate in a wrong language (Xue et al., 2021), and suffer from catastrophic forgetting (Vu et al., 2022). | Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022). | Vu et al., 2022 proposed to use parameter efficient fine-tuning methods (Lester et al., 2021; Qin and Eisner, 2021; Li and Liang, 2021) to regularize the model to generate in a desired language.",
+        "reason": "Closest prior on cross-lingual generation failures (accidental translation, forgetting) and evaluation setup; informs baselines and measurements.",
+        "category": "Medium"
+      },
+      {
+        "rank": 7,
+        "paperId": "5e8180e2ceddaab161e9be55bd81d8f911967302",
+        "title": "Model Selection for Cross-lingual Transfer",
+        "contexts": "Chen and Ritter (2021) train a scoring model with the input features being the model’s hidden representations and the output score being how well it generalizes to a given target language.",
+        "reason": "Directly relevant to the paper's checkpoint selection without target dev sets; conceptual and methodological guidance.",
+        "category": "Medium"
+      },
+      {
+        "rank": 8,
+        "paperId": "57133ef4c4de4d54a57686b8a914b06e4ff4aab5",
+        "title": "Universal Dependencies 2.1",
+        "contexts": "We use the UDPOS (Nivre et al., 2018) dataset containing sentences and the part-of-speech tag of each word.",
+        "reason": "Classification dataset used to contrast generation vs. classification behavior of XLRS; supports core analysis.",
+        "category": "Medium"
+      },
+      {
+        "rank": 9,
+        "paperId": "04a7021fe6be6bddcfae476493fcc7571e7c613c",
+        "title": "PAWS-X: A Cross-lingual Adversarial Dataset for Paraphrase Identification",
+        "contexts": "The plot confirms our belief that for tasks (POS tagging, PAWS-X, TyDiQA) with large label overlap, the model cross-lingual transfers from increasing XLRS, whereas in generation tasks with label overlap close to zero (title generation), the best-performing model has a lower XLRS. | Secondly, we acknowledge that some of the datasets (Yang et al., 2019; Chen et al., 2022) used in our work is created by machine translation and human annotation. | The classification task discussed in this section (PAWS-X) includes sentiment classification of a single sentence and entailment classification be-tween two sentences. | …wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information retrieval (Izacard et al., 2022). | For sentence-level classification, we use the PAWS-X (Yang et al., 2019) dataset containing pairs of sentences and a binary tag on whether the second sentence entails the first sentence. | We plot the average cosine similarity between representations of parallel sentences (XLRS) 2 for each training iteration in two classification tasks: POS tagging and paraphrase identification (PAWS-X) at Figure 1 and Figure 2, respectively.",
+        "reason": "Key classification dataset used in the XLRS vs. performance analysis to support the paper's central hypothesis.",
+        "category": "Medium"
+      },
+      {
+        "rank": 10,
         "paperId": "f35dbee22c1572d149b7c1e20d69672cae931451",
         "title": "Transforming Sequence Tagging Into A Seq2Seq Task",
-        "reason": "Practical modeling step the paper adopts to cast sequence labeling into seq2seq for unified analysis across tasks."
+        "contexts": "We follow Raman et al. (2022) and cast sequence labeling tasks into the sentinel + tag format.",
+        "reason": "Operationally enables posing POS tagging as seq2seq within the paper’s unified modeling framework.",
+        "category": "Medium"
       },
       {
-        "rank": "15",
+        "rank": 11,
         "paperId": "8ae9a17c87a4518b513e860683a0ef7824be994d",
         "title": "Exploiting Cloze-Questions for Few-Shot Text Classification and Natural Language Inference",
-        "reason": "Guides the paper’s casting of entailment-style classification as cloze prompting for consistent supervision."
+        "contexts": "We follow Schick and Schütze (2021) and cast the sentence entailment task into a cloze question, supervising the model to predict the word \"yes\" for entailment and the word \"no\" for non-entailment.",
+        "reason": "Provides the formulation for casting entailment as a cloze task, used in the paper’s classification analyses.",
+        "category": "Medium"
       },
       {
-        "rank": "16",
-        "paperId": "415f924c5c79e300891881af367e4d77602f9f39",
-        "title": "Cross-Lingual Transfer with Class-Weighted Language-Invariant Representations",
-        "reason": "Related approach on managing language-invariant representations; supports the paper’s argument that naïve invariance can be harmful depending on task."
+        "rank": 12,
+        "paperId": "fd708dc43c0ed70ed03b2818a3f50fedda6d7f6e",
+        "title": "Enhancing Cross-lingual Transfer by Manifold Mixup",
+        "contexts": "The fact that language invariant representations causes the degradation in generation tasks challenges the common belief that invariant representations generally enhance cross-lingual transfer on all downstream tasks (Cao et al., 2020; Conneau et al., 2020b; Yang et al., 2022; Xian et al., 2022). | Following Yang et al. (2022), we calculate the Spearman’s rank correlation score between (a) XLRS between English and 4 target languages (German, French, Chinese, Spanish), and (b) The averaged zero-shot cross-lingual transfer performance in each task. | The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance.",
+        "reason": "Methodological reference for correlational analysis and representative of the \"invariance helps\" consensus that the paper challenges.",
+        "category": "Medium"
       },
       {
-        "rank": "17",
-        "paperId": "c0a54963b0689fa7d76fda1063b65003c769d9b7",
-        "title": "Language-agnostic Representation from Multilingual Sentence Encoders for Cross-lingual Similarity Estimation",
-        "reason": "Representative work underlying the “similar cross-lingual representations help transfer” consensus the paper challenges for generation."
+        "rank": 13,
+        "paperId": "a225aab16b852dd2cc12cf72749ff9609656389b",
+        "title": "Improving Multilingual Neural Machine Translation with Auxiliary Source Languages",
+        "contexts": "…include using back translation (Gu et al., 2019; Zhang et al., 2020), and transliteration (Sun et al., 2022) as data augmentation techniques, mixing in the pretrain objective during fine-tuning (Xue et al., 2021) and using an auxiliary source language in machine translation (Xu et al., 2021). | Motivated by using auxiliary source languages improves machine translation (Xu et al., 2021) and few-shot cross-lingual transfer (Xu and Murray, 2022; Schmidt et al., 2022), we propose to use an additional source language to regularize XLRS.",
+        "reason": "Provides the key idea of using auxiliary source languages, which motivates the paper’s regularization approach to control XLRS.",
+        "category": "Medium"
       },
       {
-        "rank": "18",
-        "paperId": "cfe8ec7a183ed548db1a862e38908343cefb94c7",
-        "title": "Emerging Cross-lingual Structure in Pretrained Language Models",
-        "reason": "Empirical support that multilingual LMs learn cross-lingual structure/invariance; background for the XLRS-based explanation."
-      },
-      {
-        "rank": "19",
-        "paperId": "6fec3e579c7cd4f13bdabbee2b6ac2e8ff5941c6",
-        "title": "Unsupervised Cross-lingual Representation Learning at Scale",
-        "reason": "Establishes strong multilingual encoders (XLM-R) and the invariance-transfer link cited as the prevailing belief the paper scrutinizes for generation."
-      },
-      {
-        "rank": "20",
-        "paperId": "495da6f19baa09c6db3697d839e10432cdc25934",
-        "title": "Multilingual Denoising Pre-training for Neural Machine Translation",
-        "reason": "Architectural background (mBART) and cross-lingual pretraining context relevant to model choices and invariance discussions."
-      },
-      {
-        "rank": "21",
-        "paperId": "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
-        "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation",
-        "reason": "General encoder–decoder pretraining background underpinning mBART/mT5 and the paper’s seq2seq setup."
-      },
-      {
-        "rank": "22",
-        "paperId": "6c4b76232bb72897685d19b3d264c6ee3005bc2b",
-        "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
-        "reason": "T5 background underpinning mT5; informs the paper’s model selection and training framing for text-to-text tasks."
-      },
-      {
-        "rank": "23",
-        "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
-        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
-        "reason": "General LM pretraining background that situates multilingual variants and the cross-lingual transfer literature the paper builds upon."
-      },
-      {
-        "rank": "24",
-        "paperId": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
-        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
-        "reason": "Background on strong monolingual pretraining that underlies multilingual variants referenced in the paper."
-      },
-      {
-        "rank": "25",
-        "paperId": "06431546c21d7c2528aaa170c2e1078e0a82d12e",
-        "title": "Revisiting the Primacy of English in Zero-shot Cross-lingual Transfer",
-        "reason": "Context for source-language choice; the paper acknowledges task-dependent benefits of non-English sources while using English for consistency."
-      },
-      {
-        "rank": "26",
-        "paperId": "248824ec5d9b4ddf0c36cdc51b6b57af6e881328",
-        "title": "Choosing Transfer Languages for Cross-Lingual Learning",
-        "reason": "Source-language selection literature the paper references when motivating generalization beyond English-only fine-tuning."
-      },
-      {
-        "rank": "27",
-        "paperId": "142d60c73140c82ce382525fcac6358999d71627",
-        "title": "Evaluating the Values of Sources in Transfer Learning",
-        "reason": "Prior methods (ranking/Shapley) for choosing sources; background for the paper’s simpler, representation-based regularization/selection."
-      },
-      {
-        "rank": "28",
-        "paperId": "56d753c5f161322470721e3441d0910f568a2031",
-        "title": "Zero-Shot Cross-Lingual Transfer with Meta Learning",
-        "reason": "Another approach to source/transfer selection; context for the paper’s non-meta-learning alternative using XLRS dynamics."
-      },
-      {
-        "rank": "29",
+        "rank": 14,
         "paperId": "6aca5e5d6919dcc6986813b16a910b8db41b59f4",
         "title": "Don’t Stop Fine-Tuning: On Training Regimes for Few-Shot Cross-Lingual Transfer with Multilingual Language Models",
-        "reason": "Related few-shot cross-lingual training insights, including benefits of multiple languages that connect to the paper’s auxiliary-source idea."
+        "contexts": "More-over, such a problem becomes more severe when under a true zero-shot setting (Zhao et al., 2021; Schmidt et al., 2022), where we do not have annotated data in the target language to guide model selection. | Motivated by using auxiliary source languages improves machine translation (Xu et al., 2021) and few-shot cross-lingual transfer (Xu and Murray, 2022; Schmidt et al., 2022), we propose to use an additional source language to regularize XLRS. | Two concurrent efforts are close to our work: Xu and Murray (2022) and Schmidt et al. (2022) both empirically show that using multiple languages during fine-tuning in few-shot cross-lingual transfer improves performance in text classification.",
+        "reason": "Supports the multi-source fine-tuning motivation and the zero-shot model selection challenge the paper addresses.",
+        "category": "Medium"
       },
       {
-        "rank": "30",
-        "paperId": "7317dccaf8023b2719a2d0fe787a31b20a3232e1",
-        "title": "A Closer Look at Few-Shot Crosslingual Transfer: The Choice of Shots Matters",
-        "reason": "Highlights true zero-shot model selection difficulty; supports the paper’s emphasis on dev-free checkpoint selection."
-      },
-      {
-        "rank": "31",
+        "rank": 15,
         "paperId": "811a5c79d8c0f6f5b57697e7be0e84b5f9a94ce8",
         "title": "Por Qué Não Utiliser Alla Språk? Mixed Training with Gradient Optimization in Few-Shot Cross-Lingual Transfer",
-        "reason": "Contemporary evidence that multi-language fine-tuning helps; aligns with the paper’s auxiliary-source regularization rationale."
+        "contexts": "Motivated by using auxiliary source languages improves machine translation (Xu et al., 2021) and few-shot cross-lingual transfer (Xu and Murray, 2022; Schmidt et al., 2022), we propose to use an additional source language to regularize XLRS. | Two concurrent efforts are close to our work: Xu and Murray (2022) and Schmidt et al. (2022) both empirically show that using multiple languages during fine-tuning in few-shot cross-lingual transfer improves performance in text classification.",
+        "reason": "Concurrent multi-language fine-tuning approach that motivates the paper’s auxiliary-language regularization idea.",
+        "category": "Medium"
       },
       {
-        "rank": "32",
+        "rank": 16,
+        "paperId": "d592007d1c106fe1217604eb35664c7a5f07cb32",
+        "title": "Multilingual Alignment of Contextual Word Representations",
+        "contexts": "The fact that language invariant representations causes the degradation in generation tasks challenges the common belief that invariant representations generally enhance cross-lingual transfer on all downstream tasks (Cao et al., 2020; Conneau et al., 2020b; Yang et al., 2022; Xian et al., 2022). | The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance.",
+        "reason": "Representative of alignment/invariance literature that the paper directly interrogates; informs the hypothesis and analysis.",
+        "category": "Medium"
+      },
+      {
+        "rank": 17,
+        "paperId": "6fec3e579c7cd4f13bdabbee2b6ac2e8ff5941c6",
+        "title": "Unsupervised Cross-lingual Representation Learning at Scale",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance. | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective. | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an… | The fact that language invariant representations causes the degradation in generation tasks challenges the common belief that invariant representations generally enhance cross-lingual transfer on all downstream tasks (Cao et al., 2020; Conneau et al., 2020b; Yang et al., 2022; Xian et al., 2022).",
+        "reason": "Background and empirical evidence for cross-lingual alignment and model families used; supports the paper’s framing.",
+        "category": "Medium"
+      },
+      {
+        "rank": 18,
+        "paperId": "cfe8ec7a183ed548db1a862e38908343cefb94c7",
+        "title": "Emerging Cross-lingual Structure in Pretrained Language Models",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance. | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective. | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an… | The fact that language invariant representations causes the degradation in generation tasks challenges the common belief that invariant representations generally enhance cross-lingual transfer on all downstream tasks (Cao et al., 2020; Conneau et al., 2020b; Yang et al., 2022; Xian et al., 2022).",
+        "reason": "Key evidence for emergent cross-lingual alignment phenomena that the paper measures (XLRS) and challenges for generation.",
+        "category": "Medium"
+      },
+      {
+        "rank": 19,
+        "paperId": "415f924c5c79e300891881af367e4d77602f9f39",
+        "title": "Cross-Lingual Transfer with Class-Weighted Language-Invariant Representations",
+        "contexts": "The fact that language invariant representations causes the degradation in generation tasks challenges the common belief that invariant representations generally enhance cross-lingual transfer on all downstream tasks (Cao et al., 2020; Conneau et al., 2020b; Yang et al., 2022; Xian et al., 2022). | The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance.",
+        "reason": "Representative prior on learning language-invariant representations; provides the specific notion the paper regularizes against.",
+        "category": "Medium"
+      },
+      {
+        "rank": 20,
+        "paperId": "c0a54963b0689fa7d76fda1063b65003c769d9b7",
+        "title": "Language-agnostic Representation from Multilingual Sentence Encoders for Cross-lingual Similarity Estimation",
+        "contexts": "The consensus of the literature (Cao et al., 2020; Conneau et al., 2020b; Tiyajamorn et al., 2021; Yang et al., 2022; Xian et al., 2022) is that if a model can produce similar representations for parallel sentences, the model would be able to achieve good cross-lingual transfer performance.",
+        "reason": "Supports the prevailing view on language-agnostic representations that the paper evaluates and refines for generation tasks.",
+        "category": "Medium"
+      },
+      {
+        "rank": 21,
+        "paperId": "06431546c21d7c2528aaa170c2e1078e0a82d12e",
+        "title": "Revisiting the Primacy of English in Zero-shot Cross-lingual Transfer",
+        "contexts": "We acknowledge that using other languages as the source language can provide benefits depending on the task (Lin et al., 2019; Turc et al., 2021).",
+        "reason": "Background on source-language choice; situates the paper’s use of English and discussion of alternative sources.",
+        "category": "Low"
+      },
+      {
+        "rank": 22,
+        "paperId": "248824ec5d9b4ddf0c36cdc51b6b57af6e881328",
+        "title": "Choosing Transfer Languages for Cross-Lingual Learning",
+        "contexts": "We acknowledge that using other languages as the source language can provide benefits depending on the task (Lin et al., 2019; Turc et al., 2021). | Empirical studies also train ranking models (Lin et al., 2019), use meta-learning (Nooralahzadeh et al., 2020), or use Shapley Value (Parvez and Chang, 2021) to predict which sources perform the best for a given target language.",
+        "reason": "General background on source language selection and ranking; helpful context but not essential to the specific method.",
+        "category": "Low"
+      },
+      {
+        "rank": 23,
         "paperId": "e514a03a17bd6dfce12d3c450a93c8175e8de3eb",
         "title": "A Call for More Rigor in Unsupervised Cross-lingual Learning",
-        "reason": "Warns about translationese and evaluation pitfalls; supports the paper’s dataset considerations and practical setting assumptions."
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022). | Existing studies on cross-lingual transfer select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few… | Previous studies have pointed out that translationese in datasets affects cross-lingual transfer performance (Artetxe et al., 2020a; Artetxe et al., 2020c). | We believe that this is valuable under a practical setting (Artetxe et al., 2020c) where we have access to parallel data between the source and target languages, but not task-specific data in the target language.",
+        "reason": "Context on evaluation rigor and dataset artifacts; informs discussion but not core to method.",
+        "category": "Low"
       },
       {
-        "rank": "33",
+        "rank": 24,
         "paperId": "085b360d3c08aaf997f45a78e27f2629f5625205",
         "title": "Translation Artifacts in Cross-lingual Transfer Learning",
-        "reason": "Further cautions about translation artifacts; informs dataset selection/interpretation in the paper."
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022). | Existing studies on cross-lingual transfer select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few… | Previous studies have pointed out that translationese in datasets affects cross-lingual transfer performance (Artetxe et al., 2020a; Artetxe et al., 2020c). | We believe that this is valuable under a practical setting (Artetxe et al., 2020c) where we have access to parallel data between the source and target languages, but not task-specific data in the target language.",
+        "reason": "Background on dataset translation artifacts; not central to the proposed explanation or solution.",
+        "category": "Low"
       },
       {
-        "rank": "34",
-        "paperId": "3b2538f84812f434c740115c185be3e5e216c526",
-        "title": "Cross-Lingual Ability of Multilingual BERT: An Empirical Study",
-        "reason": "Background on factors (word order) affecting transfer; contextualizes when invariance helps vs. hurts."
+        "rank": 25,
+        "paperId": "6bf7c93ed5a3aca5ef139308c6797615461daa39",
+        "title": "Match the Script, Adapt if Multilingual: Analyzing the Effect of Multilingual Pretraining on Cross-lingual Transferability",
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022).",
+        "reason": "Background on factors affecting cross-lingual transfer; useful context but not directly instrumental.",
+        "category": "Low"
       },
       {
-        "rank": "35",
+        "rank": 26,
         "paperId": "c3a662b864673d8cc7469051419ab8819926d4b0",
         "title": "Identifying Elements Essential for BERT’s Multilinguality",
-        "reason": "Script/word-order debates providing nuance for invariance and transfer—context for the paper’s explanation."
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022).",
+        "reason": "General background on what drives multilingual transfer; not directly used in the method.",
+        "category": "Low"
       },
       {
-        "rank": "36",
-        "paperId": "6bf7c93ed5a3aca5ef139308c6797615461daa39",
-        "title": "Match the Script",
-        "reason": "Adapt if Multilingual: Analyzing the Effect of Multilingual Pretraining on Cross-lingual Transferability, Additional evidence on script’s role; supports the broader transferability backdrop the paper contrasts with generation."
-      },
-      {
-        "rank": "37",
+        "rank": 27,
         "paperId": "fd6bc84144c2d77068bf3f077cb509d539f5f8e2",
         "title": "On the Cross-lingual Transferability of Monolingual Representations",
-        "reason": "Complementary results on what enables transfer (e.g., word order), grounding the paper’s claims about representation properties."
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022). | Existing studies on cross-lingual transfer select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few… | Previous studies have pointed out that translationese in datasets affects cross-lingual transfer performance (Artetxe et al., 2020a; Artetxe et al., 2020c). | We believe that this is valuable under a practical setting (Artetxe et al., 2020c) where we have access to parallel data between the source and target languages, but not task-specific data in the target language.",
+        "reason": "Background on cross-lingual transfer from monolingual reps; contextualizes alignment but not essential to the paper’s solution.",
+        "category": "Low"
       },
       {
-        "rank": "38",
-        "paperId": "1a7591aefa9b4129e37cda2ad97d1d1cba460b38",
-        "title": "On Difficulties of Cross-Lingual Transfer with Order Differences: A Case Study on Dependency Parsing",
-        "reason": "Reinforces the impact of syntactic differences; contextual backdrop for when XLRS may or may not be beneficial."
-      },
-      {
-        "rank": "39",
-        "paperId": "1c3112ef8a346b9817382ed34a8c146c53d5bcf5",
-        "title": "XNLI: Evaluating Cross-lingual Sentence Representations",
-        "reason": "Widely used classification benchmark framing cross-lingual evaluation; situates the paper’s classification vs. generation contrast."
-      },
-      {
-        "rank": "40",
-        "paperId": "5b1516c87818084dc5d195cc274e1ee8923210d2",
-        "title": "Neural Cross-Lingual Named Entity Recognition with Minimal Resources",
-        "reason": "General cross-lingual application background; helps motivate broader transfer claims contrasted with generation findings."
-      },
-      {
-        "rank": "41",
-        "paperId": "48e8e8085907192d501eb2bcc582035e90431a2f",
-        "title": "Multi-Task Cross-Lingual Sequence Tagging from Scratch",
-        "reason": "Additional background on cross-lingual tagging; contextualizes the classification task setup."
-      },
-      {
-        "rank": "42",
-        "paperId": "143cd4b4717651caf276c7256502dc491454e197",
-        "title": "The Curious Case of Hallucinations in Neural Machine Translation",
-        "reason": "Part of the pathology background (hallucinations) the paper cites alongside wrong-language errors."
-      },
-      {
-        "rank": "43",
-        "paperId": "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
-        "title": "Learning to Break the Loop: Analyzing and Mitigating Repetitions for Neural Text Generation",
-        "reason": "Cited to characterize generation pathologies (repetition) that co-occur with wrong-language outputs."
-      },
-      {
-        "rank": "44",
-        "paperId": "4789355a00650afa29682d331d7d9a49a301b43b",
-        "title": "Improving Massively Multilingual Neural Machine Translation and Zero-Shot Translation",
-        "reason": "Background on zero-shot generation quality issues (incl. wrong-language output) that the paper aims to reduce."
-      },
-      {
-        "rank": "45",
-        "paperId": "af6fce169699592beaa379a6532dd192fad3f13f",
-        "title": "Alternative Input Signals Ease Transfer in Multilingual Machine Translation",
-        "reason": "Alternative techniques to improve generation cited as related work; contrasts with the paper’s representation-regularization approach."
-      },
-      {
-        "rank": "46",
-        "paperId": "b3e3a2ec4e411e07a31972745e2eea537b9eb20c",
-        "title": "Improved Zero-shot Neural Machine Translation via Ignoring Spurious Correlations",
-        "reason": "Another alternative path to better zero-shot generation; contextual related work."
-      },
-      {
-        "rank": "47",
+        "rank": 28,
         "paperId": "38d3657ee15f2612330eb5e036bbc38d9137f75a",
         "title": "ZmBART: An Unsupervised Cross-lingual Transfer Framework for Language Generation",
-        "reason": "Related generation-focused transfer work; helps situate the paper within cross-lingual generation literature."
+        "contexts": "…tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual transfer in generation tasks (Maurya et al., 2021; Maurya and Desarkar, 2022).",
+        "reason": "Related work on cross-lingual generation; cited for context rather than used directly.",
+        "category": "Low"
       },
       {
-        "rank": "48",
+        "rank": 29,
         "paperId": "23ae98d341d9e587f37ef84096d6a0186bdfd284",
         "title": "Meta-X_{NLG}: A Meta-Learning Approach Based on Language Clustering for Zero-Shot Cross-Lingual Transfer and Generation",
-        "reason": "Related to generation-focused zero-shot transfer; background for the paper’s simpler regularization approach."
+        "contexts": "…tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual transfer in generation tasks (Maurya et al., 2021; Maurya and Desarkar, 2022).",
+        "reason": "Provides background that generation transfer is less explored; not operationally used.",
+        "category": "Low"
       },
       {
-        "rank": "49",
-        "paperId": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
-        "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
-        "reason": "Parameter-efficient fine-tuning the paper cites via Vu et al. as an alternative to control language; contrasts with the proposed method."
+        "rank": 30,
+        "paperId": "495da6f19baa09c6db3697d839e10432cdc25934",
+        "title": "Multilingual Denoising Pre-training for Neural Machine Translation",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | …RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through…",
+        "reason": "Background on mBART and multilingual pretraining; not directly used in experiments.",
+        "category": "Low"
       },
       {
-        "rank": "50",
-        "paperId": "53d8b356551a2361020a948f64454a6d599af69f",
-        "title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
-        "reason": "As above; provides a competing mechanism to steer generation language without full fine-tuning."
+        "rank": 31,
+        "paperId": "395de0bd3837fdf4b4b5e5f04835bcc69c279481",
+        "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | …optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective. | …RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through…",
+        "reason": "General model background; supports description of encoder-decoder family but not uniquely necessary.",
+        "category": "Low"
       },
       {
-        "rank": "51",
-        "paperId": "209f9bde2dee7cf1677801586562ffe56d435d38",
-        "title": "Learning How to Ask: Querying LMs with Mixtures of Soft Prompts",
-        "reason": "Another parameter-efficient approach the paper references as related but distinct from its representation regularization."
+        "rank": 32,
+        "paperId": "6c4b76232bb72897685d19b3d264c6ee3005bc2b",
+        "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+        "contexts": "…of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective.",
+        "reason": "Background on T5; ancillary to the choice of mT5 and general architecture.",
+        "category": "Low"
       },
       {
-        "rank": "52",
-        "paperId": "149c123e7ffc3658a3d51c0dc5637764257318f3",
-        "title": "Multilingual and Zero-Shot is Closing in on Monolingual Web Register Classification",
-        "reason": "Background noting generation incoherence/wrong-language issues; peripheral evidence for the problem statement."
+        "rank": 33,
+        "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an encoder-decoder model trained on a span denoising objective. | One line of work is to train multilingual versions of modern Language Models. mBERT (Devlin et al., 2019b) is the multilingual version of BERT (Devlin et al., 2019a), which uses the same encoder-only model architecture but is only trained on multilingual corpora.",
+        "reason": "Standard background on pretrained LMs; field-signaling rather than instrumental.",
+        "category": "Low"
       },
       {
-        "rank": "53",
+        "rank": 34,
+        "paperId": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+        "contexts": "XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an encoder-decoder model trained to reconstruct the original text through various types of artificially introduced noises. mT5 (Xue et al., 2021) is the multilingual version of T5 (Raffel et al., 2020), an… | XLM-R (Conneau et al., 2020a) is the multilingual version of RoBERTa (Liu et al., 2019), which implements multiple optimization tricks and is larger in scale, resulting in better performance than BERT. mBART (Liu et al., 2020) is the multilingual version of BART (Lewis et al., 2020), an…",
+        "reason": "General model background; not central to the proposed explanation or solution.",
+        "category": "Low"
+      },
+      {
+        "rank": 35,
+        "paperId": "809cc93921e4698bde891475254ad6dfba33d03b",
+        "title": "How Multilingual is Multilingual BERT?",
+        "contexts": "Existing studies on cross-lingual transfer select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few… | While Pires et al. (2019) states that sub-word overlap between source and target facilitates cross-lingual transfer, K et al. (2020) shows that cross-lingual transfer manifests in pairs of source and target with zero sub-word overlap and word order is instead the most crucial ingredient.",
+        "reason": "Background on multilingual LM capabilities; not specifically used in method or evaluation.",
+        "category": "Low"
+      },
+      {
+        "rank": 36,
+        "paperId": "3b2538f84812f434c740115c185be3e5e216c526",
+        "title": "Cross-Lingual Ability of Multilingual BERT: An Empirical Study",
+        "contexts": "While Pires et al. (2019) states that sub-word overlap between source and target facilitates cross-lingual transfer, K et al. (2020) shows that cross-lingual transfer manifests in pairs of source and target with zero sub-word overlap and word order is instead the most crucial ingredient.",
+        "reason": "General background on factors in cross-lingual transfer; not a direct dependency.",
+        "category": "Low"
+      },
+      {
+        "rank": 37,
         "paperId": "2fa3f7ce620a1c7155daef6620dd6bb0e01934f3",
-        "title": "Beto",
-        "reason": "Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT, General cross-lingual transfer background with mBERT; helps frame zero-shot capabilities contrasted with generation failures."
+        "title": "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT",
+        "contexts": "Language Models (LMs) pre-trained on multilingual corpora (Devlin et al., 2019a; Conneau et al., 2020a; Liu et al., 2020; Xue et al., 2021) exhibit zero-shot cross-lingual transfer ability (Wu and Dredze, 2019). | …select tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual… | …tasks such as word alignment (Artetxe et al., 2020b), POS tagging (Pires et al., 2019), dependency parsing and sentence classification (Wu and Dredze, 2019) to investigate cross-lingual trans-ferability of multilingual LMs (Hu et al., 2020), and few works focus on cross-lingual transfer in…",
+        "reason": "Contextual citation signaling broad cross-lingual effectiveness; not used directly.",
+        "category": "Low"
       },
       {
-        "rank": "54",
+        "rank": 38,
+        "paperId": "1a7591aefa9b4129e37cda2ad97d1d1cba460b38",
+        "title": "On Difficulties of Cross-Lingual Transfer with Order Differences: A Case Study on Dependency Parsing",
+        "contexts": "…wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information retrieval (Izacard et al., 2022).",
+        "reason": "Background on cross-lingual transfer challenges; not directly tied to generation failures studied here.",
+        "category": "Low"
+      },
+      {
+        "rank": 39,
+        "paperId": "1c3112ef8a346b9817382ed34a8c146c53d5bcf5",
+        "title": "XNLI: Evaluating Cross-lingual Sentence Representations",
+        "contexts": "…wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information retrieval (Izacard et al., 2022).",
+        "reason": "Standard benchmark mention; not used in this paper’s experiments.",
+        "category": "Low"
+      },
+      {
+        "rank": 40,
+        "paperId": "48e8e8085907192d501eb2bcc582035e90431a2f",
+        "title": "Multi-Task Cross-Lingual Sequence Tagging from Scratch",
+        "contexts": "Another line of work focuses on applying cross-lingual transfer to a wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018;…",
+        "reason": "Background citation for breadth of applications; not central here.",
+        "category": "Low"
+      },
+      {
+        "rank": 41,
+        "paperId": "5b1516c87818084dc5d195cc274e1ee8923210d2",
+        "title": "Neural Cross-Lingual Named Entity Recognition with Minimal Resources",
+        "contexts": "Another line of work focuses on applying cross-lingual transfer to a wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information retrieval (Izacard et al., 2022). | …transfer to a wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information…",
+        "reason": "General context; not used in the paper’s method or evaluation.",
+        "category": "Low"
+      },
+      {
+        "rank": 42,
         "paperId": "4f4a409f701f7552d45c46a5b0fea69dca6f8e84",
         "title": "Unsupervised Dense Information Retrieval with Contrastive Learning",
-        "reason": "Only cited incidentally in a general list of multilingual applications; minimal direct influence on the paper’s explanation, method, or experiments."
+        "contexts": "…wide range of multilingual NLP applications, which include sequence tagging (Yang et al., 2016), Named Entity Recognition (Xie et al., 2018), dependency parsing (Ahmad et al., 2019), sentence classification (Conneau et al., 2018; Yang et al., 2019), and information retrieval (Izacard et al., 2022).",
+        "reason": "Peripheral background on applications; not connected to the core argument.",
+        "category": "Low"
+      },
+      {
+        "rank": 43,
+        "paperId": "6151ee4af6a3fe78f2df7c605598cd9e02b23c5b",
+        "title": "Learning to Break the Loop: Analyzing and Mitigating Repetitions for Neural Text Generation",
+        "contexts": "Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022).",
+        "reason": "Background on degeneracies in generation; field-signaling.",
+        "category": "Low"
+      },
+      {
+        "rank": 44,
+        "paperId": "143cd4b4717651caf276c7256502dc491454e197",
+        "title": "The Curious Case of Hallucinations in Neural Machine Translation",
+        "contexts": "Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022).",
+        "reason": "Background on hallucinations; not directly leveraged.",
+        "category": "Low"
+      },
+      {
+        "rank": 45,
+        "paperId": "4789355a00650afa29682d331d7d9a49a301b43b",
+        "title": "Improving Massively Multilingual Neural Machine Translation and Zero-Shot Translation",
+        "contexts": "Other ways to improve generation quality include using back translation (Gu et al., 2019; Zhang et al., 2020), and transliteration (Sun et al., 2022) as data augmentation techniques, mixing in the pretrain objective during fine-tuning (Xue et al., 2021) and using an auxiliary source language in… | Multilingual LMs are prone to produce text that is repetitive (Xu et al., 2022), contains hallucinations (Raunak et al., 2021), or is in the wrong language (Zhang et al., 2020; Xue et al., 2021; Vu et al., 2022).",
+        "reason": "Alternative improvement strategies context; not used in the proposed method.",
+        "category": "Low"
+      },
+      {
+        "rank": 46,
+        "paperId": "af6fce169699592beaa379a6532dd192fad3f13f",
+        "title": "Alternative Input Signals Ease Transfer in Multilingual Machine Translation",
+        "contexts": "Other ways to improve generation quality include using back translation (Gu et al., 2019; Zhang et al., 2020), and transliteration (Sun et al., 2022) as data augmentation techniques, mixing in the pretrain objective during fine-tuning (Xue et al., 2021) and using an auxiliary source language in…",
+        "reason": "Background on methods to improve generation; not central to the paper’s approach.",
+        "category": "Low"
+      },
+      {
+        "rank": 47,
+        "paperId": "b3e3a2ec4e411e07a31972745e2eea537b9eb20c",
+        "title": "Improved Zero-shot Neural Machine Translation via Ignoring Spurious Correlations",
+        "contexts": "Other ways to improve generation quality include using back translation (Gu et al., 2019; Zhang et al., 2020), and transliteration (Sun et al., 2022) as data augmentation techniques, mixing in the pretrain objective during fine-tuning (Xue et al., 2021) and using an auxiliary source language in…",
+        "reason": "Peripheral related work on improving generation; not used directly.",
+        "category": "Low"
+      },
+      {
+        "rank": 48,
+        "paperId": "149c123e7ffc3658a3d51c0dc5637764257318f3",
+        "title": "Multilingual and Zero-Shot is Closing in on Monolingual Web Register Classification",
+        "contexts": "Cross-lingual transfer approach in generation tasks are known to produce incoherent text (Rönnqvist et al., 2021), generate in a wrong language (Xue et al., 2021), and suffer from catastrophic forgetting (Vu et al., 2022).",
+        "reason": "Contextual citation; not directly impacting the paper’s method or analysis.",
+        "category": "Low"
+      },
+      {
+        "rank": 49,
+        "paperId": "7317dccaf8023b2719a2d0fe787a31b20a3232e1",
+        "title": "A Closer Look at Few-Shot Crosslingual Transfer: The Choice of Shots Matters",
+        "contexts": "More-over, such a problem becomes more severe when under a true zero-shot setting (Zhao et al., 2021; Schmidt et al., 2022), where we do not have annotated data in the target language to guide model selection.",
+        "reason": "Background on zero-shot selection challenges; supports motivation but is not essential.",
+        "category": "Low"
+      },
+      {
+        "rank": 50,
+        "paperId": "da6fa3c0c4145e1d3b5e98fc2494f993c237c782",
+        "title": "Zero-shot Cross-lingual Transfer is Under-specified Optimization",
+        "contexts": "Wu et al. (2022) points out that the optimal set of parameters that generalizes well to all languages is a subset of parameters that achieves good performance on the source language.",
+        "reason": "General perspective on optimization under-specification; tangential to the paper’s main mechanism and solution.",
+        "category": "Low"
+      },
+      {
+        "rank": 51,
+        "paperId": "142d60c73140c82ce382525fcac6358999d71627",
+        "title": "Evaluating the Values of Sources in Transfer Learning",
+        "contexts": "Empirical studies also train ranking models (Lin et al., 2019), use meta-learning (Nooralahzadeh et al., 2020), or use Shapley Value (Parvez and Chang, 2021) to predict which sources perform the best for a given target language.",
+        "reason": "Background on source selection strategies; not directly used.",
+        "category": "Low"
+      },
+      {
+        "rank": 52,
+        "paperId": "56d753c5f161322470721e3441d0910f568a2031",
+        "title": "Zero-Shot Cross-Lingual Transfer with Meta Learning",
+        "contexts": "Empirical studies also train ranking models (Lin et al., 2019), use meta-learning (Nooralahzadeh et al., 2020), or use Shapley Value (Parvez and Chang, 2021) to predict which sources perform the best for a given target language.",
+        "reason": "Meta-learning approach for source selection; cited for context only.",
+        "category": "Low"
+      },
+      {
+        "rank": 53,
+        "paperId": "53d8b356551a2361020a948f64454a6d599af69f",
+        "title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
+        "contexts": "Vu et al., 2022 proposed to use parameter efficient fine-tuning methods (Lester et al., 2021; Qin and Eisner, 2021; Li and Liang, 2021) to regularize the model to generate in a desired language.",
+        "reason": "Parameter-efficient tuning background via Vu et al.; not employed in this paper.",
+        "category": "Low"
+      },
+      {
+        "rank": 54,
+        "paperId": "ffdbd7f0b03b85747b001b4734d5ee31b5229aa4",
+        "title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+        "contexts": "Vu et al., 2022 proposed to use parameter efficient fine-tuning methods (Lester et al., 2021; Qin and Eisner, 2021; Li and Liang, 2021) to regularize the model to generate in a desired language.",
+        "reason": "Background on prompt tuning; included via discussion of related approaches, not essential here.",
+        "category": "Low"
+      },
+      {
+        "rank": 55,
+        "paperId": "209f9bde2dee7cf1677801586562ffe56d435d38",
+        "title": "Learning How to Ask: Querying LMs with Mixtures of Soft Prompts",
+        "contexts": "Vu et al., 2022 proposed to use parameter efficient fine-tuning methods (Lester et al., 2021; Qin and Eisner, 2021; Li and Liang, 2021) to regularize the model to generate in a desired language.",
+        "reason": "Another parameter-efficient method cited in context; not used in the paper.",
+        "category": "Low"
+      },
+      {
+        "rank": 56,
+        "paperId": "f2850059680d6fcebeb2fcda36f9e06413478e48",
+        "title": "From Zero to Hero",
+        "contexts": "Although the importance of word order is echoed by later studies (Artetxe et al., 2020b; Dufter and Schütze, 2020), recent studies have also debated in favor of the importance of matching script also contributing to cross-lingual transfer (Lauscher et al., 2020; Fujinuma et al., 2022).",
+        "reason": "Peripheral background on cross-lingual transfer factors; not tied to the core contributions.",
+        "category": "Low"
       }
     ]
   }

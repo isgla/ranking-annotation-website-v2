@@ -5,304 +5,396 @@
     "paperTitle": "SemStamp: A Semantic Watermark with Paraphrastic Robustness for Text Generation",
     "candidates": [
       {
-        "rank": "1",
+        "rank": 1,
         "paperId": "cb5b71a622aff47014d4f28a958679629a8b6363",
         "title": "A Watermark for Large Language Models",
-        "reason": "Core token-level baseline and z-test detector that SemStamp critiques, adapts (sentence-level z), and empirically surpasses."
+        "contexts": "B W ATERMARK D ETECTION Kirchenbauer et al. (2023a) proposes to use a one-proportion z-test to detect watermarks, assuming the following null hypothesis: H 0 : The text is not generated (or written) knowing a watermarking green list rule. | As a seminal work, Kirchenbauer et al. (2023a) propose a watermarking algorithm by adding token-level bias (reviewed in §2). | 3B (Zhang et al., 2022) as our base model and conduct sampling at a temperature of 0.7 following Kirchenbauer et al. (2023a) with a repetition penalty of 1.03. | Because existing token-level watermark algorithms hash the last generated token to determine the green/red list split for the vocabulary (Kirchenbauer et al., 2023a), the change of token at position t would affect the watermark of position t + 1 . | Token-Level Watermarking and its Susceptibility to Paraphrase Attacks Kirchenbauer et al. (2023a) propose a watermark that is injected at the token level. | …classified as machine-generated when its z -score exceeds a threshold chosen based on a given false positive rate, which we explain in detail in §B. Note that differing from the baseline algorithm in Kirchenbauer et al. (2023a), our algorithm treat sentences as the unit during z -score computation.",
+        "reason": "Foundational baseline and detection method; SemStamp’s motivation, comparisons, and detection procedure (z-test) build directly on this token-level watermarking framework.",
+        "category": "High"
       },
       {
-        "rank": "2",
+        "rank": 2,
         "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
         "title": "Similarity estimation techniques from rounding algorithms",
-        "reason": "Provides the cosine-preserving LSH/SimHash used to partition the sentence-embedding space."
+        "contexts": "Thus, instead of partitioning the vocabulary, our watermark operates on the semantic space of sentence embeddings, partitioned by locality-sensitive hashing (LSH; Indyk & Motwani, 1998; Charikar, 2002). | Locality-Sensitive Hashing in NLP The application of locality-sensitive hashing (Indyk & Mot-wani, 1998; Charikar, 2002) in NLP dates back to Ravichandran et al. (2005), where LSH is used for high-speed noun clustering. | Van Durme & Lall (2010) show that the LSH method of Charikar (2002) can enable fast approximated online computation of cosine similarity. | Given an LSH dimension d , we adopt the cosine-preserving method from Charikar (2002) which produces a d -bit binary signature through random hyperplane projections, and each hyperplane is represented by a random Algorithm 1 S EM S TAMP Input: language model P LM , prompt s (0) , number of…",
+        "reason": "Provides the exact cosine LSH (random hyperplane) method used to partition sentence embedding space and generate semantic signatures; operationally indispensable.",
+        "category": "High"
       },
       {
-        "rank": "3",
+        "rank": 3,
         "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
         "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality",
-        "reason": "Foundational LSH framework enabling SemStamp’s semantic partitioning approach."
+        "contexts": "Thus, instead of partitioning the vocabulary, our watermark operates on the semantic space of sentence embeddings, partitioned by locality-sensitive hashing (LSH; Indyk & Motwani, 1998; Charikar, 2002). | We will use LSH (Indyk & Motwani, 1998) to partition the semantic embedding space.",
+        "reason": "Core LSH framework underpinning SemStamp’s semantic partitioning; conceptually necessary to justify the semantic watermark design.",
+        "category": "High"
       },
       {
-        "rank": "4",
+        "rank": 4,
         "paperId": "06d21b10e0f85ea38e23f99efd38a770e455863c",
         "title": "Paraphrastic Representations at Scale",
-        "reason": "Supplies the contrastive paraphrase training used to make the encoder paraphrase-robust."
+        "contexts": "To enhance the encoder’s robustness to paraphrase, we further fine-tune the SBERT model using contrastive learning following Wieting et al. (2022). | As a key component, we use a paraphrase-robust sentence encoder trained with contrastive learning (CL; Wieting et al., 2022). | We fine-tune an off-the-shelf encoder with a contrastive learning objective (Wieting et al., 2022) for paraphrastic robustness.",
+        "reason": "Supplies the contrastive learning recipe for paraphrase-robust sentence embeddings, a key component that enables SemStamp’s paraphrastic robustness.",
+        "category": "High"
       },
       {
-        "rank": "5",
+        "rank": 5,
         "paperId": "93d63ec754f29fa22572615320afe0521f7ec66d",
         "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
-        "reason": "Base sentence encoder architecture for SemStamp."
+        "contexts": "We base our encoder on Sentence-BERT (SBERT; Reimers & Gurevych, 2019), a fine-tuned siamese network that produces sentence embeddings whose cosine similarity approximates the semantic textual similarity on the STS benchmark (Cer et al., 2017).",
+        "reason": "Base sentence encoder used to represent sentences in the semantic space that is watermarked; core to SemStamp’s operational pipeline.",
+        "category": "High"
       },
       {
-        "rank": "6",
+        "rank": 6,
         "paperId": "21c729ae5347f4d0c066608cba9ba2a91b05ade2",
         "title": "COD3S: Diverse Generation with Discrete Semantic Signatures",
-        "reason": "Closely related precedent conditioning generation on LSH signatures of sentence embeddings."
+        "contexts": "Closely related to our work, Weir et al. (2020) generate semantically diverse sentences by conditioning a sequence-to-sequence model on the LSH signature of sentence embeddings.",
+        "reason": "Conceptually close prior using LSH signatures over sentence embeddings; influenced the idea of operating on discrete semantic signatures though applied here for watermarking.",
+        "category": "Medium"
       },
       {
-        "rank": "7",
-        "paperId": "aadd6436737999fa395bcd18f61013fb7583918b",
-        "title": "Online Generation of Locality Sensitive Hash Signatures",
-        "reason": "Enables fast online LSH signature computation referenced by SemStamp."
-      },
-      {
-        "rank": "8",
+        "rank": 7,
         "paperId": "f4061bd225b3be5b3f5b18eb1a229ce991efefeb",
         "title": "PEGASUS: Pre-training with Extracted Gap-sentences for Abstractive Summarization",
-        "reason": "Main paraphraser used for attacks and for training the encoder; central to the bigram paraphrase attack."
+        "contexts": "For each sentence s i in a corpus, we first produce its paraphrase t i using an off-the-shelf paraphrasing model, Pegasus (Zhang et al., 2020). | For instance, Pegasus bigram attack lowers the baseline AUROC by 5.3%, whereas S EM S TAMP only decreases by 2.4%. | It is shown that fine-tuning the encoder on Pegasus paraphrased data improves the LSH consistency across different margins. | For the Pegasus and Parrot paraphrasers, we select the candidate sentence with the least bigram overlap among the 25 beams from beam-search, subject to a BERTScore constraint of dropping no more than 10% of the score from the first beam. | Pegasus Bigram Paraphrase: In the second quarter, Neville jumped out to a 14-0 lead. | Although we only fine-tune the Sentence-BERT model on data from the Pegasus paraphraser, S EM S TAMP algorithm generalizes its robustness to different paraphrasers. | Pegasus Paraphrase: In the second quarter, they went ahead 14-0 and had a 28-0 lead. | Paraphrase Attack For paraphrase attack experiments, we paraphrase watermarked generations sentence by sentence using the Pegasus paraphraser (Zhang et al., 2020), the Parrot paraphraser in Sadasivan et al. (2023), and GPT-3. | Training and Generation For contrastive learning of Sentence-BERT, we paraphrase 8k paragraphs of the C4-RealNews dataset (Raffel et al., 2020) using the Pegasus paraphraser (Zhang et al., 2020) through beam search with 25 beams. | It is shown that S EM S TAMP is more robust to paraphrase attacks than the baseline watermark across the Pegasus, Parrot, and GPT-3. | We use beam search with 25 beams for both Pegasus and Parrot.",
+        "reason": "Provides the paraphraser used both to train paraphrase-robust encoders and to design/evaluate paraphrase attacks; operationally important but replaceable by other paraphrasers.",
+        "category": "Medium"
       },
       {
-        "rank": "9",
-        "paperId": "295065d942abca0711300b2b4c39829551060578",
-        "title": "BERTScore: Evaluating Text Generation with BERT",
-        "reason": "Used to constrain paraphrase quality and evaluate similarity in the bigram paraphrase attack."
+        "rank": 8,
+        "paperId": "aadd6436737999fa395bcd18f61013fb7583918b",
+        "title": "Online Generation of Locality Sensitive Hash Signatures",
+        "contexts": "Van Durme & Lall (2010) show that the LSH method of Charikar (2002) can enable fast approximated online computation of cosine similarity.",
+        "reason": "Supports efficient online computation of Charikar-style LSH signatures, informing implementation practicality of semantic watermarking.",
+        "category": "Medium"
       },
       {
-        "rank": "10",
-        "paperId": "1c13af186d1e177b85ef1ec3fc7b8d33ec314cfd",
-        "title": "Paraphrasing evades detectors of AI-generated text",
-        "reason": "but retrieval is an effective defense, Key motivation that paraphrases break token-level detection; informs attack design (e.g., Dipper)."
-      },
-      {
-        "rank": "11",
-        "paperId": "5ee8bb4fc80a291b2e416a2a879e7153a783d7e9",
-        "title": "Can AI-Generated Text be Reliably Detected?",
-        "reason": "Provides the Parrot paraphraser and evidence of paraphrase-induced detection failures; used in experiments."
-      },
-      {
-        "rank": "12",
-        "paperId": "753dd1be7581e70d65b537e8f62140b8ff8793ac",
-        "title": "Robust Multi-bit Natural Language Watermarking through Invariant Features",
-        "reason": "Prior work targeting robustness to corruption/edits; relevant conceptual baseline."
-      },
-      {
-        "rank": "13",
-        "paperId": "ca18c18ddd730e4d690431ad6c65035d0f41aed6",
-        "title": "Watermarking Conditional Text Generation for AI Detection: Unveiling Challenges and a Semantic-Aware Watermark Remedy",
-        "reason": "Incorporates semantic similarity into watermarking; conceptually adjacent to SemStamp’s semantic approach."
-      },
-      {
-        "rank": "14",
-        "paperId": "75b68d0903af9d9f6e47ce3cf7e1a7d27ec811dc",
-        "title": "Provable Robust Watermarking for AI-Generated Text",
-        "reason": "Contemporary robustness-oriented design; informs positioning and comparisons."
-      },
-      {
-        "rank": "15",
-        "paperId": "ccaff61e0c1e629d91d78f82a64b3cbc8f3f7023",
-        "title": "Robust Distortion-free Watermarks for Language Models",
-        "reason": "Distribution-preserving watermarking; provides an alternative design to contrast with SemStamp."
-      },
-      {
-        "rank": "16",
-        "paperId": "00c85c78a67dceb33621e36adef08b5d05c5251d",
-        "title": "On the Reliability of Watermarks for Large Language Models",
-        "reason": "Documents fragility (esp. to paraphrase) of token-level schemes, bolstering SemStamp’s motivation."
-      },
-      {
-        "rank": "17",
-        "paperId": "7baae1691bc8c4012f2193e174de94c228afa8f8",
-        "title": "Undetectable Watermarks for Language Models",
-        "reason": "Theoretical perspective on watermark detectability; situates SemStamp in the broader landscape."
-      },
-      {
-        "rank": "18",
-        "paperId": "57e52aa90497f5325772e5f51fd35f669f9b88eb",
-        "title": "Natural Language Watermarking: Design",
-        "reason": "Analysis, and a Proof-of-Concept Implementation, Early NL watermarking work providing historical grounding."
-      },
-      {
-        "rank": "19",
+        "rank": 9,
         "paperId": "6c4b76232bb72897685d19b3d264c6ee3005bc2b",
         "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
-        "reason": "Source of C4 RealNews data used for encoder training and watermark evaluation."
+        "contexts": "Training and Generation For contrastive learning of Sentence-BERT, we paraphrase 8k paragraphs of the C4-RealNews dataset (Raffel et al., 2020) using the Pegasus paraphraser (Zhang et al., 2020) through beam search with 25 beams. | The RealNews subset of the c4 dataset (Raffel et al., 2020) is used for both Sentence-BERT finetuning and evaluation of watermark algorithms.",
+        "reason": "Supplies the C4-RealNews data used for training the encoder and evaluating watermarks; important experimental infrastructure but not unique.",
+        "category": "Medium"
       },
       {
-        "rank": "20",
-        "paperId": "9439d1366a73c99c416113fa9114e4fe18d02971",
-        "title": "Watermarking Pre-trained Language Models with Backdooring",
-        "reason": "Contrasting backdoor-based watermark paradigm; frames the design space."
+        "rank": 10,
+        "paperId": "295065d942abca0711300b2b4c39829551060578",
+        "title": "BERTScore: Evaluating Text Generation with BERT",
+        "contexts": "5-Turbo, the paraphrase sample with the highest BERTScore is treated as the first beam. | We measure the quality of paraphrases using BERTScore (Zhang et al., 2019) between original generations and their paraphrases. | Bigram Paraphrase Attack Control We control the “intensity” degree of bigram paraphrase attack by constraining the paraphrase candidate selection with a BERTScore constraint. | For the Pegasus and Parrot paraphrasers, we select the candidate sentence with the least bigram overlap among the 25 beams from beam-search, subject to a BERTScore constraint of dropping no more than 10% of the score from the first beam. | Moreover, to preserve the paraphrasing quality, we constrain the paraphrase attack with BERTScore (Zhang et al., 2019) between paraphrases and original sentences: where s denotes the original sentence, B ( x, s ) is a simple counting of overlapped bigrams between sequences x and s , S ( x, s ) denotes the BERTScore between sequence x and s , and ∆ is the BERTScore threshold ratio. | Moreover, to preserve the paraphrasing quality, we constrain the paraphrase attack with BERTScore (Zhang et al., 2019) between paraphrases and original sentences: where s denotes the original sentence, B ( x, s ) is a simple counting of overlapped bigrams between sequences x and s , S ( x, s )… | Furthermore, the BERTScore for bigram paraphrase does not change drastically compared to the regular paraphrases, showing that the bigram paraphrase attack still preserves paraphrase quality due to the BERTScore constraints we add.",
+        "reason": "Used to control and evaluate paraphrase quality in the proposed bigram paraphrase attack; important to experimental design though other similarity metrics could substitute.",
+        "category": "Medium"
       },
       {
-        "rank": "21",
-        "paperId": "d994b38331d42fdaaab87c1f7578f05e99dd4204",
-        "title": "A Private Watermark for Large Language Models",
-        "reason": "Alternative generation/detection architecture (separate networks); relevant contrast to SemStamp’s public scheme."
+        "rank": 11,
+        "paperId": "75b68d0903af9d9f6e47ce3cf7e1a7d27ec811dc",
+        "title": "Provable Robust Watermarking for AI-Generated Text",
+        "contexts": "Contemporary to our work, Zhao et al. (2023) improve robustness via a cryptographic-free watermark without hashing previous tokens, which is more robust to editing and paraphrasing attacks.",
+        "reason": "Contemporary robust watermarking baseline and point of comparison that helps position SemStamp’s robustness to editing/paraphrasing.",
+        "category": "Medium"
       },
       {
-        "rank": "22",
-        "paperId": "78c516bc91be667fa25115c9d5c029ec3ac210da",
-        "title": "Watermarking Text Data on Large Language Models for Dataset Copyright Protection",
-        "reason": "Backdoor watermarks for copyright; related but orthogonal to SemStamp’s goal."
+        "rank": 12,
+        "paperId": "ccaff61e0c1e629d91d78f82a64b3cbc8f3f7023",
+        "title": "Robust Distortion-free Watermarks for Language Models",
+        "contexts": "Kuditipudi et al. (2023) preserve the original distribution of LM during watermarking.",
+        "reason": "Alternative watermarking approach referenced for comparison; useful context but not essential to SemStamp’s method.",
+        "category": "Medium"
       },
       {
-        "rank": "23",
-        "paperId": "e476b207fffb2b15f0adc39f8f8c1c8643a63311",
-        "title": "PromptCARE: Prompt Copyright Protection by Watermark Injection and Verification",
-        "reason": "Adjacent watermarking on prompts rather than outputs."
+        "rank": 13,
+        "paperId": "ca18c18ddd730e4d690431ad6c65035d0f41aed6",
+        "title": "Watermarking Conditional Text Generation for AI Detection: Unveiling Challenges and a Semantic-Aware Watermark Remedy",
+        "contexts": "Moreover, because the watermark changes logits directly, it can degrade the quality of generated text (Fu et al., 2023). | Fu et al. (2023) consider semantic word similarity during watermarked generation.",
+        "reason": "Related attempt to incorporate semantics into watermarking; informs problem framing and comparisons but not directly used by SemStamp.",
+        "category": "Medium"
       },
       {
-        "rank": "24",
-        "paperId": "f4faa5a838afb1d6d15b77d2c122818e4b6d642b",
-        "title": "Generating Sentences by Editing Prototypes",
-        "reason": "Demonstrates LSH use for efficient similarity in generation; supports feasibility of LSH in text systems."
+        "rank": 14,
+        "paperId": "00c85c78a67dceb33621e36adef08b5d05c5251d",
+        "title": "On the Reliability of Watermarks for Large Language Models",
+        "contexts": "…to our focus on paraphrase attack, Krishna et al. (2023) propose a retrieval-based method that requires saving all previously-generated sequences, and Kirchenbauer et al. (2023b) empirically show that the robustness of the baseline algorithm is decent under relatively long generation length. | Although this watermarking algorithm is efficient, follow-up work has shown that corrupting the generated text, especially paraphrasing, could weaken its robustness (Krishna et al., 2023; Sadasivan et al., 2023; Kirchenbauer et al., 2023b).",
+        "reason": "Highlights vulnerabilities (including paraphrasing) in token-level watermarks, motivating SemStamp’s semantic approach.",
+        "category": "Medium"
       },
       {
-        "rank": "25",
-        "paperId": "826be441da031fde467f786426e075d723239a72",
-        "title": "Randomized Algorithms and NLP: Using Locality Sensitive Hash Functions for High Speed Noun Clustering",
-        "reason": "Early NLP application of LSH; background for SemStamp’s LSH usage."
+        "rank": 15,
+        "paperId": "1c13af186d1e177b85ef1ec3fc7b8d33ec314cfd",
+        "title": "Paraphrasing evades detectors of AI-generated text, but retrieval is an effective defense",
+        "contexts": "More related to our focus on paraphrase attack, Krishna et al. (2023) propose a retrieval-based method that requires saving all previously-generated sequences, and Kirchenbauer et al. (2023b) empirically show that the robustness of the baseline algorithm is decent under relatively long generation… | Although this watermarking algorithm is efficient, follow-up work has shown that corrupting the generated text, especially paraphrasing, could weaken its robustness (Krishna et al., 2023; Sadasivan et al., 2023; Kirchenbauer et al., 2023b). | As a result, a green token w t +1 could be considered red after the green list has changed, which undermines the detectability of the watermark (Krishna et al., 2023). | For example, a recently proposed paraphraser Dipper (Krishna et al., 2023) includes sentence reordering.",
+        "reason": "Establishes paraphrase as an effective evasion strategy and introduces tools (e.g., Dipper) influencing SemStamp’s threat model and analysis.",
+        "category": "Medium"
       },
       {
-        "rank": "26",
-        "paperId": "c26759e6c701201af2f62f7ee4eb68742b5bf085",
-        "title": "SimCSE: Simple Contrastive Learning of Sentence Embeddings",
-        "reason": "Influences encoder training choices; general CL for sentence embeddings."
+        "rank": 16,
+        "paperId": "5ee8bb4fc80a291b2e416a2a879e7153a783d7e9",
+        "title": "Can AI-Generated Text be Reliably Detected?",
+        "contexts": "Very recently, Sadasivan et al. (2023) question the theoretical reliability of detection while Chakraborty et al. (2023) support detection is achievable. | Although this watermarking algorithm is efficient, follow-up work has shown that corrupting the generated text, especially paraphrasing, could weaken its robustness (Krishna et al., 2023; Sadasivan et al., 2023; Kirchenbauer et al., 2023b). | Paraphrase Attack For paraphrase attack experiments, we paraphrase watermarked generations sentence by sentence using the Pegasus paraphraser (Zhang et al., 2020), the Parrot paraphraser in Sadasivan et al. (2023), and GPT-3.",
+        "reason": "Frames reliability concerns and provides a paraphraser (Parrot) used in experiments; helpful context for evaluation setup.",
+        "category": "Medium"
       },
       {
-        "rank": "27",
-        "paperId": "46f30e94dd3d5902141c5fbe58d0bc9189545c76",
-        "title": "Dimensionality Reduction by Learning an Invariant Mapping",
-        "reason": "Foundational contrastive learning principle underlying CL-based encoder robustness."
+        "rank": 17,
+        "paperId": "753dd1be7581e70d65b537e8f62140b8ff8793ac",
+        "title": "Robust Multi-bit Natural Language Watermarking through Invariant Features",
+        "contexts": "Yoo et al. (2023) further embed multi-bit information into watermark and enhance robustness against corruption by preventing altering keywords and high syntactic dependency components.",
+        "reason": "Related robustness-oriented watermarking approach; informs landscape but not a direct dependency.",
+        "category": "Medium"
       },
       {
-        "rank": "28",
-        "paperId": "795c5774ee1d1efe5c4aa4ff7465374d0e6b3bda",
-        "title": "Self-Guided Contrastive Learning for BERT Sentence Representations",
-        "reason": "Additional CL method for sentence embeddings; supportive background."
+        "rank": 18,
+        "paperId": "57e52aa90497f5325772e5f51fd35f669f9b88eb",
+        "title": "Natural Language Watermarking: Design, Analysis, and a Proof-of-Concept Implementation",
+        "contexts": "This work focuses on algorithms for watermarked generation —an approach which facilitates the detection of machine-generated text by adding algorithmically detectable signatures during LLM generation which are imperceptible to humans (Atallah et al., 2001).",
+        "reason": "Early foundational work on natural language watermarking; provides historical grounding and conceptual lineage.",
+        "category": "Medium"
       },
       {
-        "rank": "29",
-        "paperId": "17d5884215b5afa53545cd7cb6135de5478da4ec",
-        "title": "CERT: Contrastive Self-supervised Learning for Language Understanding",
-        "reason": "CL variant informing sentence representation learning."
-      },
-      {
-        "rank": "30",
-        "paperId": "ad31866da7f14ae21bd38df0a3b1ffd1a1438122",
-        "title": "An efficient framework for learning sentence representations",
-        "reason": "General sentence representation learning; background context."
-      },
-      {
-        "rank": "31",
-        "paperId": "ca9c25e964abd0b6634132836e54e58beb050428",
-        "title": "Pair-Level Supervised Contrastive Learning for Natural Language Inference",
-        "reason": "Supervised CL for sentences; supporting background."
-      },
-      {
-        "rank": "32",
-        "paperId": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
-        "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
-        "reason": "Benchmark grounding SBERT’s similarity objective; motivates cosine-based embeddings."
-      },
-      {
-        "rank": "33",
-        "paperId": "0914c443c0fb00c9ffc26ced54c1932079d5e652",
-        "title": "CoCo: Coherence-Enhanced Machine-Generated Text Detection Under Data Limitation With Contrastive Learning",
-        "reason": "Post-hoc detection context; peripheral to in-generation watermarking."
-      },
-      {
-        "rank": "34",
+        "rank": 19,
         "paperId": "9a7ac45eafe11ca003db3a300505f3b5c3f9009a",
         "title": "DetectGPT: Zero-Shot Machine-Generated Text Detection using Probability Curvature",
-        "reason": "Post-hoc detection baseline context; not used by SemStamp."
+        "contexts": "Another type of post-hoc detection is based on probability-related statistics, including token likelihood (Gehrmann et al., 2019), rank (Solaiman et al., 2019), entropy (Ippolito et al., 2020), and likelihood gap at perturbation (Mitchell et al., 2023; Su et al., 2023). | Therefore, methods for detecting machine-generated text (Jawahar et al., 2020; Ippolito et al., 2020; Mitchell et al., 2023, i.a. ) as well as regulating its proliferation (House, 2023) is a crucial step towards reducing harms.",
+        "reason": "Background on post-hoc detection methods; cited to situate detection landscape, not used in SemStamp’s method.",
+        "category": "Low"
       },
       {
-        "rank": "35",
+        "rank": 20,
         "paperId": "1e66b2d2a56842f07e5d6bf4ac0dbe5da829d052",
         "title": "DetectLLM: Leveraging Log Rank Information for Zero-Shot Detection of Machine-Generated Text",
-        "reason": "Post-hoc detection method; contextual background."
+        "contexts": "Another type of post-hoc detection is based on probability-related statistics, including token likelihood (Gehrmann et al., 2019), rank (Solaiman et al., 2019), entropy (Ippolito et al., 2020), and likelihood gap at perturbation (Mitchell et al., 2023; Su et al., 2023). | However, they watermark via word replacement after initial generation, which is further improved into one-stage watermarked generation by Wang et al. (2023).",
+        "reason": "Background detection approach; included to contrast watermarking with post-hoc detection.",
+        "category": "Low"
       },
       {
-        "rank": "36",
+        "rank": 21,
         "paperId": "9146414fca384e73f11ccfd3db8ad6d2a1e8eda2",
         "title": "Automatic Detection of Generated Text is Easiest when Humans are Fooled",
-        "reason": "Detection literature context; not directly used."
+        "contexts": "Another type of post-hoc detection is based on probability-related statistics, including token likelihood (Gehrmann et al., 2019), rank (Solaiman et al., 2019), entropy (Ippolito et al., 2020), and likelihood gap at perturbation (Mitchell et al., 2023; Su et al., 2023). | Therefore, methods for detecting machine-generated text (Jawahar et al., 2020; Ippolito et al., 2020; Mitchell et al., 2023, i.a. ) as well as regulating its proliferation (House, 2023) is a crucial step towards reducing harms.",
+        "reason": "Contextualizes post-hoc detection; not directly used by SemStamp.",
+        "category": "Low"
       },
       {
-        "rank": "37",
-        "paperId": "867db5097ad6aaef098c60b0845785b440eca49a",
-        "title": "GLTR: Statistical Detection and Visualization of Generated Text",
-        "reason": "Classic statistical detector; broader context only."
+        "rank": 22,
+        "paperId": "0914c443c0fb00c9ffc26ced54c1932079d5e652",
+        "title": "CoCo: Coherence-Enhanced Machine-Generated Text Detection Under Data Limitation With Contrastive Learning",
+        "contexts": "Post-Hoc Detection of Machine-Generated Text In post-hoc methods, applying binary classification models is the most straightforward approach (Zellers et al., 2019; Jawahar et al., 2020; Liu et al., 2022; Mireshghallah et al., 2023). | 7B (Zhang et al., 2022). | 3B (Zhang et al., 2022) as our base model and conduct sampling at a temperature of 0.7 following Kirchenbauer et al. (2023a) with a repetition penalty of 1.03.",
+        "reason": "Background detection method; cited for context on detection techniques.",
+        "category": "Low"
       },
       {
-        "rank": "38",
-        "paperId": "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
-        "title": "Defending Against Neural Fake News",
-        "reason": "Classifier-based detection baseline; contextual."
-      },
-      {
-        "rank": "39",
-        "paperId": "1527d3b661154ff7310fa2759b6dd0ddfd559492",
-        "title": "Smaller Language Models are Better Black-box Machine-Generated Text Detectors",
-        "reason": "Detector design context; peripheral."
-      },
-      {
-        "rank": "40",
+        "rank": 23,
         "paperId": "9438bc5626b2d9a771cecc7a41ecabf6639db53c",
         "title": "Automatic Detection of Machine Generated Text: A Critical Survey",
-        "reason": "Survey framing the detection landscape."
+        "contexts": "Post-Hoc Detection of Machine-Generated Text In post-hoc methods, applying binary classification models is the most straightforward approach (Zellers et al., 2019; Jawahar et al., 2020; Liu et al., 2022; Mireshghallah et al., 2023). | Therefore, methods for detecting machine-generated text (Jawahar et al., 2020; Ippolito et al., 2020; Mitchell et al., 2023, i.a. ) as well as regulating its proliferation (House, 2023) is a crucial step towards reducing harms.",
+        "reason": "Survey context on detection; not operationally used by SemStamp.",
+        "category": "Low"
       },
       {
-        "rank": "41",
-        "paperId": "9ab5c6644082b6fdbd6a2b0e6ae3527668244424",
-        "title": "Machine-Generated Text: A Comprehensive Survey of Threat Models and Detection Methods",
-        "reason": "Broad survey background."
+        "rank": 24,
+        "paperId": "1527d3b661154ff7310fa2759b6dd0ddfd559492",
+        "title": "Smaller Language Models are Better Black-box Machine-Generated Text Detectors",
+        "contexts": "Post-Hoc Detection of Machine-Generated Text In post-hoc methods, applying binary classification models is the most straightforward approach (Zellers et al., 2019; Jawahar et al., 2020; Liu et al., 2022; Mireshghallah et al., 2023).",
+        "reason": "Background on classifier-based detection; peripheral to SemStamp’s semantic watermarking.",
+        "category": "Low"
       },
       {
-        "rank": "42",
-        "paperId": "c7462e0ee928f095a7fc40b91f1e7557d283ae8e",
-        "title": "Release Strategies and the Social Impacts of Language Models",
-        "reason": "High-level societal context; peripheral to the method."
+        "rank": 25,
+        "paperId": "ad7129af0644dbcafa9aa2f111cb76526ea444a1",
+        "title": "Defending Against Neural Fake News",
+        "contexts": "Post-Hoc Detection of Machine-Generated Text In post-hoc methods, applying binary classification models is the most straightforward approach (Zellers et al., 2019; Jawahar et al., 2020; Liu et al., 2022; Mireshghallah et al., 2023).",
+        "reason": "General background on detection; not directly influential on SemStamp’s design.",
+        "category": "Low"
       },
       {
-        "rank": "43",
-        "paperId": "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
-        "title": "Ethical and social risks of harm from Language Models",
-        "reason": "Societal context; peripheral."
+        "rank": 26,
+        "paperId": "867db5097ad6aaef098c60b0845785b440eca49a",
+        "title": "GLTR: Statistical Detection and Visualization of Generated Text",
+        "contexts": "Another type of post-hoc detection is based on probability-related statistics, including token likelihood (Gehrmann et al., 2019), rank (Solaiman et al., 2019), entropy (Ippolito et al., 2020), and likelihood gap at perturbation (Mitchell et al., 2023; Su et al., 2023).",
+        "reason": "Cited as part of post-hoc detection background; not used by SemStamp.",
+        "category": "Low"
       },
       {
-        "rank": "44",
-        "paperId": "be56596ccd3f4c4120c0c7ca7d17f6d7fac7a838",
-        "title": "Threat Scenarios and Best Practices to Detect Neural Fake News",
-        "reason": "Policy/practice context; peripheral."
-      },
-      {
-        "rank": "45",
-        "paperId": "1819c5c8c556db205ec9a49d5ba4a8c2afb28a4a",
-        "title": "Preventing Verbatim Memorization in Language Models Gives a False Sense of Privacy",
-        "reason": "General LM privacy topic; tangential."
-      },
-      {
-        "rank": "46",
-        "paperId": "59ae4e4ff7a27010554081e478d9ee707d16d583",
-        "title": "On the Possibilities of AI-Generated Text Detection",
-        "reason": "Perspective piece; tangential to SemStamp’s technical contributions."
-      },
-      {
-        "rank": "47",
-        "paperId": "53a77e8f73f2ca422d6e38fa9ecc490231ac044c",
-        "title": "Neural Text Generation with Unlikelihood Training",
-        "reason": "Cited for the Rep-3 repetition metric in evaluation only."
-      },
-      {
-        "rank": "48",
-        "paperId": "e79fbc3974827f3ea43a690221cd95fddefb7019",
-        "title": "Generating Informative and Diverse Conversational Responses via Adversarial Information Maximization",
-        "reason": "Source of the trigram entropy (Ent-3) diversity metric used in evaluation."
-      },
-      {
-        "rank": "49",
-        "paperId": "88486ee223f8377a0786e176950e20869f864caa",
-        "title": "Contrastive Self-Supervised Learning for Commonsense Reasoning",
-        "reason": "Ancillary contrastive learning reference; least directly connected."
-      },
-      {
-        "rank": "50",
+        "rank": 27,
         "paperId": "78c516bc91be667fa25115c9d5c029ec3ac210da",
         "title": "Watermarking Text Data on Large Language Models for Dataset Copyright Protection",
-        "reason": "Note: already ranked at 22; this line is a duplicate and should be ignored."
+        "contexts": "Gu et al. (2022) embed backdoor trigger words as black-box watermarks into LLMs. Liu et al. (2023b) propose a novel watermark via backdoor-based membership inference, where backdoor watermarked texts poison unauthorized training models.",
+        "reason": "Backdoor-based watermarking for data ownership; acknowledged as related but not directly connected to SemStamp’s semantic approach.",
+        "category": "Low"
+      },
+      {
+        "rank": 28,
+        "paperId": "9439d1366a73c99c416113fa9114e4fe18d02971",
+        "title": "Watermarking Pre-trained Language Models with Backdooring",
+        "contexts": "Gu et al. (2022) embed backdoor trigger words as black-box watermarks into LLMs. Liu et al. (2023b) propose a novel watermark via backdoor-based membership inference, where backdoor watermarked texts poison unauthorized training models.",
+        "reason": "Backdoor watermarking line; tangential to SemStamp’s generation-time semantic watermark.",
+        "category": "Low"
+      },
+      {
+        "rank": 29,
+        "paperId": "7baae1691bc8c4012f2193e174de94c228afa8f8",
+        "title": "Undetectable Watermarks for Language Models",
+        "contexts": "Very recently, Christ et al. (2023) propose a watermarking scheme that is computationally undetectable without the secret key in theory.",
+        "reason": "Related theoretical direction; not directly used or built upon by SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 30,
+        "paperId": "d994b38331d42fdaaab87c1f7578f05e99dd4204",
+        "title": "A Private Watermark for Large Language Models",
+        "contexts": "Liu et al. (2023a) propose a private watermark using separate neural networks respectively for generation and detection.",
+        "reason": "Alternative watermarking design (private) cited for breadth; not instrumental to SemStamp’s method.",
+        "category": "Low"
+      },
+      {
+        "rank": 31,
+        "paperId": "e476b207fffb2b15f0adc39f8f8c1c8643a63311",
+        "title": "PromptCARE: Prompt Copyright Protection by Watermark Injection and Verification",
+        "contexts": "Yao et al. (2023) focus on protecting the copyright of prompts through inserting the secret key into the prompt optimization stage.",
+        "reason": "Addresses prompt copyright rather than generation-time semantic watermarking; peripheral.",
+        "category": "Low"
+      },
+      {
+        "rank": 32,
+        "paperId": "59ae4e4ff7a27010554081e478d9ee707d16d583",
+        "title": "On the Possibilities of AI-Generated Text Detection",
+        "contexts": "Very recently, Sadasivan et al. (2023) question the theoretical reliability of detection while Chakraborty et al. (2023) support detection is achievable.",
+        "reason": "High-level discussion of detectability; provides motivation but no direct methodological input.",
+        "category": "Low"
+      },
+      {
+        "rank": 33,
+        "paperId": "9ab5c6644082b6fdbd6a2b0e6ae3527668244424",
+        "title": "Machine-Generated Text: A Comprehensive Survey of Threat Models and Detection Methods",
+        "contexts": "However, such capabilities also increase risks of misus-ing LLMs such as generating misinformation, impersonating, copyright infringements, and more (Weidinger et al., 2021; Pagnoni et al., 2022; Crothers et al., 2023; Ippolito et al., 2022).",
+        "reason": "Broad survey and risk framing; background only.",
+        "category": "Low"
+      },
+      {
+        "rank": 34,
+        "paperId": "be56596ccd3f4c4120c0c7ca7d17f6d7fac7a838",
+        "title": "Threat Scenarios and Best Practices to Detect Neural Fake News",
+        "contexts": "However, such capabilities also increase risks of misus-ing LLMs such as generating misinformation, impersonating, copyright infringements, and more (Weidinger et al., 2021; Pagnoni et al., 2022; Crothers et al., 2023; Ippolito et al., 2022).",
+        "reason": "Risk background; not influential on SemStamp’s technique.",
+        "category": "Low"
+      },
+      {
+        "rank": 35,
+        "paperId": "fd1b829261ba04bb92e0ab60c4f6e7cea0d99fbf",
+        "title": "Ethical and social risks of harm from Language Models",
+        "contexts": "However, such capabilities also increase risks of misus-ing LLMs such as generating misinformation, impersonating, copyright infringements, and more (Weidinger et al., 2021; Pagnoni et al., 2022; Crothers et al., 2023; Ippolito et al., 2022).",
+        "reason": "Ethical background context; not methodologically connected.",
+        "category": "Low"
+      },
+      {
+        "rank": 36,
+        "paperId": "1819c5c8c556db205ec9a49d5ba4a8c2afb28a4a",
+        "title": "Preventing Verbatim Memorization in Language Models Gives a False Sense of Privacy",
+        "contexts": "However, such capabilities also increase risks of misus-ing LLMs such as generating misinformation, impersonating, copyright infringements, and more (Weidinger et al., 2021; Pagnoni et al., 2022; Crothers et al., 2023; Ippolito et al., 2022).",
+        "reason": "Broader risk/privacy background; tangential to the proposed method.",
+        "category": "Low"
+      },
+      {
+        "rank": 37,
+        "paperId": "53a77e8f73f2ca422d6e38fa9ecc490231ac044c",
+        "title": "Neural Text Generation with Unlikelihood Training",
+        "contexts": "We also use the seq-rep-3 ( Rep-3 ) metric from Welleck et al. (2020), which measures the proportion of repeated trigrams in generated text.",
+        "reason": "Used only as a repetition metric for evaluation; easily replaceable.",
+        "category": "Low"
+      },
+      {
+        "rank": 38,
+        "paperId": "e79fbc3974827f3ea43a690221cd95fddefb7019",
+        "title": "Generating Informative and Diverse Conversational Responses via Adversarial Information Maximization",
+        "contexts": "Diversity is measured with trigram text entropy (Zhang et al., 2018) ( Ent-3 ), i.e., the entropy of the trigram frequency distribution of the generated text.",
+        "reason": "Provides an evaluation diversity metric (Ent-3); peripheral.",
+        "category": "Low"
+      },
+      {
+        "rank": 39,
+        "paperId": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
+        "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation",
+        "contexts": "We base our encoder on Sentence-BERT (SBERT; Reimers & Gurevych, 2019), a fine-tuned siamese network that produces sentence embeddings whose cosine similarity approximates the semantic textual similarity on the STS benchmark (Cer et al., 2017).",
+        "reason": "Background on the STS benchmark related to SBERT; not directly used by SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 40,
+        "paperId": "c26759e6c701201af2f62f7ee4eb68742b5bf085",
+        "title": "SimCSE: Simple Contrastive Learning of Sentence Embeddings",
+        "contexts": "Gao et al. (2021) further apply supervised contrastive learning in sentence embedding by using annotated pairs from natural language inference.",
+        "reason": "Alternative sentence embedding approach; cited as background for contrastive learning.",
+        "category": "Low"
+      },
+      {
+        "rank": 41,
+        "paperId": "17d5884215b5afa53545cd7cb6135de5478da4ec",
+        "title": "CERT: Contrastive Self-supervised Learning for Language Understanding",
+        "contexts": "…sentence embedding (Logeswaran & Lee, 2018), and further used in downstream tasks like natural language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc. Logeswaran & Lee (2018) apply unsupervised contrastive…",
+        "reason": "General contrastive learning background; not specifically used in SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 42,
+        "paperId": "795c5774ee1d1efe5c4aa4ff7465374d0e6b3bda",
+        "title": "Self-Guided Contrastive Learning for BERT Sentence Representations",
+        "contexts": "Kim et al. (2021) propose a self-guided contrastive learning between embeddings from a fixed model and a fine-tuned model.",
+        "reason": "Background on contrastive sentence embeddings; not directly used.",
+        "category": "Low"
+      },
+      {
+        "rank": 43,
+        "paperId": "a04b3744834b1b167a590bbb3b6230a75e20accc",
+        "title": "C2L: Causally Contrastive Learning for Robust Text Classification",
+        "contexts": "…tasks like natural language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc. Logeswaran & Lee (2018) apply unsupervised contrastive learning between current sentence candidates and context sentences to…",
+        "reason": "General contrastive learning reference; not central to SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 44,
+        "paperId": "ca9c25e964abd0b6634132836e54e58beb050428",
+        "title": "Pair-Level Supervised Contrastive Learning for Natural Language Inference",
+        "contexts": "…learning can be applied to sentence embedding (Logeswaran & Lee, 2018), and further used in downstream tasks like natural language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc. Logeswaran & Lee (2018)…",
+        "reason": "Background on supervised contrastive learning; peripheral.",
+        "category": "Low"
+      },
+      {
+        "rank": 45,
+        "paperId": "88486ee223f8377a0786e176950e20869f864caa",
+        "title": "Contrastive Self-Supervised Learning for Commonsense Reasoning",
+        "contexts": "…& Lee, 2018), and further used in downstream tasks like natural language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc. Logeswaran & Lee (2018) apply unsupervised contrastive learning between current sentence…",
+        "reason": "Contrastive learning background; not used by SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 46,
+        "paperId": "ad31866da7f14ae21bd38df0a3b1ffd1a1438122",
+        "title": "An efficient framework for learning sentence representations",
+        "contexts": "In the NLP domain, contrastive learning can be applied to sentence embedding (Logeswaran & Lee, 2018), and further used in downstream tasks like natural language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc.… | …language inference (Li et al., 2022), understanding (Fang et al., 2020), reasoning (Klein & Nabi, 2020), classification (Choi et al., 2022) etc. Logeswaran & Lee (2018) apply unsupervised contrastive learning between current sentence candidates and context sentences to effectively learn…",
+        "reason": "General sentence representation/contrastive learning background; not central.",
+        "category": "Low"
+      },
+      {
+        "rank": 47,
+        "paperId": "f4faa5a838afb1d6d15b77d2c122818e4b6d642b",
+        "title": "Generating Sentences by Editing Prototypes",
+        "contexts": "Guu et al. (2018) use LSH to efficiently compute lexically similar sentences in a prototype-then-edit sentence generation model.",
+        "reason": "Shows LSH use in NLP generation; supportive background but not directly used in SemStamp.",
+        "category": "Low"
+      },
+      {
+        "rank": 48,
+        "paperId": "826be441da031fde467f786426e075d723239a72",
+        "title": "Randomized Algorithms and NLP: Using Locality Sensitive Hash Functions for High Speed Noun Clustering",
+        "contexts": "Locality-Sensitive Hashing in NLP The application of locality-sensitive hashing (Indyk & Mot-wani, 1998; Charikar, 2002) in NLP dates back to Ravichandran et al. (2005), where LSH is used for high-speed noun clustering.",
+        "reason": "Early application of LSH in NLP; historical background only.",
+        "category": "Low"
+      },
+      {
+        "rank": 49,
+        "paperId": "c7462e0ee928f095a7fc40b91f1e7557d283ae8e",
+        "title": "Release Strategies and the Social Impacts of Language Models",
+        "contexts": "Another type of post-hoc detection is based on probability-related statistics, including token likelihood (Gehrmann et al., 2019), rank (Solaiman et al., 2019), entropy (Ippolito et al., 2020), and likelihood gap at perturbation (Mitchell et al., 2023; Su et al., 2023).",
+        "reason": "High-level policy/impact background; not influential on the technical method.",
+        "category": "Low"
       }
     ]
   }

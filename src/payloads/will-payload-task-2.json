@@ -5,112 +5,148 @@
     "paperTitle": "Garden Path Traversal in GPT-2",
     "candidates": [
       {
-        "rank": "1",
-        "paperId": "51b0c571d89bd2d39a194f60f91f0a03d74574b5",
-        "title": "All Bark and No Bite: Rogue Dimensions in Transformer Language Models Obscure Representational Quality",
-        "reason": "Core methodological influence: motivates recentering vectors for cosine similarity, highlights rogue dimensions, and frames why LM-head-based measures can be misleading; repeatedly cited to justify the paper’s hidden-state analysis choices."
-      },
-      {
-        "rank": "2",
-        "paperId": "88fc7fc6ed73db6251967cfe40507a92008e5949",
-        "title": "On the Surprising Behavior of Distance Metrics in High Dimensional Spaces",
-        "reason": "Foundational rationale for choosing Manhattan over Euclidean distance and for expectations about variance/stability in high-dimensional spaces; directly underpins the paper’s metric design."
-      },
-      {
-        "rank": "3",
-        "paperId": "61f35e2b4de59c74963c53b7379b306d6b24b2ba",
-        "title": "IsoScore: Measuring the Uniformity of Vector Space Utilization",
-        "reason": "Supports claims about under-utilization of latent space and the need to re-center vectors before cosine similarity; directly informs the paper’s cosine-similarity methodology."
-      },
-      {
-        "rank": "4",
-        "paperId": "847a0a93ad97c8a31ef70d379517d8d72d4d9a46",
-        "title": "Neural language models as psycholinguistic subjects: Representations of syntactic state",
-        "reason": "Influences experimental design and garden-path sentence paradigms; the paper’s tests and dataset construction are inspired by this line of work (and closely related Futrell-style setups)."
-      },
-      {
-        "rank": "5",
-        "paperId": "59b05bf0ebc2eb233be01d78477a572678326928",
-        "title": "Neural network surprisal predicts the existence but not the magnitude of human syntactic disambiguation difficulty",
-        "reason": "Central comparative baseline: frames limitations of surprisal with garden paths that the present work claims hidden-state analyses can overcome."
-      },
-      {
-        "rank": "6",
-        "paperId": "a6c95ca565188a8af290edf940414a0cc3234b2a",
-        "title": "Against Repair-Based Reanalysis in Sentence Comprehension",
-        "reason": "Source for key sentence materials/types used in compiling the garden-path dataset; informs dataset content and psycholinguistic grounding."
-      },
-      {
-        "rank": "7",
-        "paperId": "cea1595e56e1e0ccf6e3c980ddf94eb2ab597fca",
-        "title": "Structural change and reanalysis difficulty in language comprehension",
-        "reason": "Provides psycholinguistic benchmarks for the magnitude of garden path effects (reading time increases), helping interpret model effects across sentence types."
-      },
-      {
-        "rank": "8",
+        "rank": 1,
         "paperId": "afd110eace912c2b273e64851c6b4df2658622eb",
         "title": "Visualizing and Measuring the Geometry of BERT",
-        "reason": "Methodological precedent for geometric analysis of hidden states across layers; informs the paper’s visualization/comparison of cosine, Manhattan, and surprisal trends."
+        "contexts": "…over 150 studies have investigated BERT’s structure, exploring how its internal representations enable powerful and ﬂexi-ble language comprehension (Coenen et al., 2019; Figure 1: Hidden state relations (Top: cosine similarity, Middle: Manhattan distance, Bottom: surprisal difference) between…",
+        "reason": "Provides the concrete framework for comparing hidden-state geometry with cosine similarity, Manhattan distance, and surprisal differences—the core methodological triad the paper uses to analyze GPT-2 representations.",
+        "category": "High"
       },
       {
-        "rank": "9",
+        "rank": 2,
+        "paperId": "88fc7fc6ed73db6251967cfe40507a92008e5949",
+        "title": "On the Surprising Behavior of Distance Metrics in High Dimensional Spaces",
+        "contexts": "…we expect that Manhattan distances will exhibit less variance in the effect of negating a given sentence type than either surprisals or cosine similarities after a zero-mean transformation, because Manhattan distances are resilient to extreme values in a single dimension (Aggarwal et al., 2001). | …after the zero-mean transformation because even relatively minor differences in a few of these dimensions will have a much more substantial effect on the angular difference than more major differences in many smaller dimensions would (Timkey and van Schijndel, 2021; Aggarwal et al., 2001). | We use Manhattan distance over Euclidean distance to compute scalars from the vector differences be-tween sentences as is generally preferred in high dimensional spaces, where Euclidean distances are sensitive to the dimensions with the largest values (Aggarwal et al., 2001).",
+        "reason": "Supplies the theoretical basis for preferring Manhattan over Euclidean distance in high-dimensional hidden states and underpins the paper’s main methodological choice and variance arguments.",
+        "category": "High"
+      },
+      {
+        "rank": 3,
+        "paperId": "51b0c571d89bd2d39a194f60f91f0a03d74574b5",
+        "title": "All Bark and No Bite: Rogue Dimensions in Transformer Language Models Obscure Representational Quality",
+        "contexts": "…after the zero-mean transformation because even relatively minor differences in a few of these dimensions will have a much more substantial effect on the angular difference than more major differences in many smaller dimensions would (Timkey and van Schijndel, 2021; Aggarwal et al., 2001). | The few studies that explore the hidden states of GPT-2 suggest an under-utilization of its massive latent space as representations are dominated by the presence of rogue dimensions (Ethayarajh, 2019; Cai et al., 2021; Rudman et al., 2021; Timkey and van Schijndel, 2021). | …used to compute surprisal tend to depend heavily on these dimensions, while the zero-mean translation required to create meaningful angular differences around the origin mean that a few extreme dimensions expose cosine similarities to similarly high variances (Timkey and van Schijndel, 2021).",
+        "reason": "Identifies and analyzes rogue dimensions in transformer hidden states, motivating zero-mean re-centering and explaining variability in cosine and surprisal—core preprocessing and interpretive steps used in the paper.",
+        "category": "High"
+      },
+      {
+        "rank": 4,
+        "paperId": "61f35e2b4de59c74963c53b7379b306d6b24b2ba",
+        "title": "IsoScore: Measuring the Uniformity of Vector Space Utilization",
+        "contexts": "The few studies that explore the hidden states of GPT-2 suggest an under-utilization of its massive latent space as representations are dominated by the presence of rogue dimensions (Ethayarajh, 2019; Cai et al., 2021; Rudman et al., 2021; Timkey and van Schijndel, 2021). | Cosine similarities are computed after re-centering all vectors so that the distribution has a mean of zero, which prevents the metric from defaulting to near-maximum values and allows it to measure the true directional changes between vectors (Rudman et al., 2021).",
+        "reason": "Provides the operational guidance to re-center hidden-state vectors before computing cosine similarity, which the paper adopts to make cosine a meaningful geometric measure in its analyses.",
+        "category": "High"
+      },
+      {
+        "rank": 5,
+        "paperId": "847a0a93ad97c8a31ef70d379517d8d72d4d9a46",
+        "title": "Neural language models as psycholinguistic subjects: Representations of syntactic state",
+        "contexts": "Instead of building out side-by-side datasets of each type of sentence, however, we store the components of these sentences in tabular ﬁles, and include scripts to construct these sentences in various forms similar to those used by Futrell et al. (2019). | …used for these experiments builds on the combination of the NP/Z and NP/S sentences from Grodner et al. (2003) and the NP/Z and MV/RR sentences from Futrell et al. (2019), originally taken from Staub (2007) and Tabor and Hutchins (2004), and consists of 43 NP/Z sentences, 20 NP/S sentence, and 20… | These are sentences where prior to a disambigua-tor, the ambiguous verb could either be the main verb of the sentence or a verb that introduces a reduced relative clause (Futrell et al., 2019). | These are sentences where the ﬁrst verb appears to take on a Noun Phrase as its direct object, but subsequently is revealed to have no (Zero) direct object at all (Futrell et al., 2019). | The general structure of the tests we run is inspired by Futrell et al. (2019) and Hu et al. (2020).",
+        "reason": "Directly informs the garden path sentence types (NP/Z, MV/RR, NP/S) and test structure used to build the paper’s dataset and evaluation setup; essential to the case-study design.",
+        "category": "High"
+      },
+      {
+        "rank": 6,
+        "paperId": "59b05bf0ebc2eb233be01d78477a572678326928",
+        "title": "Neural network surprisal predicts the existence but not the magnitude of human syntactic disambiguation difficulty",
+        "contexts": "Without the comma, most readers will assume “the instructor” is the direct object of the verb “phoned”, rather than the subject of the main clause’s verb phrase, “was very upset” (van Schijndel and Linzen, 2019).",
+        "reason": "Anchors the paper’s comparison against surprisal-based analyses for garden-path effects and motivates the claim that surprisal misses aspects of ambiguity; informative but replaceable by other surprisal studies.",
+        "category": "Medium"
+      },
+      {
+        "rank": 7,
         "paperId": "7621b86f7be6ae5a6ef4a8a5069d57f9e6fa2d08",
         "title": "The Language Model Understood the Prompt was Ambiguous: Probing Syntactic Uncertainty Through Generation",
-        "reason": "Closely related alternative methodology (beam search over LM head) used as a contrast to the paper’s hidden-state approach; relevant to positioning the contribution."
+        "contexts": "The beam search approach used by Aina and Linzen (2021) avoids this requirement, but still relies on the language modeling head, so more work is needed to integrate these beneﬁts.",
+        "reason": "Provides a relevant LM-head-based alternative (beam-search probing) for syntactic ambiguity; helps position the paper’s move to hidden-state analysis but is not uniquely necessary.",
+        "category": "Medium"
       },
       {
-        "rank": "10",
-        "paperId": "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
-        "title": "Linguistic Knowledge and Transferability of Contextual Representations",
-        "reason": "Background on probing contextual representations; supports the motivation to analyze internal states beyond the LM head."
+        "rank": 8,
+        "paperId": "a6c95ca565188a8af290edf940414a0cc3234b2a",
+        "title": "Against Repair-Based Reanalysis in Sentence Comprehension",
+        "contexts": "The dataset used for these experiments builds on the combination of the NP/Z and NP/S sentences from Grodner et al. (2003) and the NP/Z and MV/RR sentences from Futrell et al. (2019), originally taken from Staub (2007) and Tabor and Hutchins (2004), and consists of 43 NP/Z sentences, 20 NP/S…",
+        "reason": "Contributes psycholinguistic background and sources for the garden-path constructions used to assemble the dataset; helpful for grounding but not indispensable.",
+        "category": "Medium"
       },
       {
-        "rank": "11",
-        "paperId": "e2587eddd57bc4ba286d91b27c185083f16f40ee",
-        "title": "What do you learn from context? Probing for sentence structure in contextualized word representations",
-        "reason": "Background probing work (including limited decoder coverage) that frames the gap this paper fills by focusing on GPT-2 hidden states."
-      },
-      {
-        "rank": "12",
-        "paperId": "97906df07855b029b7aae7c2a1c6c5e8df1d531c",
-        "title": "BERT Rediscovers the Classical NLP Pipeline",
-        "reason": "Background evidence of structured linguistic information in internal representations; tangential but supports the case for probing hidden states."
-      },
-      {
-        "rank": "13",
-        "paperId": "d78aed1dac6656affa4a04cbf225ced11a83d103",
-        "title": "Revealing the Dark Secrets of BERT",
-        "reason": "Additional background on interpreting transformer internals; relevant for context but not directly used in methods or data."
-      },
-      {
-        "rank": "14",
-        "paperId": "bd20069f5cac3e63083ecf6479abc1799db33ce0",
-        "title": "A Primer in BERTology: What We Know About How BERT Works",
-        "reason": "Survey that situates the landscape of internal-representation analysis; general background for the paper’s focus."
-      },
-      {
-        "rank": "15",
+        "rank": 9,
         "paperId": "4f46eb81bec369d3ecfb27c847a0239d7af6b83a",
         "title": "Modeling garden path effects without explicit hierarchical syntax",
-        "reason": "Thematically related to garden path modeling; not directly used for datasets or methods here, but relevant context for alternative modeling approaches."
+        "contexts": "…step in the ﬁeld of massive language models, whose ability to generate news articles indistinguishable from those written by humans provides a salient example of the many social and political implications of these models (Brown et al., 2020; Wallace et al., 2019; Heidenreich and Williams, 2021).",
+        "reason": "Conceptually situates computational modeling of garden-path phenomena that the paper investigates; related but not directly used in the methods or dataset.",
+        "category": "Medium"
       },
       {
-        "rank": "16",
-        "paperId": "00bd0ca06b5897ebb78e61a88c904aca4bb8fe52",
-        "title": "The Earth Is Flat and the Sun Is Not a Star: The Susceptibility of GPT-2 to Universal Adversarial Triggers",
-        "reason": "Cited to note prior GPT-2 work focused on LM-generated text rather than internal states; peripheral to this paper’s core contributions."
+        "rank": 10,
+        "paperId": "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+        "title": "What do you learn from context? Probing for sentence structure in contextualized word representations",
+        "contexts": "A few such studies include a decoder model in the set of models examined, but do not speciﬁcally design their analyses around this type of architecture (Tenney et al., 2019b; Liu et al., 2019). | Kovaleva et al., 2019; Tenney et al., 2019a; Rogers et al., 2020).",
+        "reason": "Represents prior probing of contextualized models (including some decoder coverage) and helps contextualize the paper’s focus on decoder hidden states; useful but not critical.",
+        "category": "Medium"
       },
       {
-        "rank": "17",
-        "paperId": "3caf34532597683c980134579b156cd0d7db2f40",
-        "title": "Universal Adversarial Triggers for Attacking and Analyzing NLP",
-        "reason": "Background citation in a general discussion of LMs’ implications; not methodologically or empirically central here."
+        "rank": 11,
+        "paperId": "f6fbb6809374ca57205bd2cf1421d4f4fa04f975",
+        "title": "Linguistic Knowledge and Transferability of Contextual Representations",
+        "contexts": "A few such studies include a decoder model in the set of models examined, but do not speciﬁcally design their analyses around this type of architecture (Tenney et al., 2019b; Liu et al., 2019).",
+        "reason": "Provides context on probing linguistic structure in contextual representations; informs positioning of the work but is not uniquely necessary.",
+        "category": "Medium"
       },
       {
-        "rank": "18",
+        "rank": 12,
+        "paperId": "97906df07855b029b7aae7c2a1c6c5e8df1d531c",
+        "title": "BERT Rediscovers the Classical NLP Pipeline",
+        "contexts": "A few such studies include a decoder model in the set of models examined, but do not speciﬁcally design their analyses around this type of architecture (Tenney et al., 2019b; Liu et al., 2019). | Kovaleva et al., 2019; Tenney et al., 2019a; Rogers et al., 2020).",
+        "reason": "Another probing study that helps situate analysis of internal structure; complements related background but not central to the methodology.",
+        "category": "Medium"
+      },
+      {
+        "rank": 13,
+        "paperId": "cea1595e56e1e0ccf6e3c980ddf94eb2ab597fca",
+        "title": "Structural change and reanalysis difficulty in language comprehension",
+        "contexts": "This is considered one of the weaker types of garden path effects, with an average increase in human reading times of 50 ms (Sturt et al., 1999). | stronger types of garden path effects, with an average increase in human reading time of 152 ms (Sturt et al., 1999). | This is considered one of the stronger types of garden path effects, with an average increase in human reading time of 152 ms (Sturt et al., 1999).",
+        "reason": "Provides human reading-time magnitudes for different garden-path types, used to contextualize effect strengths; background support rather than a methodological dependency.",
+        "category": "Low"
+      },
+      {
+        "rank": 14,
+        "paperId": "bd20069f5cac3e63083ecf6479abc1799db33ce0",
+        "title": "A Primer in BERTology: What We Know About How BERT Works",
+        "contexts": "Kovaleva et al., 2019; Tenney et al., 2019a; Rogers et al., 2020).",
+        "reason": "Survey/background on encoder interpretability; cited to acknowledge broader literature on internal representations but not directly used in the approach.",
+        "category": "Low"
+      },
+      {
+        "rank": 15,
+        "paperId": "d78aed1dac6656affa4a04cbf225ced11a83d103",
+        "title": "Revealing the Dark Secrets of BERT",
+        "contexts": "Kovaleva et al., 2019; Tenney et al., 2019a; Rogers et al., 2020).",
+        "reason": "Background on probing/interpretability in encoders; supports general context rather than the paper’s specific decoder-focused methods.",
+        "category": "Low"
+      },
+      {
+        "rank": 16,
         "paperId": "90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
         "title": "Language Models are Few-Shot Learners",
-        "reason": "General background about large LMs and their societal impact; unrelated to the paper’s specific methods, analyses, or dataset."
+        "contexts": "Meanwhile, studies exploring GPT models alone tend to focus on properties of text generated from its language modeling head, and do not analyze the internal representations of the model in depth (Heidenreich and Williams, 2021; Brown et al., 2020). | …step in the ﬁeld of massive language models, whose ability to generate news articles indistinguishable from those written by humans provides a salient example of the many social and political implications of these models (Brown et al., 2020; Wallace et al., 2019; Heidenreich and Williams, 2021).",
+        "reason": "Cited to characterize trends in LM-head-focused work and the scale of modern LMs; contextual background not essential to the methodology or dataset.",
+        "category": "Low"
+      },
+      {
+        "rank": 17,
+        "paperId": "3caf34532597683c980134579b156cd0d7db2f40",
+        "title": "Universal Adversarial Triggers for Attacking and Analyzing NLP",
+        "contexts": "ple of the many social and political implications of these models (Brown et al., 2020; Wallace et al., 2019; Heidenreich and Williams, 2021). | …step in the ﬁeld of massive language models, whose ability to generate news articles indistinguishable from those written by humans provides a salient example of the many social and political implications of these models (Brown et al., 2020; Wallace et al., 2019; Heidenreich and Williams, 2021).",
+        "reason": "Signals broader implications of large LMs and LM-head analyses; peripheral to the paper’s core hidden-state methodology.",
+        "category": "Low"
+      },
+      {
+        "rank": 18,
+        "paperId": "00bd0ca06b5897ebb78e61a88c904aca4bb8fe52",
+        "title": "The Earth Is Flat and the Sun Is Not a Star: The Susceptibility of GPT-2 to Universal Adversarial Triggers",
+        "contexts": "Meanwhile, studies exploring GPT models alone tend to focus on properties of text generated from its language modeling head, and do not analyze the internal representations of the model in depth (Heidenreich and Williams, 2021; Brown et al., 2020). | OpenAI’s release of GPT-3 marked a major step in the field of massive language models, whose ability to generate news articles indistinguishable from those written by humans provides a salient example of the many social and political implications of these models (Brown et al., 2020; Wallace et al., 2019; Heidenreich and Williams, 2021).",
+        "reason": "Used to illustrate LM-head-centered GPT analyses and broader impacts; not operationally connected to the hidden-state analyses developed in the paper.",
+        "category": "Low"
       }
     ]
   }

@@ -5,208 +5,276 @@
     "paperTitle": "Enhancing the Merger Simulation Toolkit with ML/AI",
     "candidates": [
       {
-        "rank": "1",
+        "rank": 1,
         "paperId": "28e3a79454bd09a2021a91e42b4b180477796445",
         "title": "Identification in Differentiated Products Markets Using Market Level Data",
-        "reason": "Core theoretical foundation: the paper explicitly builds its flexible supply identification on Berry–Haile (2014), repeatedly leveraging their assumptions and results and contrasting its Theorem 3.1 to BH’s Section 4.4."
+        "contexts": "We also maintain, similar to [Berry and Haile, 2014], a completeness assumption on the instruments. | With respect to the framework in Section 4.4 in [Berry and Haile, 2014], the expression above unpacks marginal revenue as the sum of price and markup, which entails no loss of generality. | In particular, the models in Remark 1 of [Berry and Haile, 2014] that satisfy their assumptions 7a and 7b, also satisfy our assumptions 1-6. | This is because our assumptions go beyond Assumption 7b in [Berry and Haile, 2014] in several important ways. | Under this exclusion, in the logit example above, the moment condition would be violated for ℎ = 𝓈 − 1 as the implied 𝜔 𝑗𝑡 explicitly depends on 𝑥 ( 𝑒 ) . | The proof follows Theorem 1 in [Berry and Haile, 2014]. | These assumptions come at a cost in terms of generality but are fit for our purposes and are satisfied by the standard conduct models considered in most of the empirical literature. | We further maintain two assumptions also imposed in [Berry and Haile, 2014]: Assumption 1. | □ It is useful to draw a parallel between our result in Theorem 3.1 and the identification results in Section 4.4 of [Berry and Haile, 2014]. | Under Assumptions 1-6, the function ℎ 𝑗 is identified for all 𝑗 = 1 , ..., 𝐽 . | (Separability of Cost) The cost function is separable in unobservable shocks: (5) This separability assumption follows [Berry and Haile, 2014] and is essentially without loss of generality, as the unobservable component 𝜔 𝑡 can be defined as the residual between total costs and the component… | While they establish the identification of the cost shocks without imposing a supply model, we show identification of the full supply function. | We build our flexible model of supply on the identification results of [Berry and Haile, 2014]. | This assumption, similar to Assumption 13 in [Berry and Haile, 2014], ensures that observed prices reflect stable equilibrium behavior.",
+        "reason": "Provides the core identification foundation the paper builds on to nonparametrically identify the supply function that nests conduct models; indispensable to the paper’s conceptual and technical framework.",
+        "category": "High"
       },
       {
-        "rank": "2",
-        "paperId": "f3de9ccdf5be35e8fdc141a03b90044b43287dfe",
-        "title": "Evaluating the Performance of Merger Simulation: Evidence from the U.S. Airline Industry*",
-        "reason": "Central empirical motivation and application template: highlights limits of standard conduct assumptions, informs overlap-market definitions, and serves as the primary retrospective benchmark in airlines."
-      },
-      {
-        "rank": "3",
-        "paperId": "f2af7d2af01a1c012c5308a5cc5dea2e5d78b2cd",
-        "title": "Best practices for differentiated products demand estimation with PyBLP",
-        "reason": "Instrumental for Monte Carlo design and implementation: pyblp is used to generate data across many markets and to operationalize the standard toolkit used as the main comparator."
-      },
-      {
-        "rank": "4",
-        "paperId": "92844164f71bb52d02dbd8f00bf49765cf1e7815",
-        "title": "Automobile Prices in Market Equilibrium",
-        "reason": "Foundational demand framework and instrumentation for merger simulation; the paper’s demand setup, moments, and instruments directly follow BLP."
-      },
-      {
-        "rank": "5",
-        "paperId": "332f7942b574cfc4100c0b14bbfc96189ef595e3",
-        "title": "Fixed-Point Approaches to Computing Bertrand-Nash Equilibrium Prices Under Mixed-Logit Demand",
-        "reason": "Provides the contraction mapping used to implement the standard merger simulation baseline against which the ML/AI method is evaluated."
-      },
-      {
-        "rank": "6",
-        "paperId": "d7ff5ad1f39d805b228f7a0e6d8ad83ad745da11",
-        "title": "The Effects of Mergers in Differentiated Products Industries: Logit Demand and Merger Policy",
-        "reason": "Frames the traditional merger-simulation workflow (demand plus assumed conduct) that the paper aims to relax and improve upon."
-      },
-      {
-        "rank": "7",
-        "paperId": "de9e9bd6b5d3d377ca808dde6725509b35085c66",
-        "title": "Mergers with differentiated products: the case of the ready-to-eat cereal industry",
-        "reason": "Canonical implementation of merger simulation (demand elasticities + conduct) that underpins the benchmark the new method enhances."
-      },
-      {
-        "rank": "8",
-        "paperId": "a5365d0cb1c7fbb6ca2b4806c6c2d2b9d49c512c",
-        "title": "Estimating Discrete-Choice Models of Product Differentiation",
-        "reason": "Supplies the Berry inversion and logit structure used for demand-side derivations and moments referenced by the toolkit."
-      },
-      {
-        "rank": "9",
-        "paperId": "9c93a9f62971a55d266238b8db1cb813d2419db9",
-        "title": "Deep learning for individual heterogeneity: an automatic inference framework",
-        "reason": "Provides econometric justification for integrating deep learning into two-stage structural estimation with interpretability—key to the ML/AI approach."
-      },
-      {
-        "rank": "10",
+        "rank": 2,
         "paperId": "959a8d233eb6bfc89b0a27bfc576b449d316459b",
         "title": "Extremum estimation and numerical derivatives",
-        "reason": "Supplies the numerical delta method and numerical differentiation tools used for inference on the estimated supply function."
+        "contexts": "If ˜ 𝜃 𝑁 → 𝜃 0 , under regularity conditions, Theorems (2)-(3) in [Bennett and Kallus, 2023] For inference on the supply function ℎ : R ⊃ Θ → R at a set of 𝑑 observations, the numerical delta method in [Hong et al., 2015] Note that ∇ 𝜃 ℎ ( 𝜃 0 ; H) has dimension 𝑑 × 𝑏 . | For numerical differentiation to be valid, the 𝜖 in the difference has to satisfy 𝜖 → 0 and 𝑁𝜖 / log 𝑁 → ∞ from Theorem 1 in [Hong et al., 2015]. | The gradient ∇ 𝜃 𝑥 ( 𝜃 0 , H) is difficult to compute analytically but numerical differentiation can be employed, e.g., [Hong et al., 2015], and ˆ 𝜃 𝑁 can be used in place of 𝜃 0 .",
+        "reason": "Supplies the numerical delta method and differentiation results used for inference on the estimated supply function—an operational ingredient of the paper’s estimation/inference pipeline.",
+        "category": "Medium"
       },
       {
-        "rank": "11",
-        "paperId": "c6263ecc77be18970c19162387a5a4dd38e334f3",
-        "title": "Unconstrained Monotonic Neural Networks",
-        "reason": "Supports the paper’s shape-restricted network design to enforce monotonicity (e.g., sign of derivatives) in the learned supply function."
+        "rank": 3,
+        "paperId": "332f7942b574cfc4100c0b14bbfc96189ef595e3",
+        "title": "Fixed-Point Approaches to Computing Bertrand-Nash Equilibrium Prices Under Mixed-Logit Demand",
+        "contexts": "For the standard merger simulation toolkit, we rely on a contraction mapping from [Morrow and Skerlos, 2011].",
+        "reason": "Provides the computational backbone for the standard merger-simulation baseline used for comparison and benchmarking against the proposed ML/AI method.",
+        "category": "Medium"
       },
       {
-        "rank": "12",
-        "paperId": "2d04ccb24f36a7be01f201a4ae41877443fb37da",
-        "title": "Deep Lattice Networks and Partial Monotonic Functions",
-        "reason": "Provides an alternative architecture for imposing monotonic constraints central to the paper’s economically interpretable supply learning."
+        "rank": 4,
+        "paperId": "f2af7d2af01a1c012c5308a5cc5dea2e5d78b2cd",
+        "title": "Best practices for differentiated products demand estimation with PyBLP",
+        "contexts": "Data Generation: We simulate data using the pyblp framework from [Conlon and Gortmaker, 2020] for 𝑇 = 100, 1 , 000, and 10 , 000 markets.",
+        "reason": "Operationally important for Monte Carlo data generation and for implementing standard demand systems used in simulations and baselines.",
+        "category": "Medium"
       },
       {
-        "rank": "13",
-        "paperId": "262d562e77cd845b47994f9e72630bab6311a872",
-        "title": "Monotonic Networks",
-        "reason": "Foundational reference for monotone neural networks underpinning the paper’s discussion and implementation of monotonicity constraints."
+        "rank": 5,
+        "paperId": "92844164f71bb52d02dbd8f00bf49765cf1e7815",
+        "title": "Automobile Prices in Market Equilibrium",
+        "contexts": "Following [Berry et al., 1995], we include the average rival distance, the average number of markets a rival serves, and the number of rival carriers. | The identifying assumption for demand is that the moment condition E [ 𝜉 𝑗𝑡 𝑧 𝐷𝑗𝑡 ] = 0 holds for a vector of demand instruments 𝑧 𝐷𝑗𝑡 . | In the IO literature, a lot of effort has been devoted to estimating flexible models of demand [e.g., Berry et al., 1995] that can then be used as input in merger simulation. | Given the structure of utility and distributional assumptions, market shares 𝑠 𝑗𝑡 are a function of observables, unobservables, and parameters in the standard form from [Berry et al., 1995].",
+        "reason": "Canonical demand framework underpinning the demand side used in merger simulations and in data generation; helpful but replaceable by other demand systems.",
+        "category": "Medium"
       },
       {
-        "rank": "14",
-        "paperId": "1b69c1e95b84b7ac59fb22166f489d5f57c536b0",
-        "title": "Minimax Estimation of Conditional Moment Models",
-        "reason": "Methodological basis for minimax/adversarial estimation of conditional moments closely related to the VMM approach the paper adapts."
+        "rank": 6,
+        "paperId": "de9e9bd6b5d3d377ca808dde6725509b35085c66",
+        "title": "Mergers with differentiated products: the case of the ready-to-eat cereal industry",
+        "contexts": "The standard merger simulation methodology, developed through seminal contributions [Nevo, 2000, Werden and Froeb, 1994], relies on estimating demand elasticities and modeling firm conduct under specific assumptions about competitive behavior.",
+        "reason": "Seminal application anchoring the standard merger simulation toolkit the paper seeks to enhance; central for positioning and baseline comparisons.",
+        "category": "Medium"
       },
       {
-        "rank": "15",
-        "paperId": "022a17f4bb26e45680fad3e95cf8e53c169f654e",
-        "title": "Adversarial Generalized Method of Moments",
-        "reason": "Closely related adversarial/GMM framework informing the paper’s modern moment-based estimation strategy."
+        "rank": 7,
+        "paperId": "d7ff5ad1f39d805b228f7a0e6d8ad83ad745da11",
+        "title": "The Effects of Mergers in Differentiated Products Industries: Logit Demand and Merger Policy",
+        "contexts": "The standard merger simulation toolkit, developed building on the seminal contributions of [Berry and Pakes, 1993, Hausman et al., 1994, Werden and Froeb, 1994], is based on a demand system and an assumed model of conduct. | The standard merger simulation methodology, developed through seminal contributions [Nevo, 2000, Werden and Froeb, 1994], relies on estimating demand elasticities and modeling firm conduct under specific assumptions about competitive behavior. | In the context of merger review, demand elasticities may be recovered or calibrated from data on diversion, or estimated from simple demand systems [e.g., logit as in Werden and Froeb, 1994].",
+        "reason": "Canonical references for the standard merger-simulation paradigm that the paper evaluates and extends with a flexible, data-driven supply-side approach.",
+        "category": "Medium"
       },
       {
-        "rank": "16",
-        "paperId": "021540b326016e753933db98066170549647b5e3",
-        "title": "An Adversarial Approach to Structural Estimation",
-        "reason": "Provides adversarial structural estimation insights and efficiency benchmarks relevant to the paper’s ML/GMM-style estimation."
+        "rank": 8,
+        "paperId": "f3de9ccdf5be35e8fdc141a03b90044b43287dfe",
+        "title": "Evaluating the Performance of Merger Simulation: Evidence from the U.S. Airline Industry*",
+        "contexts": "For instance, [Peters, 2006] suggests that alternative assumptions on conduct may lead to more reliable conclusions in his setting of airline mergers. | The retrospective studies of large mergers have had mixed results [Peters, 2006], potentially linked to non-Bertrand conduct [see, e.g., Ciliberto and Williams, 2014, for evidence of non-competitive conduct]. | A key limitation identified in the literature is that the restrictive assumptions about firm conduct may not adequately capture the complexity of real-world competitive interactions [see e.g., Peters, 2006]. | We evaluate the retrospective unilateral price effects of major airline mergers following previous studies of this industry (e.g., [Peters, 2006]) and other reduced-form investigations of the price effect of mergers (e.g., [Ashenfelter et al., 2013]) by creating control groups of markets not… | As in [Peters, 2006], we define overlap markets as those in which both merging airlines operate flights for the four quarters before the merger. | Within this framework, reliance on the strong assumptions on conduct and cost, such as Bertrand-Nash pricing and constant marginal cost, may have important consequences for prediction.",
+        "reason": "Shapes the empirical design and motivation in the airline application, highlighting conduct misspecification risks that the proposed method aims to address.",
+        "category": "Medium"
       },
       {
-        "rank": "17",
-        "paperId": "5ddba02f14e4574e54b8e3a8b979b69f2221fa23",
-        "title": "Provably Efficient Neural Estimation of Structural Equation Model: An Adversarial Approach",
-        "reason": "Adds to the theoretical underpinnings for neural/adversarial estimation in structural settings."
+        "rank": 9,
+        "paperId": "9c93a9f62971a55d266238b8db1cb813d2419db9",
+        "title": "Deep learning for individual heterogeneity: an automatic inference framework",
+        "contexts": "[Farrell et al., 2020] provide a theoretical foundation for using deep learning in two-stage econometric procedures, allowing for rich heterogeneity while maintaining model interpretability.",
+        "reason": "Supports the use of ML within an econometric two-stage framework, aligning with the paper’s ML-based estimation of structural objects.",
+        "category": "Medium"
       },
       {
-        "rank": "18",
-        "paperId": "ba4a87b8bd820b07d93d2a870379c35e39ba86de",
-        "title": "Instrumental variable regression via kernel maximum moment loss",
-        "reason": "Related advances in moment-based/IV estimation that support the paper’s estimation philosophy."
+        "rank": 10,
+        "paperId": "a5365d0cb1c7fbb6ca2b4806c6c2d2b9d49c512c",
+        "title": "Estimating Discrete-Choice Models of Product Differentiation",
+        "contexts": "To see why these are necessary, consider the case of simple logit demand where price and characteristics enter demand through a linear index 𝛿 𝑗𝑡 = 𝛼𝑝 𝑗𝑡 + 𝛽𝑥 𝑗𝑡 + 𝜉 𝑗𝑡 . | Under the [Berry, 1994] inversion, 𝛿 𝑗𝑡 = log 𝑠 𝑗𝑡 − log 𝑠 0 𝑡 , so that inverse demand is .",
+        "reason": "Provides standard inversion logic and demand-system background used in constructing demand inputs for merger simulation; useful but not unique.",
+        "category": "Medium"
       },
       {
-        "rank": "19",
-        "paperId": "08d3d47c1bd83f6cbf8fd6f7c9e06ef76c7903fd",
-        "title": "Market counterfactuals and the specification of multiproduct demand: A nonparametric approach",
-        "reason": "Conceptual precedent for nonparametric structure in IO; the paper analogously develops a nonparametric supply-side approach."
-      },
-      {
-        "rank": "20",
+        "rank": 11,
         "paperId": "5937eb7756616f11e41580466a7c959858150906",
         "title": "Does Multimarket Contact Facilitate Tacit Collusion? Inference on Conduct Parameters in the Airline Industry",
-        "reason": "Empirical evidence of non-competitive conduct in airlines motivating the paper’s relaxation of standard conduct assumptions."
+        "contexts": "The retrospective studies of large mergers have had mixed results [Peters, 2006], potentially linked to non-Bertrand conduct [see, e.g., Ciliberto and Williams, 2014, for evidence of non-competitive conduct].",
+        "reason": "Motivates flexible conduct modeling by documenting non-competitive conduct in airlines; supports the paper’s case for relaxing standard conduct assumptions.",
+        "category": "Medium"
       },
       {
-        "rank": "21",
-        "paperId": "6bea7ebcd131b271575feb4b8f09e10de634f71a",
-        "title": "The Price Effects of a Large Merger of Manufacturers: A Case Study of Maytag-Whirlpool",
-        "reason": "Serves as a reduced-form merger-effects benchmark informing the retrospective evaluation strategy."
+        "rank": 12,
+        "paperId": "08d3d47c1bd83f6cbf8fd6f7c9e06ef76c7903fd",
+        "title": "Market counterfactuals and the specification of multiproduct demand: A nonparametric approach",
+        "contexts": "This is in the spirit of the micro-founded economic restrictions that are imposed on nonparametric demand systems in [Compiani, 2022]. | Similarly to [Compiani, 2022], who develops a method to estimate demand nonparametrically, our paper proposes a method for nonparametric estimation of the supply side.",
+        "reason": "Conceptually aligns with the paper’s nonparametric ethos and provides a parallel on the demand side; helpful for positioning but not essential.",
+        "category": "Medium"
       },
       {
-        "rank": "22",
-        "paperId": "2047d2506e7772bc6886af91acd7959fab4506b3",
-        "title": "Simulating the Dynamic Effects of Horizontal Mergers: U.S. Airlines",
-        "reason": "Provides dynamic-merger context and methods that the paper contrasts with its (primarily static) ML/AI approach."
-      },
-      {
-        "rank": "23",
-        "paperId": "6551e54b08b13cb40e15cb946b2e9e503d3c5e8a",
-        "title": "The Welfare Effects of Dynamic Pricing: Evidence from Airline Markets",
-        "reason": "Background on dynamic pricing in airlines underpinning the application context and the need for flexible conduct modeling."
-      },
-      {
-        "rank": "24",
-        "paperId": "cf0c6907017ad4e750313600e5d0932e8ea05eed",
-        "title": "Repositioning and market power after airline mergers",
-        "reason": "Background on post-merger network/pricing adjustments relevant to interpreting airline merger counterfactuals."
-      },
-      {
-        "rank": "25",
-        "paperId": "b291db3ea2261bf1a3ce6ac0a144b140d5c70524",
-        "title": "Market Structure and Competition in Airline Markets",
-        "reason": "Industry background on competition crucial for application framing but less central to the method."
-      },
-      {
-        "rank": "26",
-        "paperId": "6c9bfdf81e4f87f330c1f0efcbe3a01d0d1d082d",
-        "title": "Price Discrimination in International Airline Markets",
-        "reason": "Contextual background on pricing behavior in airlines; supports application narrative."
-      },
-      {
-        "rank": "27",
+        "rank": 13,
         "paperId": "c858cee3e5190eeaa56420144c93a733a4c217e5",
-        "title": "Airline Hubs: Costs",
-        "reason": "Markups and the Implications of Customer Heterogeneity, Industry background on costs/markups and heterogeneity; tangential to the core methodological contribution."
+        "title": "Airline Hubs: Costs, Markups and the Implications of Customer Heterogeneity",
+        "contexts": "The airline industry has received substantial attention from the IO literature [starting with Berry, 1992, Berry et al., 2006] given the rich available data and significant consolidation over the last two decades.",
+        "reason": "Background on airline IO and market structure; useful for context but not needed for the paper’s method.",
+        "category": "Low"
       },
       {
-        "rank": "28",
+        "rank": 14,
         "paperId": "fd00553f0ea0b4a44c0a8552cb06feb5ace726ba",
         "title": "Estimation of a Model of Entry in the Airline Industry",
-        "reason": "Early airline IO reference setting broader industry context rather than informing the new method directly."
+        "contexts": "The airline industry has received substantial attention from the IO literature [starting with Berry, 1992, Berry et al., 2006] given the rich available data and significant consolidation over the last two decades.",
+        "reason": "Provides broad airline IO background; not directly used in the proposed estimation or identification.",
+        "category": "Low"
       },
       {
-        "rank": "29",
+        "rank": 15,
+        "paperId": "6551e54b08b13cb40e15cb946b2e9e503d3c5e8a",
+        "title": "The Welfare Effects of Dynamic Pricing: Evidence from Airline Markets",
+        "contexts": "…have highlighted the dynamic nature of pricing and demand in this market [e.g., Aryal et al., 2024, Betancourt et al., 2022, Hortaçsu et al., 2024, Williams, 2022], and the role of endogenous network structure [Bontemps et al., 2023, Ciliberto et al., 2021, Li et al., 2022, Yuan and Barwick,…",
+        "reason": "Signals dynamic pricing considerations in airlines; cited for context rather than powering the method.",
+        "category": "Low"
+      },
+      {
+        "rank": 16,
+        "paperId": "cf0c6907017ad4e750313600e5d0932e8ea05eed",
+        "title": "Repositioning and market power after airline mergers",
+        "contexts": "…have highlighted the dynamic nature of pricing and demand in this market [e.g., Aryal et al., 2024, Betancourt et al., 2022, Hortaçsu et al., 2024, Williams, 2022], and the role of endogenous network structure [Bontemps et al., 2023, Ciliberto et al., 2021, Li et al., 2022, Yuan and Barwick, 2024].",
+        "reason": "Provides industry background on post-merger behavior; not essential to the paper’s core ML/AI estimation framework.",
+        "category": "Low"
+      },
+      {
+        "rank": 17,
+        "paperId": "6c9bfdf81e4f87f330c1f0efcbe3a01d0d1d082d",
+        "title": "Price Discrimination in International Airline Markets",
+        "contexts": "Recent papers have highlighted the dynamic nature of pricing and demand in this market [e.g., Aryal et al., 2024, Betancourt et al., 2022, Hortaçsu et al., 2024, Williams, 2022], and the role of endogenous network structure [Bontemps et al., 2023, Ciliberto et al., 2021, Li et al., 2022, Yuan and…",
+        "reason": "Contextual citation on airline pricing; not used in the development or estimation of the proposed model.",
+        "category": "Low"
+      },
+      {
+        "rank": 18,
+        "paperId": "b291db3ea2261bf1a3ce6ac0a144b140d5c70524",
+        "title": "Market Structure and Competition in Airline Markets",
+        "contexts": "…have highlighted the dynamic nature of pricing and demand in this market [e.g., Aryal et al., 2024, Betancourt et al., 2022, Hortaçsu et al., 2024, Williams, 2022], and the role of endogenous network structure [Bontemps et al., 2023, Ciliberto et al., 2021, Li et al., 2022, Yuan and Barwick, 2024].",
+        "reason": "General airline competition background; not directly tied to the paper’s methodological contribution.",
+        "category": "Low"
+      },
+      {
+        "rank": 19,
+        "paperId": "2047d2506e7772bc6886af91acd7959fab4506b3",
+        "title": "Simulating the Dynamic Effects of Horizontal Mergers: U.S. Airlines",
+        "contexts": "[Benkard et al., 2010] and [Bruegge et al., 2024] develop methods based on policy functions.",
+        "reason": "Related dynamic-merger literature; included for context rather than as an ingredient of the proposed static supply estimation.",
+        "category": "Low"
+      },
+      {
+        "rank": 20,
+        "paperId": "6bea7ebcd131b271575feb4b8f09e10de634f71a",
+        "title": "The Price Effects of a Large Merger of Manufacturers: A Case Study of Maytag-Whirlpool",
+        "contexts": "…unilateral price effects of major airline mergers following previous studies of this industry (e.g., [Peters, 2006]) and other reduced-form investigations of the price effect of mergers (e.g., [Ashenfelter et al., 2013]) by creating control groups of markets not affected by the merger.",
+        "reason": "Reduced-form merger-effects background; not required for the paper’s modeling or estimation approach.",
+        "category": "Low"
+      },
+      {
+        "rank": 21,
         "paperId": "e5dc09ba2d59355e2f0cb08ef6176936660d8659",
         "title": "Anticompetitive Effects of Common Ownership",
-        "reason": "Used for market definition (city-pair) conventions; peripheral to the main methodology."
+        "contexts": "Following [Azar et al., 2018] and [Kennedy et al., 2017], a market is defined as a pair of cities, regardless of the flight direction.",
+        "reason": "Used to justify a market-definition convention; ancillary to the paper’s core contribution.",
+        "category": "Low"
       },
       {
-        "rank": "30",
+        "rank": 22,
         "paperId": "a496b98c29abf5987c7a077ea36b3259aafab897",
         "title": "The Competitive Effects of Common Ownership: Economic Foundations and Empirical Evidence",
-        "reason": "As above, informs market definition and context; limited direct impact on modeling or estimation."
+        "contexts": "Following [Azar et al., 2018] and [Kennedy et al., 2017], a market is defined as a pair of cities, regardless of the flight direction.",
+        "reason": "Also supports market definition; not integral to the estimation or identification strategy.",
+        "category": "Low"
       },
       {
-        "rank": "31",
+        "rank": 23,
         "paperId": "1aef5c3a7f359743b2110f33c2ca8ca415a101fc",
         "title": "Some Applications and Limitations of Recent Advances in Empirical Industrial Organization: Merger Analysis",
-        "reason": "Broad perspective on merger analysis used for positioning; minimal direct methodological influence."
+        "contexts": "The standard merger simulation toolkit, developed building on the seminal contributions of [Berry and Pakes, 1993, Hausman et al., 1994, Werden and Froeb, 1994], is based on a demand system and an assumed model of conduct.",
+        "reason": "Field overview situating the standard toolkit; background rather than a direct input to the paper’s method.",
+        "category": "Low"
       },
       {
-        "rank": "32",
+        "rank": 24,
+        "paperId": "262d562e77cd845b47994f9e72630bab6311a872",
+        "title": "Monotonic Networks",
+        "contexts": "The last two approaches are related to the rich computer science literature on monotonic neural networks, starting with [Sill, 1997].",
+        "reason": "Cited as part of related approaches to enforce monotonicity; not used as a core component of the estimation.",
+        "category": "Low"
+      },
+      {
+        "rank": 25,
+        "paperId": "c6263ecc77be18970c19162387a5a4dd38e334f3",
+        "title": "Unconstrained Monotonic Neural Networks",
+        "contexts": "A second approach, detailed in [Wehenkel and Louppe, 2019], uses the architecture of the neural network to enforce a constant sign of the derivative of the approximated function without imposing additional constraints.",
+        "reason": "Related-methods citation on monotonicity constraints in neural nets; not essential to the paper’s main results.",
+        "category": "Low"
+      },
+      {
+        "rank": 26,
+        "paperId": "2d04ccb24f36a7be01f201a4ae41877443fb37da",
+        "title": "Deep Lattice Networks and Partial Monotonic Functions",
+        "contexts": "The first approach enforces constraints on weights and activation functions in particular neural network layers, e.g., [You et al., 2017].",
+        "reason": "Alternative approach for monotonic function approximation; included as related background.",
+        "category": "Low"
+      },
+      {
+        "rank": 27,
+        "paperId": "021540b326016e753933db98066170549647b5e3",
+        "title": "An Adversarial Approach to Structural Estimation",
+        "contexts": "[Kaji et al., 2023] introduce “adversarial estimation,” which formulates the estimator as a minimax problem between a generator and discriminator, achieving parametric efficiency under correct specification.",
+        "reason": "Related minimax/adversarial estimation literature; not directly implemented in the proposed method.",
+        "category": "Low"
+      },
+      {
+        "rank": 28,
+        "paperId": "022a17f4bb26e45680fad3e95cf8e53c169f654e",
+        "title": "Adversarial Generalized Method of Moments",
+        "contexts": "Several studies, including those by [Dikkala et al., 2020, Lewis and Syrgkanis, 2018, Liao et al., 2020], and [Zhang et al., 2023] have advanced this literature.",
+        "reason": "General reference to adversarial GMM developments; cited as related work, not as a building block.",
+        "category": "Low"
+      },
+      {
+        "rank": 29,
+        "paperId": "ba4a87b8bd820b07d93d2a870379c35e39ba86de",
+        "title": "Instrumental variable regression via kernel maximum moment loss",
+        "contexts": "Several studies, including those by [Dikkala et al., 2020, Lewis and Syrgkanis, 2018, Liao et al., 2020], and [Zhang et al., 2023] have advanced this literature.",
+        "reason": "Cited as part of broader ML/IV literature; not used in the main estimation procedure.",
+        "category": "Low"
+      },
+      {
+        "rank": 30,
+        "paperId": "5ddba02f14e4574e54b8e3a8b979b69f2221fa23",
+        "title": "Provably Efficient Neural Estimation of Structural Equation Model: An Adversarial Approach",
+        "contexts": "Several studies, including those by [Dikkala et al., 2020, Lewis and Syrgkanis, 2018, Liao et al., 2020], and [Zhang et al., 2023] have advanced this literature.",
+        "reason": "Another related adversarial/minimax estimation reference; not central to the proposed VMM-based approach.",
+        "category": "Low"
+      },
+      {
+        "rank": 31,
+        "paperId": "1b69c1e95b84b7ac59fb22166f489d5f57c536b0",
+        "title": "Minimax Estimation of Conditional Moment Models",
+        "contexts": "Several studies, including those by [Dikkala et al., 2020, Lewis and Syrgkanis, 2018, Liao et al., 2020], and [Zhang et al., 2023] have advanced this literature.",
+        "reason": "Broadly related minimax estimation work; cited for context rather than as a methodological ingredient.",
+        "category": "Low"
+      },
+      {
+        "rank": 32,
         "paperId": "c3ce78766a58ece15bc2b1ee2a8d33c3b8549589",
         "title": "Chapter 76 Large Sample Sieve Estimation of Semi-Nonparametric Models",
-        "reason": "General NPIV/semi-nonparametric background signaling flexibility; not directly implemented here."
+        "contexts": "NPIV estimators are well-documented (e.g., Chen 2007; Carrasco et al. 2007) and offer flexibility in modeling complex relationships without restrictive parametric assumptions.",
+        "reason": "General NPIV background; not directly used by the paper’s estimation strategy.",
+        "category": "Low"
       },
       {
-        "rank": "33",
+        "rank": 33,
         "paperId": "c0897d4bf55787e08d58e8a224b8642a87592c39",
         "title": "Linear Inverse Problems in Structural Econometrics Estimation Based on Spectral Decomposition and Regularization",
-        "reason": "Additional NPIV/regularization background; peripheral to the VMM-based estimation used."
+        "contexts": "NPIV estimators are well-documented (e.g., Chen 2007; Carrasco et al. 2007) and offer flexibility in modeling complex relationships without restrictive parametric assumptions.",
+        "reason": "Another NPIV reference providing background; not instrumental to the paper’s contribution.",
+        "category": "Low"
       },
       {
-        "rank": "34",
+        "rank": 34,
         "paperId": "b0ebbcf713b3ddf3f94325bc58dc39ff76fdc412",
         "title": "A Simple Sequentially Rejective Multiple Test Procedure",
-        "reason": "Used only to adapt Holm’s step-down procedure for simultaneous confidence intervals; ancillary to the core contribution."
+        "contexts": "We extend the method to provide a simultaneous confidence interval by adapting Holm’s Step-Down procedure [Holm, 1979] with the estimates for ˆ 𝜎 2 𝑥 𝑗 ( ˆ 𝜃, H) and ℎ 𝑥 𝑗 ( ˆ 𝜃, H) for each 𝑗 = 1 , ...,𝑑 .",
+        "reason": "Used for multiple-testing adjustment in inference; ancillary and replaceable.",
+        "category": "Low"
       }
     ]
   }

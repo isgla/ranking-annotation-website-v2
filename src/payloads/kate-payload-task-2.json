@@ -5,88 +5,116 @@
     "paperTitle": "A Multi-Chamber Smart Suction Cup for Adaptive Gripping and Haptic Exploration",
     "candidates": [
       {
-        "rank": "1",
+        "rank": 1,
         "paperId": "568825d2564cb11c8bc0f3f510a6a71cb0b2eac6",
         "title": "Tactile sensing based on fingertip suction flow for submerged dexterous manipulation",
-        "reason": "Direct conceptual precursor showing that suction flow/pressure encodes contact geometry for haptics; P generalizes this idea to a multi-chamber suction cup for exploration and seal-break sensing."
+        "contexts": "demonstrate how continuous suction-flow-rate measurement at the fingertips of a multifinger robotic hand can inform grasping and in-hand manipulation under water and note sensitivity to contact geometry [11], but do not address application to suction cups.",
+        "reason": "Provides the core conceptual precedent that suction flow/pressure carries tactile information sensitive to contact geometry, which the paper generalizes to a multi-chamber suction cup for exploration and seal monitoring.",
+        "category": "High"
       },
       {
-        "rank": "2",
+        "rank": 2,
         "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
         "title": "Long Short-Term Memory",
-        "reason": "Core learning method used in P to localize seal-break quadrants and detect failure early; central to P’s main results and shown to outperform alternatives."
+        "contexts": "We compare two methods: a sliding-window-based regression model and a long short term memory (LSTM) network [15].",
+        "reason": "The LSTM sequence model is directly used to localize suction seal breaks with high accuracy and forms a key part of the learning component, though other sequence models could substitute.",
+        "category": "Medium"
       },
       {
-        "rank": "3",
-        "paperId": "bd6d2f2e33c8aa71ac05eabbfbb5a2a02d3b5e87",
-        "title": "Bellows Suction Cup Equipped With Force Sensing Ability by Direct Coating Thin-Film Resistor for Vacuum Type Robotic Hand",
-        "reason": "Prior art on instrumented suction cups; motivates embedding sensing in suction tools even though modality differs (force vs vacuum/flow)."
-      },
-      {
-        "rank": "4",
-        "paperId": "bfdb12a53b8dade9db9f3d9caf4177f3f3658600",
-        "title": "Dex-Net 3.0: Computing Robust Robot Suction Grasp Targets in Point Clouds using a New Analytic Model and Deep Learning",
-        "reason": "Influential baseline for suction grasp target selection and seal formation; P positions haptic exploration as complementary for selecting robust suction sites."
-      },
-      {
-        "rank": "5",
-        "paperId": "6d67ca49d009c6baf4fc31daaa6af118af866160",
-        "title": "Extracting object properties through haptic exploration.",
-        "reason": "Informs P’s gentle sliding/palpation regime; supports the idea that exploratory procedures can reveal surface transitions and guide grasp selection."
-      },
-      {
-        "rank": "6",
+        "rank": 3,
         "paperId": "9b3afc4eed816efa749b6da86484e9cab77eb163",
         "title": "Lessons from the Amazon Picking Challenge: Four Aspects of Building Robotic Systems",
-        "reason": "Establishes simple vacuum-pressure monitoring as a discrete seal indicator; P advances this to multi-chamber, differential sensing and early failure detection."
+        "contexts": "Another straightforward approach is to monitor internal vacuum pressure of the suction cup as a discrete measure of suction sealing, as in [10].",
+        "reason": "Motivates pressure-based monitoring of suction sealing, which the paper extends to multi-chamber differential sensing and early failure detection.",
+        "category": "Medium"
       },
       {
-        "rank": "7",
-        "paperId": "26bc9195c6343e4d7f434dd65b4ad67efe2be27a",
-        "title": "XGBoost: A Scalable Tree Boosting System",
-        "reason": "Implemented as a primary baseline in P with reported settings and metrics; helps substantiate P’s claim that LSTM is superior for this task."
+        "rank": 4,
+        "paperId": "bd6d2f2e33c8aa71ac05eabbfbb5a2a02d3b5e87",
+        "title": "Bellows Suction Cup Equipped With Force Sensing Ability by Direct Coating Thin-Film Resistor for Vacuum Type Robotic Hand",
+        "contexts": "coat piezoresistive polymer on a bellows suction cup to measure compression forces [8].",
+        "reason": "Relevant prior on sensorized suction cups, informing the design space and situating the paper’s multi-chamber sensing approach.",
+        "category": "Medium"
       },
       {
-        "rank": "8",
-        "paperId": "2ab46391005cea85fa5c204b6e77a9c870fdbaed",
-        "title": "Good features to track",
-        "reason": "Provides the KLT/min-eigenvalue feature tracking used in P’s experiments to track contact/centers; methodological support."
+        "rank": 5,
+        "paperId": "6d67ca49d009c6baf4fc31daaa6af118af866160",
+        "title": "Extracting object properties through haptic exploration.",
+        "contexts": "Experimental results during haptic exploration in Section III suggest that this sensor can detect transitions between surface textures by gentle sliding motions, inspired by human haptic exploratory procedures [12].",
+        "reason": "Provides conceptual grounding for using sliding and palpation as exploratory procedures, supporting the paper’s haptic exploration component.",
+        "category": "Medium"
       },
       {
-        "rank": "9",
+        "rank": 6,
+        "paperId": "bfdb12a53b8dade9db9f3d9caf4177f3f3658600",
+        "title": "Dex-Net 3.0: Computing Robust Robot Suction Grasp Targets in Point Clouds using a New Analytic Model and Deep Learning",
+        "contexts": "0 learns the best suction contact pose from a point cloud considering both suction seal formation and gravitational wrench resistance [5].",
+        "reason": "Canonical prior for suction grasp planning and seal modeling; situates the paper’s aim of selecting suction grasp locations informed by haptic sensing.",
+        "category": "Medium"
+      },
+      {
+        "rank": 7,
         "paperId": "76f0c043193e06bb6c0fda88104fd3135b4a9e03",
         "title": "Planning Grasps With Suction Cups and Parallel Grippers Using Superimposed Segmentation of Object Meshes",
-        "reason": "Background on suction grasp planning from object meshes; contextualizes P’s sensing-driven approach to selecting suction locations."
+        "contexts": "use CAD model meshes to plan a grasp resisting gravitational wrench [4], and Dex-Net 3.",
+        "reason": "Related suction grasp planning work offering contextual comparison; not directly used in the method.",
+        "category": "Medium"
       },
       {
-        "rank": "10",
-        "paperId": "e00280f0f98d331a10ab4c57036f815412a622b2",
-        "title": "Critically fast pick-and-place with suction cups",
-        "reason": "Related to suction-contact stability during fast motions; tangential motivation for detecting impending seal failures."
+        "rank": 8,
+        "paperId": "26bc9195c6343e4d7f434dd65b4ad67efe2be27a",
+        "title": "XGBoost: A Scalable Tree Boosting System",
+        "contexts": "Table II shows the results of training the XGBoost and the LSTM network using just F/T sensor data (FT Only), just vacuum sensor data (Vac Only), and using both inputs (FT+Vac). | We set the maximum depth of a tree to be 5 and the learning rate to be 1 for XGBoost training. | Moderate seal weakening XGBoost BQA ↑ MBTE (ms) Model MSE ↓ th = 0.5 th = 0.6 th = 0.7 th = 0.5 th = 0.6 th = 0.7 FT Only 0.017 35% 26% 40% −6±18−6± 12 −30± 30 Vac Only 0.018 44% 33% 70% −6± 24−6± 6 18± 60 FT+Vac 0.012 39% 35% 67% −6± 24−6± 6 −30± 24 LSTM BQA ↑ MBTE (ms) Model MSE ↓ th = 0.5 th = 0.6 th = 0.7 th = 0.5 th = 0.6 th = 0.7 FT Only 0.003 86% 82% 88% 6± 18 0± 24 0± 44 Vac Only 0.006 80% 97% 82% 18± 18 24± 12 −24± 138 FT+Vac 0.006 95% 82% 82% 24± 6 24± 12 −12± 144 TABLE II: Learning to predict suction failure. | We find that l = 60 ms combined with XGBoost [16] works relatively well. | LSTM outperforms XGBoost in all metrics. | In contrast, the MSE for XGBoost is about three times as large as that using LSTM, and we find that its break quadrant prediction is only about half as accurate as that using LSTM.",
+        "reason": "Used as a comparative baseline and tuned in experiments; helpful for evaluation but not central to the contribution.",
+        "category": "Medium"
       },
       {
-        "rank": "11",
+        "rank": 9,
+        "paperId": "2ab46391005cea85fa5c204b6e77a9c870fdbaed",
+        "title": "Good features to track",
+        "contexts": "13, the characteristic points (∼15 points) around the center are selected from the first contact image by using minimum eigenvalue corner detection algorithm [14]. | 12, we track the center using the Kanade-Lucas-Tomasi (KLT) algorithm [14] featured in MATLAB.",
+        "reason": "Operational method for visual feature selection and tracking used in experiments; useful but replaceable and not central to the main sensing or learning ideas.",
+        "category": "Medium"
+      },
+      {
+        "rank": 10,
         "paperId": "76c4a1477b7bf3f6baa020c18f8bc854790c3b8e",
         "title": "Manipulation with Suction Cups Using External Contacts",
-        "reason": "Demonstrates advanced manipulation with suction and external contacts; relevant to suction manipulation but not central to P’s sensing contributions."
+        "contexts": "demonstrate an optimal control approach with a single suction gripper to reorient object by extrinsic dexterity, utilizing external contacts from the table [7].",
+        "reason": "Tangential background on suction-based manipulation via extrinsic dexterity; not used in the proposed method.",
+        "category": "Low"
       },
       {
-        "rank": "12",
+        "rank": 11,
+        "paperId": "e00280f0f98d331a10ab4c57036f815412a622b2",
+        "title": "Critically fast pick-and-place with suction cups",
+        "contexts": "use time-optimal path generation bounded by contact stability constraints to generate critically fast arm trajectories during pick-and-place [6].",
+        "reason": "Focuses on motion timing for pick-and-place; peripheral to sensing and haptic exploration goals.",
+        "category": "Low"
+      },
+      {
+        "rank": 12,
         "paperId": "f2e4d3063584cbdab503b054efcbf325ea5fe637",
         "title": "Analysis and Observations From the First Amazon Picking Challenge",
-        "reason": "General motivation highlighting suction’s advantages across item types; contextual background."
+        "contexts": "The unicontact suction cup has the advantage of simple operation and enables the handling of a wide range of items, including those that are delicate, large or not accessible by a jaw gripper [1].",
+        "reason": "General background on suction cup utility in competitions; field context rather than a methodological dependency.",
+        "category": "Low"
       },
       {
-        "rank": "13",
+        "rank": 13,
         "paperId": "bd27f44e0b158f732395830dfb39e24de6e20e46",
         "title": "Robotic pick-and-place of novel objects in clutter with multi-affordance grasping and cross-domain image matching",
-        "reason": "Background on learned grasp affordances; peripheral to P’s sensing-centric method."
+        "contexts": "Examples of planning methods include the heuristic search for a surface normal [2] and neural network training of grasp affordance using binary success labels [3].",
+        "reason": "Provides general grasp planning background; not directly used or extended.",
+        "category": "Low"
       },
       {
-        "rank": "14",
+        "rank": 14,
         "paperId": "0bdaf76eb017db7aede129e57b4b6026589030b8",
         "title": "Cartman: The Low-Cost Cartesian Manipulator that Won the Amazon Robotics Challenge",
-        "reason": "System-level reference used as context for planning approaches; minimal direct influence on P’s sensing or haptic exploration."
+        "contexts": "Examples of planning methods include the heuristic search for a surface normal [2] and neural network training of grasp affordance using binary success labels [3].",
+        "reason": "System background from ARC; cited for context and not influential to the core sensing or learning components.",
+        "category": "Low"
       }
     ]
   }

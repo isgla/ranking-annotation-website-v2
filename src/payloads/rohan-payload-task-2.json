@@ -5,154 +5,204 @@
     "paperTitle": "Jina-ColBERT-v2: A General-Purpose Multilingual Late Interaction Retriever",
     "candidates": [
       {
-        "rank": "1",
+        "rank": 1,
         "paperId": "60b8ad6177230ad5402af409a6edb5af441baeb4",
         "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
-        "reason": "Foundational late interaction architecture that Jina-ColBERT-v2 directly builds upon; establishes token-level multi-vector scoring central to this work."
+        "contexts": "In contrast, recent multi-vector retrievers like ColBERT (Khattab and Zaharia, 2020) generalize this embedding process to maintain a (usually smaller) embedding for each token, computing relevance scores as a function of the similarities of query and document tokens instead. | Owing to the quality of English-based pre-trained models (BERT) and annotated data (MSMARCO), many advances in neural retrieval have been in a monolingual English setting (Karpukhin et al., 2020; Xiong et al., 2020; Khattab and Zaharia, 2020).",
+        "reason": "Foundational late interaction architecture that Jina-ColBERT-v2 directly extends; the scoring mechanism and model family are indispensable to the paper.",
+        "category": "High"
       },
       {
-        "rank": "2",
+        "rank": 2,
         "paperId": "590432f953b6ce1b4b36bf66a2ac65eeee567515",
         "title": "ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction",
-        "reason": "Immediate predecessor providing efficiency, indexing, and search optimizations that Jina-ColBERT-v2 leverages and extends."
+        "contexts": "For general English performance, we use the same subset of 14 retrieval and text-similarity tasks from the BEIR benchmark as in Santhanam et al. (2022). | We use the same max query/document lengths as reported in Santhanam et al. (2022), and use the default (32/300) for MIR-ACL and mMARCO.",
+        "reason": "Direct predecessor providing efficiency and indexing practices that the new model builds upon; central to the operational lineage of the method.",
+        "category": "High"
       },
       {
-        "rank": "3",
-        "paperId": "c74e7d696e0fc1a0cab14787a02808e301d0e0ba",
-        "title": "ColBERT-XM: A Modular Multi-Vector Representation Model for Zero-Shot Multilingual Information Retrieval",
-        "reason": "Key prior work on multilingual ColBERT-style retrievers informing Jina-ColBERT-v2’s multilingual design and comparisons."
-      },
-      {
-        "rank": "4",
-        "paperId": "e22ae34ea102a781d0494e115639e8d081bf6920",
-        "title": "Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents",
-        "reason": "Provides the multi-stage training recipe (large-scale pairwise contrastive pretraining + triplet fine-tuning) and long-context engineering lineage reused in this paper."
-      },
-      {
-        "rank": "5",
-        "paperId": "84109e1235b725f4bb44a54bab8b493bd723fdd3",
-        "title": "Towards General Text Embeddings with Multi-stage Contrastive Learning",
-        "reason": "Empirically motivates the two-stage contrastive training strategy the paper adopts to boost retrieval quality."
-      },
-      {
-        "rank": "6",
-        "paperId": "823ca4778e1027f2f0b356df051d762dcecaaba0",
-        "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
-        "reason": "Enables efficient 8k-token context in the XLM-RoBERTa backbone, a core architectural change for long-context retrieval."
-      },
-      {
-        "rank": "7",
-        "paperId": "7a1e71cb1310c4a873e7a4e54d1a6dab0553adce",
-        "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data",
-        "reason": "and Web Data Only, Used to continue pretraining and warm up new rotary positional embeddings, critical for stable long-context support."
-      },
-      {
-        "rank": "8",
-        "paperId": "6f7efb07a1907195136039396277c8cb203b1f2e",
-        "title": "Multi-Task Contrastive Learning for 8192-Token Bilingual Text Embeddings",
-        "reason": "Prior bilingual/long-context embedding work from the same line that informs data curation (translations, synthetic sets) and training choices."
-      },
-      {
-        "rank": "9",
-        "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
-        "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
-        "reason": "Core supervised resource for triplet fine-tuning and benchmarking; also underpins mMARCO used for multilingual training/eval."
-      },
-      {
-        "rank": "10",
+        "rank": 3,
         "paperId": "9e3facfdf48fc6fbdeab602647f360ceaf9c6313",
         "title": "MIRACL: A Multilingual Retrieval Dataset Covering 18 Diverse Languages",
-        "reason": "Central multilingual benchmark and part of the curated triplet data; key to demonstrating non-English retrieval performance."
+        "contexts": "…dataset consists of 1) high-quality, human-annotated research datasets such as MS-MARCO, DuReader, and MIRACL (Bajaj et al., 2016; He et al., 2018; Zhang et al., 2023b) with seven mined hard negatives per query and 2) high-quality datasets like MSMARCO and NQ translated from English into Chinese,… | While we handily outperform BM25 and zero-shot mDPR (Zhang et al., 2023b) as expected, our model is slightly outper-formed (-0.66 | Additionally, we assess performance on the LoTTE benchmark, which focuses on long-tail queries, and the MIRACL and mMARCO benchmarks (Zhang et al., 2023b; Boni-facio et al., 2022), which assess non-English retrieval performance.",
+        "reason": "Core multilingual benchmark used to demonstrate the paper’s central claim of multilingual retrieval quality; essential for both training and evaluation narrative.",
+        "category": "High"
       },
       {
-        "rank": "11",
+        "rank": 4,
+        "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+        "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset",
+        "contexts": "We report nDCG@10 for the BEIR and MIRACL collections, MRR@10 for mMARCO, and Success@5 for LoTTE. | Our controlled triplet training experiment in Table 6, however, demonstrates a positive effect across a variety of tasks, with particular benefit to non-English tasks in MIRACL. | Our triplet dataset consists of 1) high-quality, human-annotated research datasets such as MS-MARCO, DuReader, and MIRACL (Bajaj et al., 2016; He et al., 2018; Zhang et al., 2023b) with seven mined hard negatives per query and 2) high-quality datasets like MSMARCO and NQ translated from English into Chinese, French, German, Japanese, Russian and Spanish, following our previous work (Mohr et al., 2024) and 3) synthetically generated datasets to address common failure modes of dense vector models such as negation and to cover niche domains like legal IR. | Datasets like Mr-Tydi and MIRACL (Zhang et al., 2021, 2023b) are built from human-generated and annotated queries, whereas mMARCO (Boni-facio, 2022) is a collection of machine-translated copies of MSMARCO which inherit their judgments from the original dataset. | Additionally, we assess performance on the LoTTE benchmark, which focuses on long-tail queries, and the MIRACL and mMARCO benchmarks (Zhang et al., 2023b; Boni-facio et al., 2022), which assess non-English retrieval performance. | Our triplet dataset consists of 1) high-quality, human-annotated research datasets such as MS-MARCO, DuReader, and MIRACL (Bajaj et al., 2016; He et al., 2018; Zhang et al., 2023b) with seven mined hard negatives per query and 2) high-quality datasets like MSMARCO and NQ translated from English… | Scores are reported on the test split for BEIR, development split for MIRACL and mMARCO, and search test split for LoTTE. | Therefore, we follow recent works (Clavié, 2024; Merrick et al., 2024) by comparing models’ quality on smaller sampled-corpus versions of HotpotQA, NQ, MS MARCO, and MIRACL (Chinese, French, German, Japanese, Spanish). | While ColBERTv2 is trained only on English MSMARCO triplets (Bajaj et al., 2016) and has a monolingual BERT backbone, making it incapable of multilingual retrieval, some previous works extend the model to multilingual retrieval. | Our exper-iment presented in Table 6, however, shows this method to have inconclusive benefit to nDCG@10 on the BEIR and MIRACL datasets when applied MIRACL ar bn de es en fa fi fr hi id ja ko ru sw te th yo zh BM25",
+        "reason": "Primary supervised IR resource underpinning pair and triplet training; central for establishing retrieval ability and comparisons across works.",
+        "category": "High"
+      },
+      {
+        "rank": 5,
+        "paperId": "823ca4778e1027f2f0b356df051d762dcecaaba0",
+        "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+        "contexts": "We also enhance the XLM-RoBERTa architecture with flash attention (Dao, 2024) for efficiency and to replace its absolute positional embeddings with rotary positional embeddings (RoPE, Su et al. (2023)).",
+        "reason": "Key engineering component enabling the paper’s long-context (8192-token) backbone to be tractable; important operational enabler though alternatives exist.",
+        "category": "Medium"
+      },
+      {
+        "rank": 6,
         "paperId": "972808b92159a782f5ca1c1ab3a8ed3867acfb2d",
         "title": "mMARCO: A Multilingual Version of the MS MARCO Passage Ranking Dataset",
-        "reason": "Widely used machine-translated multilingual corpus the paper evaluates on and references for multilingual training."
+        "contexts": "Our non-English pair-wise datasets contain a diverse collection of 29 major languages, including 3.0% code data, with 4.3% representing cross-lingual data. | Datasets like Mr-Tydi and MIRACL (Zhang et al., 2021, 2023b) are built from human-generated and annotated queries, whereas mMARCO (Boni-facio et al., 2022) is a collection of machine-translated copies of MSMARCO which inherit their judgments from the original dataset.",
+        "reason": "Central multilingual benchmark used for evaluation and training context; impactful for demonstrating multilingual coverage but replaceable by other multilingual sets.",
+        "category": "Medium"
       },
       {
-        "rank": "12",
-        "paperId": "1b09222cfe10f11c4cb0b18a9727d2baf6b991ac",
-        "title": "Mr. TyDi: A Multi-lingual Benchmark for Dense Retrieval",
-        "reason": "Influences multilingual evaluation and dataset framing; referenced in discussing human-authored multilingual benchmarks."
+        "rank": 7,
+        "paperId": "7a1e71cb1310c4a873e7a4e54d1a6dab0553adce",
+        "title": "The RefinedWeb Dataset for Falcon LLM: Outperforming Curated Corpora with Web Data, and Web Data Only",
+        "contexts": "To warm up its new positional embed-dings, we continued pre-training the modified back-bone with the same masked language modeling ob-jective for 160,000 steps on the RefinedWeb dataset (Penedo et al., 2023), a modern, high-quality corpus.",
+        "reason": "Used to continue pretraining after architectural changes (RoPE), aiding stability and long-context adaptation; useful but could be substituted by other large web corpora.",
+        "category": "Medium"
       },
       {
-        "rank": "13",
-        "paperId": "4d5735c186ddb2430ac9689ccf61fdcbbfc23abc",
-        "title": "BGE M3-Embedding: Multi-Lingual",
-        "reason": "Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation, A contemporary multilingual multi-vector baseline informing comparisons and design trade-offs (e.g., token representation size)."
+        "rank": 8,
+        "paperId": "e22ae34ea102a781d0494e115639e8d081bf6920",
+        "title": "Jina Embeddings 2: 8192-Token General-Purpose Text Embeddings for Long Documents",
+        "contexts": "We utilize the same single-vector pair-training loss function as described in (Günther et al., 2023). | Studies demonstrate that large-scale unsupervised pair training utilizing in-batch negatives, followed by a small-scale triplet fine-tuning stage, significantly improves performance compared to a dense retriever trained solely on triplet data (Li et al., 2023; Günther et al., 2023).",
+        "reason": "Provides the specific pair-training objective and multi-stage training recipe the paper adopts; materially guides training but not uniquely necessary.",
+        "category": "Medium"
       },
       {
-        "rank": "14",
-        "paperId": "85ceb93a797481b5203b36f4e77a0828107c42fd",
-        "title": "Multilingual E5 Text Embeddings: A Technical Report",
-        "reason": "Strong multilingual single-vector baseline shaping instruction usage and synthetic/translated data practices referenced by the paper."
+        "rank": 9,
+        "paperId": "84109e1235b725f4bb44a54bab8b493bd723fdd3",
+        "title": "Towards General Text Embeddings with Multi-stage Contrastive Learning",
+        "contexts": "Studies demonstrate that large-scale unsupervised pair training utilizing in-batch negatives, followed by a small-scale triplet fine-tuning stage, significantly improves performance compared to a dense retriever trained solely on triplet data (Li et al., 2023; Günther et al., 2023).",
+        "reason": "Supports the adopted multi-stage contrastive training strategy; influential for methodology but interchangeable with similar formulations.",
+        "category": "Medium"
       },
       {
-        "rank": "15",
-        "paperId": "943487997ecd26e871a2ab16160bd5640020369d",
-        "title": "Toward Best Practices for Training Multilingual Dense Retrieval Models",
-        "reason": "Guides training/evaluation choices for multilingual dense retrieval; used as a comparative yardstick."
+        "rank": 10,
+        "paperId": "6f7efb07a1907195136039396277c8cb203b1f2e",
+        "title": "Multi-Task Contrastive Learning for 8192-Token Bilingual Text Embeddings",
+        "contexts": "…datasets like MSMARCO and NQ translated from English into Chinese, French, German, Japanese, Russian and Spanish, following our previous work (Mohr et al., 2024) and 3) synthetically generated datasets to address common failure modes of dense vector models such as negation and to cover niche…",
+        "reason": "Precedent for long-context training and data creation (translations, synthetic negatives) that the paper leverages; helpful but not indispensable.",
+        "category": "Medium"
       },
       {
-        "rank": "16",
+        "rank": 11,
+        "paperId": "c74e7d696e0fc1a0cab14787a02808e301d0e0ba",
+        "title": "ColBERT-XM: A Modular Multi-Vector Representation Model for Zero-Shot Multilingual Information Retrieval",
+        "contexts": "ColBERT-XM (Louis et al., 2024) addresses the so-called curse of multilinguality (Con-neau et al., 2020), the performance degradation of models pre-trained on too many tasks, with shared-and per-language parameters that allow for more robust zero-shot language transfer and post-hoc language… | Louis et al. (2024) does this by using parameter extensions for each additional language, and Lawrie et al. (2023) trains solely on machine-translated English MSMARCO data to get effective multilingual performance. | Following many prior single-and multi-vector multilingual training efforts, we adopted XLM-RoBERTa as our backbone model due to its strong performance across various downstream tasks (Nair et al., 2022; Louis et al., 2024; Chen et al., 2024).",
+        "reason": "Closest multilingual ColBERT-style baseline and framing; important for positioning and design choices, but not a direct dependency.",
+        "category": "Medium"
+      },
+      {
+        "rank": 12,
         "paperId": "d1ccffb8eb1b7a99cd586723074b82fa5399bdd2",
         "title": "Transfer Learning Approaches for Building Cross-Language Dense Retrieval Models",
-        "reason": "Provides cross-lingual transfer strategies relevant to the paper’s multilingual training framework and comparisons."
+        "contexts": "ColBERT-XM (Louis et al., 2024) addresses the so-called curse of multilinguality (Con-neau et al., 2020), the performance degradation of models pre-trained on too many tasks, with shared-and per-language parameters that allow for more robust zero-shot language transfer and post-hoc language extension. | On the data approach, ColBERT-X (Nair et al., 2022; Lawrie et al., 2023; Yang et al., 2024) uses language-mixed batches of machine-translated English data, and BGE-M3 (Chen et al., 2024) curates unsupervised and high-quality supervised corpora of diverse multilingual training data. | Following many prior single-and multi-vector multilingual training efforts, we adopted XLM-RoBERTa as our backbone model due to its strong performance across various downstream tasks (Nair et al., 2022; Louis et al., 2024; Chen et al., 2024). | Finally, comparing against ColBERT-XM’s zero-shot evaluation on mMARCO in Table 4, we see a strong improvement across the board, including on languages whose mMARCO training set does not occur in our pair or triplet training data (dt, hi, id, it, pt, vi).",
+        "reason": "Provides transfer-learning strategies and baselines for multilingual dense retrieval; shapes training data choices and comparisons but not essential to core method.",
+        "category": "Medium"
       },
       {
-        "rank": "17",
+        "rank": 13,
+        "paperId": "4d5735c186ddb2430ac9689ccf61fdcbbfc23abc",
+        "title": "BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation",
+        "contexts": "On the data approach, ColBERT-X (Nair et al., 2022; Lawrie et al., 2023; Yang et al., 2024) uses language-mixed batches of machine-translated English data, and BGE-M3 (Chen et al., 2024) curates unsupervised and high-quality supervised corpora of diverse multilingual training data. | Other multilingual multi-vector models like BGE-M3 (Chen et al., 2024) produce extremely large token representations that limit their practical utility for first-stage retrieval. | Following many prior single-and multi-vector multilingual training efforts, we adopted XLM-RoBERTa as our backbone model due to its strong performance across various downstream tasks (Nair et al., 2022; Louis et al., 2024; Chen et al., 2024). | BGE-M3 (Chen et al., 2024) adopts the two-stage pairs-to-triplets training pipeline, and does self-knowledge distillation, treating the combination of its sparse, dense, and multi-vector scores as the teacher score.",
+        "reason": "Strong multilingual multi-vector baseline referenced for comparisons and methodological contrast; informative but not required for the proposed approach.",
+        "category": "Medium"
+      },
+      {
+        "rank": 14,
+        "paperId": "63c0dbe2426f9c92f469151d1773e5265ae6580e",
+        "title": "One Embedder, Any Task: Instruction-Finetuned Text Embeddings",
+        "contexts": "Inspired by the use of instruction prefixes in single-vector works like Su et al. (2022), we experimented with adding task-specific natural language instructions for retrieval (RET), and question answering (QA), and semantic text similarity (STS).",
+        "reason": "Motivates instruction prefixes the authors experimented with; helpful to design exploration but not central to main results.",
+        "category": "Medium"
+      },
+      {
+        "rank": 15,
+        "paperId": "1b09222cfe10f11c4cb0b18a9727d2baf6b991ac",
+        "title": "Mr. TyDi: A Multi-lingual Benchmark for Dense Retrieval",
+        "contexts": "We report nDCG@10 for the BEIR and MIRACL collections, MRR@10 for mMARCO, and Success@5 for LoTTE. | Our controlled triplet training experiment in Table 6, however, demonstrates a positive effect across a variety of tasks, with particular benefit to non-English tasks in MIRACL. | Our triplet dataset consists of 1) high-quality, human-annotated research datasets such as MS-MARCO, DuReader, and MIRACL (Bajaj et al., 2016; He et al., 2018; Zhang et al., 2023b) with seven mined hard negatives per query and 2) high-quality datasets like MSMARCO and NQ translated from English into Chinese, French, German, Japanese, Russian and Spanish, following our previous work (Mohr et al., 2024) and 3) synthetically generated datasets to address common failure modes of dense vector models such as negation and to cover niche domains like legal IR. | Datasets like Mr-Tydi and MIRACL (Zhang et al., 2021, 2023b) are built from human-generated and annotated queries, whereas mMARCO (Boni-facio et al., 2022) is a collection of machine-translated copies of MSMARCO which inherit their judgments from the original dataset. | Additionally, we assess performance on the LoTTE benchmark, which focuses on long-tail queries, and the MIRACL and mMARCO benchmarks (Zhang et al., 2023b; Boni-facio et al., 2022), which assess non-English retrieval performance. | Scores are reported on the test split for BEIR, development split for MIRACL and mMARCO, and search test split for LoTTE. | Therefore, we follow recent works (Clavié, 2024; Merrick et al., 2024) by comparing models’ quality on smaller sampled-corpus versions of HotpotQA, NQ, MS MARCO, and MIRACL (Chinese, French, German, Japanese, Spanish). | Our exper-iment presented in Table 6, however, shows this method to have inconclusive benefit to nDCG@10 on the BEIR and MIRACL datasets when applied MIRACL ar bn de es en fa fi fr hi id ja ko ru sw te th yo zh BM25",
+        "reason": "Relevant multilingual benchmark referenced to contextualize data sources and evaluation scope; useful but not a primary dataset for the reported results.",
+        "category": "Medium"
+      },
+      {
+        "rank": 16,
         "paperId": "995b7affd684b910d5a1c520c3af00fd20cc39b0",
         "title": "DuReader: a Chinese Machine Reading Comprehension Dataset from Real-world Applications",
-        "reason": "Included in the high-quality, human-annotated triplet training mixture, contributing to multilingual robustness."
+        "contexts": "Our triplet dataset consists of 1) high-quality, human-annotated research datasets such as MS-MARCO, DuReader, and MIRACL (Bajaj et al., 2016; He et al., 2018; Zhang et al., 2023b) with seven mined hard negatives per query and 2) high-quality datasets like MSMARCO and NQ translated from English…",
+        "reason": "Contributes to the triplet training mixture for multilingual supervision; supportive but not unique to the method.",
+        "category": "Medium"
       },
       {
-        "rank": "18",
-        "paperId": "63c0dbe2426f9c92f469151d1773e5265ae6580e",
-        "title": "One Embedder",
-        "reason": "Any Task: Instruction-Finetuned Text Embeddings, Inspires the paper’s experiments with task-specific natural language instructions for queries/documents."
+        "rank": 17,
+        "paperId": "85ceb93a797481b5203b36f4e77a0828107c42fd",
+        "title": "Multilingual E5 Text Embeddings: A Technical Report",
+        "contexts": "Other works have incorporated asymmetric task-specific instructions for queries and documents to further enhance performance (Wang et al., 2024) and demonstrated the efficacy of using synthetically generated training data, including using diverse task instructions and machine translations, to…",
+        "reason": "Competing multilingual embedding approach cited for training data and instruction strategies; informs landscape but not required by the method.",
+        "category": "Medium"
       },
       {
-        "rank": "19",
-        "paperId": "b26f2037f769d5ffc5f7bdcec2de8da28ec14bee",
-        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
-        "reason": "Canonical dense retrieval baseline providing context and contrast to late-interaction approaches."
+        "rank": 18,
+        "paperId": "943487997ecd26e871a2ab16160bd5640020369d",
+        "title": "Toward Best Practices for Training Multilingual Dense Retrieval Models",
+        "contexts": "%) by the finetuned mDPR (Zhang et al., 2023a), and heavily by BGE-M3 (-9.31%).",
+        "reason": "Guides expectations and comparisons for multilingual dense retrieval training; helpful context but not central to the proposed architecture or training pipeline.",
+        "category": "Medium"
       },
       {
-        "rank": "20",
-        "paperId": "c9b8593db099869fe7254aa1fa53f3c9073b0176",
-        "title": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval",
-        "reason": "Background on dense retriever training and negatives; contextualizes monolingual advances the paper moves beyond."
-      },
-      {
-        "rank": "21",
-        "paperId": "1e8a6de5561f557ff9abf43d538d8d5e9347efa0",
-        "title": "SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking",
-        "reason": "Representative sparse baseline used for conceptual contrast with multi-vector neural retrieval."
-      },
-      {
-        "rank": "22",
-        "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
-        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
-        "reason": "Underpins masked language modeling and whole-word masking choices during continued pretraining."
-      },
-      {
-        "rank": "23",
-        "paperId": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
-        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
-        "reason": "General PLM foundation relevant via the XLM-RoBERTa backbone used in this work."
-      },
-      {
-        "rank": "24",
+        "rank": 19,
         "paperId": "6be8d23a906b62550d65586aa028240c99b60b8c",
         "title": "JaColBERTv2.5: Optimising Multi-Vector Retrievers to Create State-of-the-Art Japanese Retrievers with Constrained Resources",
-        "reason": "Related ColBERT variant cited mainly for evaluation protocol (sampled-corpus comparisons); limited direct impact on architecture/training."
+        "contexts": "Therefore, we follow recent works (Clavié, 2024; Merrick et al., 2024) by comparing models’ quality on smaller sampled-corpus versions of HotpotQA, NQ, MS MARCO, and MIRACL (Chinese, French, German, Japanese, Spanish).",
+        "reason": "Cited for an evaluation protocol (sampled-corpus comparisons) rather than methodology or datasets; useful but peripheral to the core contribution.",
+        "category": "Low"
       },
       {
-        "rank": "25",
+        "rank": 20,
         "paperId": "0c5dbff43777b5f9eebc9ce3b04a4a23493e1f86",
         "title": "Neural Approaches to Multilingual Information Retrieval",
-        "reason": "Broad survey providing background context on multilingual IR; minimal direct methodological influence."
+        "contexts": "On the data approach, ColBERT-X (Nair et al., 2022; Lawrie et al., 2023; Yang et al., 2024) uses language-mixed batches of machine-translated English data, and BGE-M3 (Chen et al., 2024) curates unsupervised and high-quality supervised corpora of diverse multilingual training data. | Louis et al. (2024) does this by using parameter extensions for each additional language, and Lawrie et al. (2023) trains solely on machine-translated English MSMARCO data to get effective multilingual performance.",
+        "reason": "Survey-style background on multilingual IR strategies; provides context but not directly used in the proposed method.",
+        "category": "Low"
+      },
+      {
+        "rank": 21,
+        "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "contexts": "Neural retrieval has gained popularity in recent years following the arrival of capable pre-trained language models (PLMs) (Devlin et al., 2019; Liu et al., 2019; Clark et al., 2020). | During this pre-training phase, we set the maximum sequence length to 8,192 tokens with a rotary base of 10,000 and employed whole-word-masking (Devlin et al., 2019), masking out 30% of the tokens.",
+        "reason": "General PLM background and a specific masking heuristic referenced; informative but not core to the paper’s unique contributions.",
+        "category": "Low"
+      },
+      {
+        "rank": 22,
+        "paperId": "077f8329a7b6fa3b7c877a57b81eb6c18b5f87de",
+        "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+        "contexts": "Neural retrieval has gained popularity in recent years following the arrival of capable pre-trained language models (PLMs) (Devlin et al., 2019; Liu et al., 2019; Clark et al., 2020).",
+        "reason": "Standard PLM background citation; not specifically operative in the proposed model which uses XLM-RoBERTa and other components.",
+        "category": "Low"
+      },
+      {
+        "rank": 23,
+        "paperId": "b26f2037f769d5ffc5f7bdcec2de8da28ec14bee",
+        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+        "contexts": "Owing to the quality of English-based pre-trained models (BERT) and annotated data (MSMARCO), many advances in neural retrieval have been in a monolingual English setting (Karpukhin et al., 2020; Xiong et al., 2020; Khattab and Zaharia, 2020).",
+        "reason": "Background acknowledgment of dense retrieval progress; not directly used in architecture or training.",
+        "category": "Low"
+      },
+      {
+        "rank": 24,
+        "paperId": "c9b8593db099869fe7254aa1fa53f3c9073b0176",
+        "title": "Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval",
+        "contexts": "Owing to the quality of English-based pre-trained models (BERT) and annotated data (MSMARCO), many advances in neural retrieval have been in a monolingual English setting (Karpukhin et al., 2020; Xiong et al., 2020; Khattab and Zaharia, 2020).",
+        "reason": "Cited as general background on dense retrieval; not integral to the multilingual, late-interaction method presented.",
+        "category": "Low"
+      },
+      {
+        "rank": 25,
+        "paperId": "1e8a6de5561f557ff9abf43d538d8d5e9347efa0",
+        "title": "SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking",
+        "contexts": "Sparse neural retrieval systems, such as SPLADE (Formal et al., 2021), represent texts as weighted bags of words.",
+        "reason": "Background contrast to dense/multi-vector retrieval; not used by the method or experiments beyond framing.",
+        "category": "Low"
       }
     ]
   }
